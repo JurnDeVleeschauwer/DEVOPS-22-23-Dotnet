@@ -1,0 +1,199 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="C:\Users\arthu\.nuget\packages\unlockeddata.chartist.blazor\3.2.7\contentFiles\any\net6.0\wwwroot\blazorChartistInterop.js" />
+    <Content Remove="C:\Users\arthu\.nuget\packages\unlockeddata.chartist.blazor\3.2.7\contentFiles\any\net6.0\wwwroot\blazorChartistInterop.min.js" />
+    <Content Remove="C:\Users\arthu\.nuget\packages\unlockeddata.chartist.blazor\3.2.7\contentFiles\any\net6.0\wwwroot\chartist.css" />
+    <Content Remove="C:\Users\arthu\.nuget\packages\unlockeddata.chartist.blazor\3.2.7\contentFiles\any\net6.0\wwwroot\chartist.js" />
+    <Content Remove="C:\Users\arthu\.nuget\packages\unlockeddata.chartist.blazor\3.2.7\contentFiles\any\net6.0\wwwroot\chartist.min.css" />
+    <Content Remove="C:\Users\arthu\.nuget\packages\unlockeddata.chartist.blazor\3.2.7\contentFiles\any\net6.0\wwwroot\chartist.min.js" />
+    <Content Remove="wwwroot\bulma\bulma.sass" />
+    <Content Remove="wwwroot\bulma\css\bulma-rtl.css" />
+    <Content Remove="wwwroot\bulma\css\bulma-rtl.css.map" />
+    <Content Remove="wwwroot\bulma\css\bulma-rtl.min.css" />
+    <Content Remove="wwwroot\bulma\css\bulma.css" />
+    <Content Remove="wwwroot\bulma\css\bulma.css.map" />
+    <Content Remove="wwwroot\bulma\css\bulma.min.css" />
+    <Content Remove="wwwroot\bulma\LICENSE" />
+    <Content Remove="wwwroot\bulma\README.md" />
+    <Content Remove="wwwroot\bulma\sass\base\animations.sass" />
+    <Content Remove="wwwroot\bulma\sass\base\generic.sass" />
+    <Content Remove="wwwroot\bulma\sass\base\helpers.sass" />
+    <Content Remove="wwwroot\bulma\sass\base\minireset.sass" />
+    <Content Remove="wwwroot\bulma\sass\base\_all.sass" />
+    <Content Remove="wwwroot\bulma\sass\components\breadcrumb.sass" />
+    <Content Remove="wwwroot\bulma\sass\components\card.sass" />
+    <Content Remove="wwwroot\bulma\sass\components\dropdown.sass" />
+    <Content Remove="wwwroot\bulma\sass\components\level.sass" />
+    <Content Remove="wwwroot\bulma\sass\components\media.sass" />
+    <Content Remove="wwwroot\bulma\sass\components\menu.sass" />
+    <Content Remove="wwwroot\bulma\sass\components\message.sass" />
+    <Content Remove="wwwroot\bulma\sass\components\modal.sass" />
+    <Content Remove="wwwroot\bulma\sass\components\navbar.sass" />
+    <Content Remove="wwwroot\bulma\sass\components\pagination.sass" />
+    <Content Remove="wwwroot\bulma\sass\components\panel.sass" />
+    <Content Remove="wwwroot\bulma\sass\components\tabs.sass" />
+    <Content Remove="wwwroot\bulma\sass\components\_all.sass" />
+    <Content Remove="wwwroot\bulma\sass\elements\box.sass" />
+    <Content Remove="wwwroot\bulma\sass\elements\button.sass" />
+    <Content Remove="wwwroot\bulma\sass\elements\container.sass" />
+    <Content Remove="wwwroot\bulma\sass\elements\content.sass" />
+    <Content Remove="wwwroot\bulma\sass\elements\form.sass" />
+    <Content Remove="wwwroot\bulma\sass\elements\icon.sass" />
+    <Content Remove="wwwroot\bulma\sass\elements\image.sass" />
+    <Content Remove="wwwroot\bulma\sass\elements\notification.sass" />
+    <Content Remove="wwwroot\bulma\sass\elements\other.sass" />
+    <Content Remove="wwwroot\bulma\sass\elements\progress.sass" />
+    <Content Remove="wwwroot\bulma\sass\elements\table.sass" />
+    <Content Remove="wwwroot\bulma\sass\elements\tag.sass" />
+    <Content Remove="wwwroot\bulma\sass\elements\title.sass" />
+    <Content Remove="wwwroot\bulma\sass\elements\_all.sass" />
+    <Content Remove="wwwroot\bulma\sass\form\checkbox-radio.sass" />
+    <Content Remove="wwwroot\bulma\sass\form\file.sass" />
+    <Content Remove="wwwroot\bulma\sass\form\input-textarea.sass" />
+    <Content Remove="wwwroot\bulma\sass\form\select.sass" />
+    <Content Remove="wwwroot\bulma\sass\form\shared.sass" />
+    <Content Remove="wwwroot\bulma\sass\form\tools.sass" />
+    <Content Remove="wwwroot\bulma\sass\form\_all.sass" />
+    <Content Remove="wwwroot\bulma\sass\grid\columns.sass" />
+    <Content Remove="wwwroot\bulma\sass\grid\tiles.sass" />
+    <Content Remove="wwwroot\bulma\sass\grid\_all.sass" />
+    <Content Remove="wwwroot\bulma\sass\helpers\color.sass" />
+    <Content Remove="wwwroot\bulma\sass\helpers\flexbox.sass" />
+    <Content Remove="wwwroot\bulma\sass\helpers\float.sass" />
+    <Content Remove="wwwroot\bulma\sass\helpers\other.sass" />
+    <Content Remove="wwwroot\bulma\sass\helpers\overflow.sass" />
+    <Content Remove="wwwroot\bulma\sass\helpers\position.sass" />
+    <Content Remove="wwwroot\bulma\sass\helpers\spacing.sass" />
+    <Content Remove="wwwroot\bulma\sass\helpers\typography.sass" />
+    <Content Remove="wwwroot\bulma\sass\helpers\visibility.sass" />
+    <Content Remove="wwwroot\bulma\sass\helpers\_all.sass" />
+    <Content Remove="wwwroot\bulma\sass\layout\footer.sass" />
+    <Content Remove="wwwroot\bulma\sass\layout\hero.sass" />
+    <Content Remove="wwwroot\bulma\sass\layout\section.sass" />
+    <Content Remove="wwwroot\bulma\sass\layout\_all.sass" />
+    <Content Remove="wwwroot\bulma\sass\utilities\animations.sass" />
+    <Content Remove="wwwroot\bulma\sass\utilities\controls.sass" />
+    <Content Remove="wwwroot\bulma\sass\utilities\derived-variables.sass" />
+    <Content Remove="wwwroot\bulma\sass\utilities\extends.sass" />
+    <Content Remove="wwwroot\bulma\sass\utilities\functions.sass" />
+    <Content Remove="wwwroot\bulma\sass\utilities\initial-variables.sass" />
+    <Content Remove="wwwroot\bulma\sass\utilities\mixins.sass" />
+    <Content Remove="wwwroot\bulma\sass\utilities\_all.sass" />
+    <Content Remove="wwwroot\sass\mystyles.scss" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\bulma\bulma.sass" />
+    <None Include="wwwroot\bulma\css\bulma-rtl.css" />
+    <None Include="wwwroot\bulma\css\bulma-rtl.css.map" />
+    <None Include="wwwroot\bulma\css\bulma-rtl.min.css" />
+    <None Include="wwwroot\bulma\css\bulma.css" />
+    <None Include="wwwroot\bulma\css\bulma.css.map" />
+    <None Include="wwwroot\bulma\css\bulma.min.css" />
+    <None Include="wwwroot\bulma\LICENSE" />
+    <None Include="wwwroot\bulma\README.md" />
+    <None Include="wwwroot\bulma\sass\base\animations.sass" />
+    <None Include="wwwroot\bulma\sass\base\generic.sass" />
+    <None Include="wwwroot\bulma\sass\base\helpers.sass" />
+    <None Include="wwwroot\bulma\sass\base\minireset.sass" />
+    <None Include="wwwroot\bulma\sass\base\_all.sass" />
+    <None Include="wwwroot\bulma\sass\components\breadcrumb.sass" />
+    <None Include="wwwroot\bulma\sass\components\card.sass" />
+    <None Include="wwwroot\bulma\sass\components\dropdown.sass" />
+    <None Include="wwwroot\bulma\sass\components\level.sass" />
+    <None Include="wwwroot\bulma\sass\components\media.sass" />
+    <None Include="wwwroot\bulma\sass\components\menu.sass" />
+    <None Include="wwwroot\bulma\sass\components\message.sass" />
+    <None Include="wwwroot\bulma\sass\components\modal.sass" />
+    <None Include="wwwroot\bulma\sass\components\navbar.sass" />
+    <None Include="wwwroot\bulma\sass\components\pagination.sass" />
+    <None Include="wwwroot\bulma\sass\components\panel.sass" />
+    <None Include="wwwroot\bulma\sass\components\tabs.sass" />
+    <None Include="wwwroot\bulma\sass\components\_all.sass" />
+    <None Include="wwwroot\bulma\sass\elements\box.sass" />
+    <None Include="wwwroot\bulma\sass\elements\button.sass" />
+    <None Include="wwwroot\bulma\sass\elements\container.sass" />
+    <None Include="wwwroot\bulma\sass\elements\content.sass" />
+    <None Include="wwwroot\bulma\sass\elements\form.sass" />
+    <None Include="wwwroot\bulma\sass\elements\icon.sass" />
+    <None Include="wwwroot\bulma\sass\elements\image.sass" />
+    <None Include="wwwroot\bulma\sass\elements\notification.sass" />
+    <None Include="wwwroot\bulma\sass\elements\other.sass" />
+    <None Include="wwwroot\bulma\sass\elements\progress.sass" />
+    <None Include="wwwroot\bulma\sass\elements\table.sass" />
+    <None Include="wwwroot\bulma\sass\elements\tag.sass" />
+    <None Include="wwwroot\bulma\sass\elements\title.sass" />
+    <None Include="wwwroot\bulma\sass\elements\_all.sass" />
+    <None Include="wwwroot\bulma\sass\form\checkbox-radio.sass" />
+    <None Include="wwwroot\bulma\sass\form\file.sass" />
+    <None Include="wwwroot\bulma\sass\form\input-textarea.sass" />
+    <None Include="wwwroot\bulma\sass\form\select.sass" />
+    <None Include="wwwroot\bulma\sass\form\shared.sass" />
+    <None Include="wwwroot\bulma\sass\form\tools.sass" />
+    <None Include="wwwroot\bulma\sass\form\_all.sass" />
+    <None Include="wwwroot\bulma\sass\grid\columns.sass" />
+    <None Include="wwwroot\bulma\sass\grid\tiles.sass" />
+    <None Include="wwwroot\bulma\sass\grid\_all.sass" />
+    <None Include="wwwroot\bulma\sass\helpers\color.sass" />
+    <None Include="wwwroot\bulma\sass\helpers\flexbox.sass" />
+    <None Include="wwwroot\bulma\sass\helpers\float.sass" />
+    <None Include="wwwroot\bulma\sass\helpers\other.sass" />
+    <None Include="wwwroot\bulma\sass\helpers\overflow.sass" />
+    <None Include="wwwroot\bulma\sass\helpers\position.sass" />
+    <None Include="wwwroot\bulma\sass\helpers\spacing.sass" />
+    <None Include="wwwroot\bulma\sass\helpers\typography.sass" />
+    <None Include="wwwroot\bulma\sass\helpers\visibility.sass" />
+    <None Include="wwwroot\bulma\sass\helpers\_all.sass" />
+    <None Include="wwwroot\bulma\sass\layout\footer.sass" />
+    <None Include="wwwroot\bulma\sass\layout\hero.sass" />
+    <None Include="wwwroot\bulma\sass\layout\section.sass" />
+    <None Include="wwwroot\bulma\sass\layout\_all.sass" />
+    <None Include="wwwroot\bulma\sass\utilities\animations.sass" />
+    <None Include="wwwroot\bulma\sass\utilities\controls.sass" />
+    <None Include="wwwroot\bulma\sass\utilities\derived-variables.sass" />
+    <None Include="wwwroot\bulma\sass\utilities\extends.sass" />
+    <None Include="wwwroot\bulma\sass\utilities\functions.sass" />
+    <None Include="wwwroot\bulma\sass\utilities\initial-variables.sass" />
+    <None Include="wwwroot\bulma\sass\utilities\mixins.sass" />
+    <None Include="wwwroot\bulma\sass\utilities\_all.sass" />
+    <None Include="wwwroot\sass\mystyles.scss" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Append.Blazor.Sidepanel" Version="6.3.0" />
+    <PackageReference Include="ChartJs.Blazor.Fork" Version="2.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="6.0.11" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.QuickGrid" Version="0.1.0-alpha.22351.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="6.0.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.10" PrivateAssets="all" />
+    <PackageReference Include="Smart.Blazor" Version="14.4.39" />
+    <PackageReference Include="UnlockedData.Chartist.Blazor" Version="3.2.7" />
+    <PackageReference Include="Xamarin.Forms.Bootstrap.Icons" Version="1.5.0" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
+    <PackageReference Include="System.Net.Http.Json" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+	  <!--TIJDELIJK LINK NAAR SERVICES OM DE MOCK SERVICE TE INJECTEREN-->
+    <ProjectReference Include="..\Services\Services.csproj" />
+	  
+    <ProjectReference Include="..\Shared\Shared.csproj" />
+    <ProjectReference Include="..\Domain\Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\bulma\package.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

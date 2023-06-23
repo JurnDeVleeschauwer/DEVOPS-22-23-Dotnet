@@ -1,0 +1,126 @@
+﻿<div class="top-row ps-3 navbar has-background-black">
+    <h3 class="title is-4 logo" href="https://www.hogent.be/">Virtual IT Company</h3>
+    <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</div>
+
+<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+    <nav class="flex-column">
+        <AuthorizeView Policy="Guest">
+            <div class="nav-item px-2">
+                <NavLink class="nav-link subtitle is-6" href="login">
+                    <span class="icon-text">
+                        <span class="icon is-medium">
+                            <i class="fas fa-sharp fa-solid fa-user"></i>
+                        </span>
+                        <span class="navtab-name">Log in</span>
+                    </span>
+                </NavLink>
+            </div>
+            <div class="nav-item px-2">
+                <NavLink class="nav-link subtitle is-6" href="register">
+                    <span class="icon-text">
+                        <span class="icon is-medium">
+                            <i class="fas fa-sharp fa-solid fa-address-card"></i>
+                        </span>
+                        <span class="navtab-name">Registreer</span>
+                    </span>
+                </NavLink>
+            </div>
+        </AuthorizeView>
+        <AuthorizeView Policy="LoggedIn">
+            <div class="nav-item px-2">
+                <NavLink class="nav-link subtitle is-6" href="klant/HIER_MOET_NOG_ID_DOORGEGEVEN_WORDEN"
+                    Match="NavLinkMatch.All">
+                    <span class="icon-text">
+                        <span class="icon is-medium">
+                            <i class="fas fa-sharp fa-solid fa-user"></i>
+                        </span>
+                        <span class="navtab-name">Profiel</span>
+                    </span>
+                </NavLink>
+            </div>
+            <div class="nav-item px-2">
+                <NavLink class="nav-link subtitle is-6" href="virtualmachines" Match="NavLinkMatch.All">
+                    <span class="icon-text">
+                        <span class="icon is-medium">
+                            <i class="fas fa-computer"></i>
+                        </span>
+                        <span class="navtab-name">Virtual Machines</span>
+                    </span>
+                </NavLink>
+            </div>
+            <div class="nav-item px-2">
+                <NavLink class="nav-link subtitle is-6" href="virtualmachines/add">
+                    <span class="icon-text">
+                        <span class="icon is-medium">
+                            <i class="fas fa-plus"></i>
+                        </span>
+                        <span class="navtab-name">Vraag Virtual Machine aan</span>
+                    </span>
+                </NavLink>
+            </div>
+        </AuthorizeView>
+
+
+        <AuthorizeView Policy="AdminOnly">
+            <br />
+            <div class="nav-item px-2">
+                <NavLink class="nav-link subtitle is-6" href="klanten">
+                    <span class="icon-text">
+                        <span class="icon is-medium">
+                            <i class="fas fa-users"></i>
+                        </span>
+                        <span class="navtab-name">Klanten</span>
+                    </span>
+                </NavLink>
+            </div>
+            <div class="nav-item px-2">
+                <NavLink class="nav-link subtitle is-6" href="beheerders">
+                    <span class="icon-text">
+                        <span class="icon is-medium">
+                            <i class="fas fa-solid fa-users-gear"></i>
+                        </span>
+                        <span class="navtab-name">Beheerders</span>
+                    </span>
+                </NavLink>
+            </div>
+            <div class="nav-item px-2">
+                <NavLink class="nav-link subtitle is-6" href="servers">
+                    <span class="icon-text">
+                        <span class="icon is-medium">
+                            <i class="fas fa-sharp fa-solid fa-server"></i>
+                        </span>
+                        <span class="navtab-name">Servers</span>
+                    </span>
+                </NavLink>
+            </div>
+            <div class="nav-item px-2">
+                <NavLink class="nav-link subtitle is-6" href="beschikbaarheid">
+                    <span class="icon-text">
+                        <span class="icon is-medium">
+                            <i class="fas fa-solid fa-calendar-days"></i>
+                        </span>
+                        <span class="navtab-name">Beschikbaarheden</span>
+                    </span>
+                </NavLink>
+            </div>
+
+
+        </AuthorizeView>
+
+    </nav>
+</div>
+
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}

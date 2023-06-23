@@ -1,0 +1,15 @@
+﻿﻿button {
+    background: #4969ee;
+    color: white;
+    padding: 0.2rem 1rem;
+    border-radius: 0.25rem;
+    margin: 0.25rem 0.5rem;
+}
+
+button:hover {
+    background-color: #6884f9;
+}
+
+button:active {
+    background-color: #192e86;
+}

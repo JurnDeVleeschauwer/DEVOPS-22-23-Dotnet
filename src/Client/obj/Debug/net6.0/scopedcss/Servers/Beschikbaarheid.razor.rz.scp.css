@@ -1,0 +1,18 @@
+﻿.card-body[b-oe533ct6gt] {
+    padding: 1rem;
+}
+
+.card-header[b-oe533ct6gt] {
+    background-color: black;
+}
+
+.card-header-title[b-oe533ct6gt] {
+    color: white;
+}
+
+.form-container[b-oe533ct6gt] {
+    display: flex;
+    height: 100px;
+    align-items: center;
+    margin-bottom: 3rem;
+}

@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "Yv2TN/Hvtr9DMmEucFpDLPl4uDz6GzdzjFmgMDKuDLLEyRb9Xay7kyJnYbMc2fV452HGvkoHnxuQcnC4OuU/lg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Jurn\\Documents\\GitHub\\devops-22-23-dotnet-g10\\src\\Shared\\Shared.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Jurn\\.nuget\\packages\\ardalis.guardclauses\\3.3.0\\ardalis.guardclauses.3.3.0.nupkg.sha512",
+    "C:\\Users\\Jurn\\.nuget\\packages\\bogus\\34.0.2\\bogus.34.0.2.nupkg.sha512",
+    "C:\\Users\\Jurn\\.nuget\\packages\\fluentvalidation\\11.3.0\\fluentvalidation.11.3.0.nupkg.sha512",
+    "C:\\Users\\Jurn\\.nuget\\packages\\jetbrains.annotations\\2021.2.0\\jetbrains.annotations.2021.2.0.nupkg.sha512"
+  ],
+  "logs": []
+}

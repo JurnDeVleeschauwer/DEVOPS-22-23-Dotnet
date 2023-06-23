@@ -1,0 +1,15 @@
+﻿@using Microsoft.AspNetCore.Components.QuickGrid
+@if(@virtualMachines is null){
+    <p>Loading...</p>
+}
+else{
+    <QuickGrid Items="@virtualmachinesQuery">
+        <PropertyColumn Property="@(vm => vm.Name)"/>
+        <PropertyColumn Property="@(vm => vm.Mode)"/>
+        <TemplateColumn>
+            <button @onclick="@OpenVirtualMachine">
+                Details
+            </button>
+        </TemplateColumn>
+    </QuickGrid>
+}
