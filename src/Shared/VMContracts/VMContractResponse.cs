@@ -20,10 +20,6 @@ namespace Shared.VMContracts
             public VMContractDto.Detail VMContract { get; set; }
         }
 
-        public class Delete
-        {
-        }
-
         public class Create
         {
             public int VMContractId { get; set; }

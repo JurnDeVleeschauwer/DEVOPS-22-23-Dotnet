@@ -20,13 +20,13 @@ namespace Services.Server
 
 
 
-        public async Task<FysiekeServerResponse.Details> GetDetailsAsync(FysiekeServerRequest.Detail request)
+        public async Task<FysiekeServerResponse.GetDetail> GetDetailsAsync(FysiekeServerRequest.GetDetail request)
         {
-            FysiekeServerResponse.Details response = new();
-            response.Server = new FysiekeServerDto.Detail();
+            FysiekeServerResponse.GetDetail response = new();
+            response.FysiekeServer = new FysiekeServerDto.Detail();
 
 
-            if (_servers.Any(e => e.Id == request.ServerId))
+            if (_servers.Any(e => e.Id == request.FysiekeServerId))
             {
                 /*List<VirtualMachineDto.Rapportage> vms = _servers.Find(e => e.Id == request.ServerId).VirtualMachines.FindAll(e => e.Connection is not null).Select(e => new VirtualMachineDto.Rapportage() { Id = e.Id, Name = e.Name, Statistics = e.Statistics }).ToList();
                 response.Server.Id = request.ServerId;
@@ -36,7 +36,7 @@ namespace Services.Server
             }
             else
             {
-                response.Server.Id = -1;
+                response.FysiekeServer.Id = -1;
             }
             return response;
         }
@@ -60,11 +60,6 @@ namespace Services.Server
 
             respons.Count = _servers.Count();
             return respons;
-        }
-
-        public Task<FysiekeServerResponse.Available> GetAvailableServersByHardWareAsync(FysiekeServerRequest.Order request)
-        {
-            throw new NotImplementedException();
         }
 
 

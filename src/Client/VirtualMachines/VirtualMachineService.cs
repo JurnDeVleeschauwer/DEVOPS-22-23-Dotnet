@@ -1,4 +1,5 @@
 ﻿using Client.Extentions;
+using Shared.FysiekeServers;
 using Shared.Projecten;
 using Shared.VirtualMachines;
 using System.Net.Http.Json;
@@ -67,7 +68,12 @@ namespace Client.VirtualMachines
             throw new NotImplementedException();
         }
 
-        Task<VirtualMachineResponse.Delete> IVirtualMachineService.DeleteAsync(VirtualMachineRequest.Delete request)
+        Task IVirtualMachineService.DeleteAsync(VirtualMachineRequest.Delete request)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<VirtualMachineResponse.GetIndexWithHardware> GetVirtualmachine(FysiekeServerRequest.Date date)
         {
             throw new NotImplementedException();
         }

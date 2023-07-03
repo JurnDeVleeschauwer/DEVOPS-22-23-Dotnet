@@ -7,6 +7,7 @@ using Domain.VirtualMachines.VirtualMachine;
 using System;
 using Domain.Common;
 using Domain.VirtualMachines.BackUp;
+using Shared.FysiekeServers;
 
 namespace Services.VirtualMachines
 {
@@ -108,12 +109,25 @@ namespace Services.VirtualMachines
             return response;
         }
 
-        public Task<VirtualMachineResponse.Rapport> RapporteringAsync(VirtualMachineRequest.GetDetail request)
+        public async Task<VirtualMachineResponse.Rapport> RapporteringAsync(VirtualMachineRequest.GetDetail request)
+        {
+            await Task.Delay(100);
+            VirtualMachineResponse.Rapport response = new();
+            var vm = _virtualMachines.SingleOrDefault(x => x.Id == request.VirtualMachineId);
+            VirtualMachineDto.Rapportage dto = new();
+            dto.Statistics = vm.Statistics;
+            dto.Id = vm.Id;
+            dto.Name = vm.Name;
+            response.VirtualMachine = dto;
+            return response;
+        }
+
+        Task IVirtualMachineService.DeleteAsync(VirtualMachineRequest.Delete request)
         {
             throw new NotImplementedException();
         }
 
-        Task<VirtualMachineResponse.Delete> IVirtualMachineService.DeleteAsync(VirtualMachineRequest.Delete request)
+        public Task<VirtualMachineResponse.GetIndexWithHardware> GetVirtualmachine(FysiekeServerRequest.Date date)
         {
             throw new NotImplementedException();
         }

@@ -105,7 +105,7 @@ namespace Services.VMContracts
             throw new NotImplementedException();
         }
 
-        Task<VMContractResponse.Delete> IVMContractService.DeleteAsync(VMContractRequest.Delete request)
+        Task IVMContractService.DeleteAsync(VMContractRequest.Delete request)
         {
             throw new NotImplementedException();
         }

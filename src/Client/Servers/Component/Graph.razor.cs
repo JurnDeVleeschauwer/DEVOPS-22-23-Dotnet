@@ -21,8 +21,9 @@ namespace Client.Servers.Component
         protected override async Task OnInitializedAsync()
         {
             ConfigureLineConfig();
-            AddLabels();
             AddDataToDataSet();
+            AddLabels();
+
         }
 
 

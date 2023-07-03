@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Server.Controllers
 {
-    [Authorize(Roles = "BeheerderBeheren")]
+    [Authorize(Roles = "Admin")]
     [ApiController]
     [Route("api/[controller]")]
     public class FysiekeServerController : ControllerBase
@@ -24,7 +24,7 @@ namespace Server.Controllers
             return fysiekeServerService.GetIndexAsync(request);
         }
 
-        [HttpGet("{FysiekeServerId}")]
+        [HttpGet("{FysiekeServerId}"), AllowAnonymous] //TODO Remove AllowAnonymous
         public Task<FysiekeServerResponse.GetDetail> GetDetailAsync([FromRoute] FysiekeServerRequest.GetDetail request)
         {
             return fysiekeServerService.GetDetailAsync(request);

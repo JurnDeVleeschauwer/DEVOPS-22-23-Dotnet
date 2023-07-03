@@ -11,7 +11,7 @@ namespace Shared.VMContracts
     {
         Task<VMContractResponse.GetIndex> GetIndexAsync(VMContractRequest.GetIndex request);
         Task<VMContractResponse.GetDetail> GetDetailAsync(VMContractRequest.GetDetail request); //returns all info about specific vm duration + customer
-        Task <VMContractResponse.Delete> DeleteAsync(VMContractRequest.Delete request);
+        Task DeleteAsync(VMContractRequest.Delete request);
         Task<VMContractResponse.Create> CreateAsync(VMContractRequest.Create request);
         Task<VMContractResponse.Edit> EditAsync(VMContractRequest.Edit request);
 

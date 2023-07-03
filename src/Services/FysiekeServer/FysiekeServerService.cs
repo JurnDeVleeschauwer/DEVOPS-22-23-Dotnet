@@ -1,4 +1,5 @@
 using Shared.FysiekeServers;
+using Shared.VirtualMachines;
 using System.Linq;
 using Persistence.Data;
 using System.Threading.Tasks;
@@ -11,8 +12,9 @@ namespace Services.FysiekeServers
 {
     public class FysiekeServerService : IFysiekeServerService
     {
-        public FysiekeServerService(DotNetDbContext dbContext)
+        public FysiekeServerService(DotNetDbContext dbContext, IVirtualMachineService virtualMachinesService)
         {
+            _virtualMachinesService = virtualMachinesService;
             _dbContext = dbContext;
             _fysiekeServers = dbContext.FysiekeServers;
         }
@@ -20,6 +22,7 @@ namespace Services.FysiekeServers
         private readonly DotNetDbContext _dbContext;
         private readonly DbSet<FysiekeServer> _fysiekeServers;
 
+        private IVirtualMachineService _virtualMachinesService;
 
         private IQueryable<FysiekeServer> GetFysiekeServerById(int id) => _fysiekeServers
                 .AsNoTracking()
@@ -109,17 +112,7 @@ namespace Services.FysiekeServers
             return response;
         }
 
-        public Task<FysiekeServerResponse.Available> GetAvailableServersByHardWareAsync(FysiekeServerRequest.Order request)
-        {
-            throw new NotImplementedException();
-        }
-
         public Task<FysiekeServerResponse.Launched> DeployVirtualMachine(FysiekeServerRequest.Approve request)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<FysiekeServerResponse.Details> GetDetailsAsync(FysiekeServerRequest.Detail request)
         {
             throw new NotImplementedException();
         }
@@ -127,6 +120,7 @@ namespace Services.FysiekeServers
 
         public async Task<FysiekeServerResponse.ResourcesAvailable> GetAvailableHardWareOnDate(FysiekeServerRequest.Date date)
         {
+
             FysiekeServerResponse.ResourcesAvailable response = new();
             var query = _fysiekeServers.AsQueryable().AsNoTracking();
 
@@ -136,6 +130,25 @@ namespace Services.FysiekeServers
                 Id = x.Id,
                 AvailableHardware = x.HardWareAvailable
             }).ToListAsync();
+
+            FysiekeServerRequest.GetIndex request = new();
+
+            var ResponseFysiekeServers = await GetIndexAsync(request);
+
+            foreach (var server in ResponseFysiekeServers.FysiekeServers)
+            {
+                Hardware max = server.Hardware;
+
+                var VirtualMachineRequest = await _virtualMachinesService.GetVirtualmachine(date);
+
+                foreach (var vm in VirtualMachineRequest.VirtualMachines)
+                {
+                     max = new Hardware(max.Memory - vm.Hardware.Memory, max.Storage - vm.Hardware.Storage, max.Amount_vCPU - vm.Hardware.Amount_vCPU);
+                }
+
+                response.Servers.Add(new FysiekeServerDto.Beschikbaarheid() { Id = server.Id, AvailableHardware = max });
+
+            };
             return response;
         }
 

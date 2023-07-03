@@ -3,7 +3,7 @@
 
 @inject NavigationManager Navigation
 @inject SignOutSessionStateManager SignOutManager
-<!--
+
 <AuthorizeView>
     <Authorized>
         <button class="button is-light" @onclick="BeginSignOut">
@@ -16,14 +16,15 @@
         </a>
     </NotAuthorized>
 </AuthorizeView>
--->
+
+<!--
 <button class="button is-light" @onclick="BeginSignOut">
     <strong>Uitloggen</strong>
 </button>
 <a class="button is-primary" @onclick="BeginSignIn">
     <strong>Inloggen</strong>
 </a>
-
+-->
 @code {
     private async Task BeginSignOut(MouseEventArgs args)
     {

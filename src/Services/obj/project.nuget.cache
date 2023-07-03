@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "FHK9zyk3jCbRns/KKspg0EK6f7ffQrWUDLjWAKzTevAkj7DOYx/AJsG/AHFqV5MAtBxufdzzfx0/h0E8IOFNWQ==",
+  "dgSpecHash": "Sv7ABojjasnZQh6rf6+7u7kewM2KGQeRQJny4nKywd4QjS1MmAwe6oBeGeu2DsEVlzH4MixfnW8FCsI8w5cEdA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Jurn\\Documents\\GitHub\\devops-22-23-dotnet-g10\\src\\Services\\Services.csproj",
+  "projectFilePath": "C:\\Users\\Jurn\\Documents\\GitHub\\devops-22-23-dotnet-2de-zit\\src\\Services\\Services.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Jurn\\.nuget\\packages\\ardalis.guardclauses\\3.3.0\\ardalis.guardclauses.3.3.0.nupkg.sha512",
     "C:\\Users\\Jurn\\.nuget\\packages\\auth0.authenticationapi\\7.9.0\\auth0.authenticationapi.7.9.0.nupkg.sha512",

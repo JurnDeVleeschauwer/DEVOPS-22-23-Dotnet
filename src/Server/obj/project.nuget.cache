@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yQ+EBa5lryAUJSHOaZa8U1iNZgJqC71OENdLpC1TLWZbrkZJjA1aBJO65B9Ox0VaKgB9CHRibfUbJZTVPkvBFQ==",
+  "dgSpecHash": "FjbBaYUJ7DnDUdLKqpGq9O+mVfBB+CjXYhuJ2Oz4wiACKqv/tn0S9ZQA7/GMpveYM3NfVvjA5W5xnmQVgJChSA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Jurn\\Documents\\GitHub\\devops-22-23-dotnet-g10\\src\\Server\\Server.csproj",
+  "projectFilePath": "C:\\Users\\Jurn\\Documents\\GitHub\\devops-22-23-dotnet-2de-zit\\src\\Server\\Server.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Jurn\\.nuget\\packages\\append.blazor.sidepanel\\6.3.0\\append.blazor.sidepanel.6.3.0.nupkg.sha512",
     "C:\\Users\\Jurn\\.nuget\\packages\\ardalis.guardclauses\\3.3.0\\ardalis.guardclauses.3.3.0.nupkg.sha512",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ClDipb1Xx5eJgVUfSbFfhcatPM3TRijdNythGO9ugH5Wb+5Vxgu+SIZnp9RNgM9rtw0VTnX1D3sKFMnfwMc5Yg==",
+  "dgSpecHash": "ogpsSAfUtU581XNV7fFTSyDiNtDHQjDRQjh2wt3opdNG1+KXnXWv16oQvgTSbPAIF+gEPF8Et3TETaWWQph8VQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Jurn\\Documents\\GitHub\\devops-22-23-dotnet-g10\\src\\Domain\\Domain.csproj",
+  "projectFilePath": "C:\\Users\\Jurn\\Documents\\GitHub\\devops-22-23-dotnet-2de-zit\\src\\Domain\\Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Jurn\\.nuget\\packages\\ardalis.guardclauses\\3.3.0\\ardalis.guardclauses.3.3.0.nupkg.sha512",
     "C:\\Users\\Jurn\\.nuget\\packages\\bogus\\34.0.1\\bogus.34.0.1.nupkg.sha512",

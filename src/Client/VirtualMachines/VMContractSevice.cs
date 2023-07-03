@@ -26,7 +26,7 @@ namespace Client.VirtualMachines
             throw new NotImplementedException();
         }
 
-        public Task<VMContractResponse.Delete> DeleteAsync(VMContractRequest.Delete request)
+        public Task DeleteAsync(VMContractRequest.Delete request)
         {
             throw new NotImplementedException();
         }

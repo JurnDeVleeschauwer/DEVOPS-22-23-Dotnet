@@ -35,11 +35,6 @@ namespace Client.Servers
 
         }
 
-        public Task<FysiekeServerResponse.GetDetail> GetDetailAsync(FysiekeServerRequest.GetDetail request)
-        {
-            throw new NotImplementedException();
-        }
-
         public Task DeleteAsync(FysiekeServerRequest.Delete request)
         {
             throw new NotImplementedException();
@@ -65,12 +60,12 @@ namespace Client.Servers
             throw new NotImplementedException();
         }
 
-        public async Task<FysiekeServerResponse.Details> GetDetailsAsync(FysiekeServerRequest.Detail request)
+        public async Task<FysiekeServerResponse.GetDetail> GetDetailAsync(FysiekeServerRequest.GetDetail request)
         {
             var HttpClient = _IHttpClientFactory.CreateClient("AuthenticatedServerAPI");
 
-            var queryParam = request.ServerId;
-            var response = await HttpClient.GetFromJsonAsync<FysiekeServerResponse.Details>($"{endpoint}/{queryParam}");
+            var queryParam = request.FysiekeServerId;
+            var response = await HttpClient.GetFromJsonAsync<FysiekeServerResponse.GetDetail>($"{endpoint}/{queryParam}");
             return response;
         }
 

@@ -10,14 +10,15 @@ namespace Shared.VirtualMachines
             public List<VirtualMachineDto.Index> VirtualMachines { get; set; } = new();
             public int TotalAmount { get; set; }
         }
+        public class GetIndexWithHardware
+        {
+            public List<VirtualMachineDto.IndexHardWare> VirtualMachines { get; set; } = new();
+            public int TotalAmount { get; set; }
 
+        }
         public class GetDetail
         {
             public VirtualMachineDto.Detail VirtualMachine { get; set; }
-        }
-
-        public class Delete
-        {
         }
 
         public class Create
@@ -38,7 +39,6 @@ namespace Shared.VirtualMachines
         {
             public VirtualMachineDto.Rapportage VirtualMachine { get; set; }
         }
-
     }
 }
 

@@ -42,10 +42,7 @@ namespace Shared.FysiekeServers
         {
             public VirtualMachineDto.Detail VirtualMachine { get; set; }  // virtual machine contains the server
         }
-        public class Detail
-        {
-            public int ServerId { get; set; }
-        }
+
         public class Date
         {
             public DateTime FromDate { get; set; }

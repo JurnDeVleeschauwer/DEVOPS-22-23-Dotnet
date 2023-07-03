@@ -6,7 +6,7 @@ namespace Shared.VirtualMachines
     {
 
 
-       public class GetDetail
+        public class GetDetail
         {
             public int VirtualMachineId { get; set; }
         }
@@ -17,9 +17,9 @@ namespace Shared.VirtualMachines
         }
 
 
-                public class GetIndex
+        public class GetIndex
         {
-            public string? SearchTerm { get; set; } 
+            public string? SearchTerm { get; set; }
             public VirtualMachineMode? Status { get; set; }
             public OperatingSystemEnum? OperatingSystem { get; set; }
             public int? MinStorage { get; set; }
@@ -47,6 +47,7 @@ namespace Shared.VirtualMachines
             public VirtualMachineDto.Edit VirtualMachine { get; set; }
 
         }
+
 
         /*        public class Create
         {

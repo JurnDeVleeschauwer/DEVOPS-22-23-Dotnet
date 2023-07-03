@@ -40,11 +40,6 @@ namespace Shared.FysiekeServers
 
         }
 
-        public class Details
-        {
-            public FysiekeServerDto.Detail Server { get; set; }
-        }
-
         public class Launched
         {
             public VirtualMachineDto.Detail VirtualMachine { get; set; } // VirtualMachine heeft een VMConnection gekregen en wordt teruggeven.

@@ -2099,11 +2099,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jurn\\Documents\\GitHub\\devops-22-23-dotnet-g10\\src\\Persistence\\Persistence.csproj",
+      "projectUniqueName": "C:\\Users\\Jurn\\Documents\\GitHub\\devops-22-23-dotnet-2de-zit\\src\\Persistence\\Persistence.csproj",
       "projectName": "Persistence",
-      "projectPath": "C:\\Users\\Jurn\\Documents\\GitHub\\devops-22-23-dotnet-g10\\src\\Persistence\\Persistence.csproj",
+      "projectPath": "C:\\Users\\Jurn\\Documents\\GitHub\\devops-22-23-dotnet-2de-zit\\src\\Persistence\\Persistence.csproj",
       "packagesPath": "C:\\Users\\Jurn\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jurn\\Documents\\GitHub\\devops-22-23-dotnet-g10\\src\\Persistence\\obj\\",
+      "outputPath": "C:\\Users\\Jurn\\Documents\\GitHub\\devops-22-23-dotnet-2de-zit\\src\\Persistence\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Jurn\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -2120,8 +2120,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\Jurn\\Documents\\GitHub\\devops-22-23-dotnet-g10\\src\\Domain\\Domain.csproj": {
-              "projectPath": "C:\\Users\\Jurn\\Documents\\GitHub\\devops-22-23-dotnet-g10\\src\\Domain\\Domain.csproj"
+            "C:\\Users\\Jurn\\Documents\\GitHub\\devops-22-23-dotnet-2de-zit\\src\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\Users\\Jurn\\Documents\\GitHub\\devops-22-23-dotnet-2de-zit\\src\\Domain\\Domain.csproj"
             }
           }
         }
@@ -2171,7 +2171,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
       }
     }
   }

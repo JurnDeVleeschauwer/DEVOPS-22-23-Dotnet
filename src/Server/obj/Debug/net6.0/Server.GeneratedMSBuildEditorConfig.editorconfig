@@ -9,13 +9,13 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Server
 build_property.RootNamespace = Server
-build_property.ProjectDir = c:\Users\Jurn\Documents\GitHub\devops-22-23-dotnet-g10\src\Server\
+build_property.ProjectDir = C:\Users\Jurn\Documents\GitHub\devops-22-23-dotnet-2de-zit\src\Server\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = c:\Users\Jurn\Documents\GitHub\devops-22-23-dotnet-g10\src\Server
+build_property.MSBuildProjectDirectory = C:\Users\Jurn\Documents\GitHub\devops-22-23-dotnet-2de-zit\src\Server
 build_property._RazorSourceGeneratorDebug = 
 
-[c:/Users/Jurn/Documents/GitHub/devops-22-23-dotnet-g10/src/Server/Pages/Error.cshtml]
+[C:/Users/Jurn/Documents/GitHub/devops-22-23-dotnet-2de-zit/src/Server/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

@@ -3,6 +3,7 @@ using Domain.Projecten;
 using Domain.VirtualMachines.BackUp;
 using Domain.VirtualMachines.Contract;
 using Domain.VirtualMachines.VirtualMachine;
+using Shared.FysiekeServers;
 using Shared.VirtualMachines;
 
 namespace Services.VirtualMachines
@@ -184,7 +185,12 @@ namespace Services.VirtualMachines
 
         }
 
-        Task<VirtualMachineResponse.Delete> IVirtualMachineService.DeleteAsync(VirtualMachineRequest.Delete request)
+        Task IVirtualMachineService.DeleteAsync(VirtualMachineRequest.Delete request)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<VirtualMachineResponse.GetIndexWithHardware> GetVirtualmachine(FysiekeServerRequest.Date date)
         {
             throw new NotImplementedException();
         }

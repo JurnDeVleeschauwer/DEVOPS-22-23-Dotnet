@@ -20,10 +20,14 @@ public partial class Details
 
     protected override async Task OnInitializedAsync()
     {
-        FysiekeServerRequest.Detail request = new FysiekeServerRequest.Detail() { ServerId = Id };
-        var response = await Service.GetDetailsAsync(request);
-        server = response.Server;
-        virtualMachinesServer = server.VirtualMachines;
+        FysiekeServerRequest.GetDetail request = new FysiekeServerRequest.GetDetail();
+        request.FysiekeServerId = Id;
+        var response = await Service.GetDetailAsync(request);
+        server = response.FysiekeServer;
+        if (server.VirtualMachines != null)
+        {
+            virtualMachinesServer = server.VirtualMachines;
+        }
     }
 
     public async void Toggle(int id)
