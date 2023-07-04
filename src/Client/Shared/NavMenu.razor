@@ -1,14 +1,14 @@
 ﻿<div class="top-row ps-3 navbar has-background-black">
-  <h3 class="title is-4 logo" href="https://www.hogent.be/">
-    Virtual IT Company
-  </h3>
-  <button
-    title="Navigation menu"
-    class="navbar-toggler"
-    @onclick="ToggleNavMenu"
-  >
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  <NavLink class="nav-link subtitle is-6" href="">
+    <h3 class="title is-4 logo">Virtual IT Company</h3>
+    <button
+      title="Navigation menu"
+      class="navbar-toggler"
+      @onclick="ToggleNavMenu"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </NavLink>
 </div>
 
 <div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
@@ -123,9 +123,9 @@
 </div>
 
 @code {
-    private bool collapseNavMenu = true; private string? NavMenuCssClass =>
-    collapseNavMenu ? "collapse" : null; private void ToggleNavMenu()
-    {
-        collapseNavMenu = !collapseNavMenu;
-    }
+  private bool collapseNavMenu = true; private string? NavMenuCssClass =>
+  collapseNavMenu ? "collapse" : null; private void ToggleNavMenu()
+  {
+    collapseNavMenu = !collapseNavMenu;
+  }
 } 

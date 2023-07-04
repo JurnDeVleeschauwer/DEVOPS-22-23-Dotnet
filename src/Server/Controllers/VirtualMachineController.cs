@@ -38,8 +38,8 @@ namespace Server.Controllers
             return virtualMachineService.DeleteAsync(request);
         }
 
-        [Authorize(Roles = "BeheerderBeheren")]
-        [HttpPost]
+        //[Authorize(Roles = "BeheerderBeheren")]
+        [HttpPost, AllowAnonymous]
         public Task<VirtualMachineResponse.Create> CreateAsync([FromBody] VirtualMachineRequest.Create request)
         {
             return virtualMachineService.CreateAsync(request);

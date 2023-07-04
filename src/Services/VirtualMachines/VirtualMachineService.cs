@@ -27,6 +27,9 @@ namespace Services.VirtualMachines
                 .AsNoTracking()
                 .Where(p => p.Id == id);
 
+        private IQueryable<VirtualMachine> GetVirtualMachineByDate(FysiekeServerRequest.Date date) => _virtualMachines.AsNoTracking().Where(p => p.Contract.StartDate <= date.FromDate && p.Contract.EndDate >= date.ToDate);
+
+
         public async Task<VirtualMachineResponse.Create> CreateAsync(VirtualMachineRequest.Create request)
         {
             VirtualMachineResponse.Create response = new();
@@ -111,14 +114,16 @@ namespace Services.VirtualMachines
 
         public async Task<VirtualMachineResponse.Rapport> RapporteringAsync(VirtualMachineRequest.GetDetail request)
         {
-            await Task.Delay(100);
+
             VirtualMachineResponse.Rapport response = new();
-            var vm = _virtualMachines.SingleOrDefault(x => x.Id == request.VirtualMachineId);
-            VirtualMachineDto.Rapportage dto = new();
-            dto.Statistics = vm.Statistics;
-            dto.Id = vm.Id;
-            dto.Name = vm.Name;
-            response.VirtualMachine = dto;
+            response.VirtualMachine = await GetVirtualMachineById(request.VirtualMachineId)
+                .Select(x => new VirtualMachineDto.Rapportage
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Statistics = x.Statistics
+                })
+                .SingleOrDefaultAsync();
             return response;
         }
 
@@ -127,9 +132,18 @@ namespace Services.VirtualMachines
             throw new NotImplementedException();
         }
 
-        public Task<VirtualMachineResponse.GetIndexWithHardware> GetVirtualmachine(FysiekeServerRequest.Date date)
+        public async Task<VirtualMachineResponse.GetIndexWithHardware> GetVirtualmachine(FysiekeServerRequest.Date date)
         {
-            throw new NotImplementedException();
+            VirtualMachineResponse.GetIndexWithHardware response = new();
+            response.VirtualMachines = await GetVirtualMachineByDate(date)
+                .Select(x => new VirtualMachineDto.IndexHardWare
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Hardware = x.Hardware
+                })
+                .ToListAsync();
+            return response;
         }
     }
 }

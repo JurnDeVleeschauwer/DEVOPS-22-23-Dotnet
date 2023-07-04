@@ -55,10 +55,6 @@ namespace Client.Servers
             throw new NotImplementedException();
         }
 
-        public Task<FysiekeServerResponse.Launched> DeployVirtualMachine(FysiekeServerRequest.Approve request)
-        {
-            throw new NotImplementedException();
-        }
 
         public async Task<FysiekeServerResponse.GetDetail> GetDetailAsync(FysiekeServerRequest.GetDetail request)
         {

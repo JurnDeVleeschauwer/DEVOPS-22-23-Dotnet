@@ -130,9 +130,7 @@ namespace Domain.VirtualMachines.VirtualMachine
 
             if (r == 1)
                 a = new Backup(BackUpType.DAILY, DateTime.Now.Subtract(TimeSpan.FromMinutes(500)));
-            else if (r == 2)
-                a = new Backup(BackUpType.CUSTOM, DateTime.Now.Subtract(TimeSpan.FromHours(5)));
-            else if (r <= 6)
+            else if (r <= 2)
                 a = new Backup(BackUpType.WEEKLY, DateTime.Now.Subtract(TimeSpan.FromDays(new Random().NextDouble() * 7)));
             else
                 a = new Backup(BackUpType.MONTHLY, DateTime.Now.Subtract(TimeSpan.FromDays(new Random().Next(30))));

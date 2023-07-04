@@ -75,6 +75,11 @@ namespace Shared.VirtualMachines
 
         }
 
+        public class Create : Mutate
+        {
+
+        }
+
         /*public class Mutate
         {
             public String Name { get; set; }

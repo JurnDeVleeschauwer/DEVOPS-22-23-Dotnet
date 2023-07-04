@@ -19,9 +19,17 @@ namespace Client.VirtualMachines
             this._IHttpClientFactory = _IHttpClientFactory;
         }
 
-        public Task<VirtualMachineResponse.Create> CreateAsync(VirtualMachineRequest.Create request)
+        public async Task<VirtualMachineResponse.Create> CreateAsync(VirtualMachineRequest.Create request)
         {
-            throw new NotImplementedException();
+            var HttpClient = _IHttpClientFactory.CreateClient("AuthenticatedServerAPI");
+
+
+            //var response = await HttpClient.PostAsJsonAsync(endpoint, request);
+            //return await response.Content.ReadFromJsonAsync<VirtualMachineResponse.Create>();
+
+            var queryParameters = request.GetQueryString();
+            var response = await HttpClient.GetFromJsonAsync<VirtualMachineResponse.Create>($"{endpoint}/{queryParameters}");
+            return response;
         }
 
         public Task DeleteAsync(VirtualMachineRequest.Delete request)

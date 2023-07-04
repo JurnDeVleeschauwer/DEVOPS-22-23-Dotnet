@@ -20,9 +20,13 @@ namespace Client.Servers.Component
 
         protected override async Task OnInitializedAsync()
         {
+
+            //TODO test with data
             ConfigureLineConfig();
-            AddDataToDataSet();
+
             AddLabels();
+
+            AddDataToDataSet();
 
         }
 
@@ -107,56 +111,61 @@ namespace Client.Servers.Component
 
             foreach (LineDataset<int> dataSet in _config.Data.Datasets)
             {
-                switch (dataSet.Label)
+                if (Data != null)
                 {
-                    case "RAM (GB)":
-                        {
-                            dataSet.AddRange(Data.Select(e => (e.Value.Memory / 1000)));
-                            break;
-                        }
-                    case "Opslag (GB)":
-                        {
-                            dataSet.AddRange(Data.Select(e => e.Value.Storage / 1000));
-                            break;
-                        }
-                    case "#Cores":
-                        {
-                            dataSet.AddRange(Data.Select(e => e.Value.Amount_vCPU));
-                            break;
-                        }
+                    switch (dataSet.Label)
+                    {
+                        case "RAM (GB)":
+                            {
+                                dataSet.AddRange(Data.Select(e => (e.Value.Memory / 1000)));
+                                break;
+                            }
+                        case "Opslag (GB)":
+                            {
+                                dataSet.AddRange(Data.Select(e => e.Value.Storage / 1000));
+                                break;
+                            }
+                        case "#Cores":
+                            {
+                                dataSet.AddRange(Data.Select(e => e.Value.Amount_vCPU));
+                                break;
+                            }
+                    }
                 }
             }
         }
 
         private void AddLabels()
         {
-
-            DateTime min = Data.Keys.First();
-            DateTime max = Data.Keys.Last();
-
-            int difference = max.Subtract(min).Days;
-            _config.Data.Labels.Add(min.ToString("dd/MM/yyy"));
-
-            if (difference <= 8)
+            if (Data != null)
             {
-                for (int i = 1; i <= difference; i++)
+                DateTime min = Data.Keys.First();
+                DateTime max = Data.Keys.Last();
+
+
+                int difference = max.Subtract(min).Days;
+                _config.Data.Labels.Add(min.ToString("dd/MM/yyy"));
+
+                if (difference <= 8)
                 {
-                    min = min.AddDays(1);
-                    _config.Data.Labels.Add(min.ToString("dd/MM/yyy"));
+                    for (int i = 1; i <= difference; i++)
+                    {
+                        min = min.AddDays(1);
+                        _config.Data.Labels.Add(min.ToString("dd/MM/yyy"));
+                    }
                 }
-            }
-            else
-            {
-                for (int i = 1; i <= 8; i++)
+                else
                 {
-                    min = min.AddDays(Math.Floor(difference / 8.0));
-                    _config.Data.Labels.Add(min.ToString("dd/MM/yyy"));
+                    for (int i = 1; i <= 8; i++)
+                    {
+                        min = min.AddDays(Math.Floor(difference / 8.0));
+                        _config.Data.Labels.Add(min.ToString("dd/MM/yyy"));
+                    }
                 }
+
+
+                _config.Data.Labels.Add(max.ToString("dd/MM/yyyy"));
             }
-
-
-            _config.Data.Labels.Add(max.ToString("dd/MM/yyyy"));
-
         }
     }
 }

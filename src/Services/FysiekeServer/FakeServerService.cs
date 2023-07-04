@@ -41,10 +41,6 @@ namespace Services.Server
             return response;
         }
 
-        public Task<FysiekeServerResponse.Launched> DeployVirtualMachine(FysiekeServerRequest.Approve request)
-        {
-            throw new NotImplementedException();
-        }
 
         public async Task<FysiekeServerResponse.Available> GetAllServers()
         {

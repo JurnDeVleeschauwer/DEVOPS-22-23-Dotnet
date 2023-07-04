@@ -1,7 +1,6 @@
 ﻿using Domain.Common;
 using Domain.Users;
 using Domain.Utility;
-using Domain.Utility;
 using FluentValidation;
 using Shared.Projecten;
 using System.ComponentModel.DataAnnotations;
@@ -25,7 +24,7 @@ public static class KlantDto
         public string? Bedrijf { get; set; }
         public Course? Opleiding { get; set; }
         public List<ProjectenDto.Index> Projects { get; set; }
-        public ContactDetails? contactPersoon { get; set; }
+        public ContactDetails? ContactPersoon { get; set; }
         public ContactDetails? ReserveContactPersoon { get; set; }
     }
 

@@ -47,18 +47,6 @@ namespace Shared.VirtualMachines
             public VirtualMachineDto.Edit VirtualMachine { get; set; }
 
         }
-
-
-        /*        public class Create
-        {
-            public VirtualMachineDto.Mutate VirtualMachine { get; set; }
-        }*/
-
-        /*public class Edit
-        {
-            public int VirtualMachineId { get; set; }
-            public VirtualMachineDto.Mutate VirtualMachine { get; set; }
-        }*/
     }
 }
 

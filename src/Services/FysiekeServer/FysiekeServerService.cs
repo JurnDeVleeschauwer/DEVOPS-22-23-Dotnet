@@ -112,10 +112,6 @@ namespace Services.FysiekeServers
             return response;
         }
 
-        public Task<FysiekeServerResponse.Launched> DeployVirtualMachine(FysiekeServerRequest.Approve request)
-        {
-            throw new NotImplementedException();
-        }
 
 
         public async Task<FysiekeServerResponse.ResourcesAvailable> GetAvailableHardWareOnDate(FysiekeServerRequest.Date date)
@@ -143,7 +139,7 @@ namespace Services.FysiekeServers
 
                 foreach (var vm in VirtualMachineRequest.VirtualMachines)
                 {
-                     max = new Hardware(max.Memory - vm.Hardware.Memory, max.Storage - vm.Hardware.Storage, max.Amount_vCPU - vm.Hardware.Amount_vCPU);
+                    max = new Hardware(max.Memory - vm.Hardware.Memory, max.Storage - vm.Hardware.Storage, max.Amount_vCPU - vm.Hardware.Amount_vCPU);
                 }
 
                 response.Servers.Add(new FysiekeServerDto.Beschikbaarheid() { Id = server.Id, AvailableHardware = max });

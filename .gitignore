@@ -906,3 +906,6 @@ $RECYCLE.BIN/
 !.vscode/launch.json
 !.vscode/extensions.json
 
+# ME
+.bin
+net6.0

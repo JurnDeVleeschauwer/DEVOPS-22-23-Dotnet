@@ -79,5 +79,21 @@ namespace Services.Users
         {
             throw new NotImplementedException();
         }
+
+        /*public async Task<UserResponse.Edit> EditAsync(UserRequest.Edit request)
+        {
+            UserResponse.Edit response = new();
+            var users = await _managementApiClient.Users.UpdateAsync(request.UserId.ToString(), request.User);
+            response.Id = users.Select(x => new UserDto.Mutate
+            {
+                Email = x.Email,
+                PhoneNumber = x.PhoneNumber,
+                FirstName = x.FirstName,
+                Name = x.LastName,
+                //HogentEmail = x.HogentEmail
+            }).ToList();
+
+            return response;
+        }*/ //TODO make work later
     }
 }

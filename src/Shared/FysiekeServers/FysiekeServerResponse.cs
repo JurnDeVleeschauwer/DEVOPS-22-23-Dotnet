@@ -40,10 +40,10 @@ namespace Shared.FysiekeServers
 
         }
 
-        public class Launched
-        {
-            public VirtualMachineDto.Detail VirtualMachine { get; set; } // VirtualMachine heeft een VMConnection gekregen en wordt teruggeven.
-        }
+        /* public class Launched
+         {
+             public VirtualMachineDto.Detail VirtualMachine { get; set; } // VirtualMachine heeft een VMConnection gekregen en wordt teruggeven.
+         }*/
 
         public class ResourcesAvailable
         {
