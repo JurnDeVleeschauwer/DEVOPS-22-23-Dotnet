@@ -25,6 +25,8 @@ namespace Shared.VirtualMachines
         {
             public int VirtualMachineId { get; set; }
 
+            public int ProjectenId { get; set; }
+
         }
 
         public class Edit

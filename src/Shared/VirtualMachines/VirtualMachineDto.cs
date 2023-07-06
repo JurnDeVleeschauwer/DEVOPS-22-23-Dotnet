@@ -77,7 +77,8 @@ namespace Shared.VirtualMachines
 
         public class Create : Mutate
         {
-
+            public int ProjectId { get; set; }
+            public int Id { get; set; }
         }
 
         /*public class Mutate

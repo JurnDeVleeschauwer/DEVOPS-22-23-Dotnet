@@ -1,4 +1,6 @@
 ﻿@page "/virtualmachines/add"
+@using Domain.VirtualMachines.BackUp;
+@using global::Shared.Projecten;
 
 <EditForm Model="virtualMachine" OnValidSubmit="@CreateVirtualMachineAsync">
   <DataAnnotationsValidator />
@@ -11,14 +13,19 @@
       <!-- TODO add projects -->
       <div class="control is-expanded has-icons-left">
         <div class="select is-primary is-fullwidth">
-          <select>
-            <option>Project A</option>
-            <option>Project B</option>
-            <option>Project C</option>
-            <option>Project D</option>
-            <option>Project E</option>
-            <option>Project F</option>
-          </select>
+          <InputSelect @bind-Value="virtualMachine.ProjectId">
+              @if (projectenResponse.Projecten is null)
+              {
+                    <option selected value="">None</option>
+              }
+              else
+              {
+                @foreach (ProjectenDto.Index project in projectenResponse.Projecten)
+                {
+                            <option value="@project.Id">@project.Name</option>
+                }
+              }
+         </InputSelect>
         </div>
         <div class="icon is-small is-left">
           <i class="fas fa-folder"></i>
@@ -41,10 +48,10 @@
       <label class="label">Backup</label>
       <div class="control has-icons-left">
         <InputSelect @bind-Value="virtualMachine.Backup.Type">
-          <option>Geen</option>
-          <option value="BackUpType.DAILY">Dagelijks</option>
-          <option value="BackUpType.WEEKLY">Wekelijks</option>
-          <option value="BackUpType.MONTHLY">Maandelijks</option>
+            @foreach (var backUpType in Enum.GetValues(typeof(BackUpType)))
+            {
+                <option value="@backUpType">@backUpType</option>
+            }
         </InputSelect>
       </div>
     </div>
@@ -56,16 +63,10 @@
       <div class="control has-icons-left">
         <div class="select is-primary is-fullwidth">
           <InputSelect @bind-Value="virtualMachine.OperatingSystem">
-            <option value="OperatingSystemEnum.WINDOWS_10">Wondows 10</option>
-            <option value="OperatingSystemEnum.WINDOWS_SERVER2019">
-              Windows Server 2019
-            </option>
-            <option value="OperatingSystemEnum.KALI_LINUX">Kali Linux</option>
-            <option value="OperatingSystemEnum.UBUNTU_22_04">
-              Ubuntu 22 04
-            </option>
-            <option value="OperatingSystemEnum.FEDORA_36">Fedora 36</option>
-            <option value="OperatingSystemEnum.FEDORA_35">Fedora 35</option>
+            @foreach (var operatingSystemEnum in Enum.GetValues(typeof(OperatingSystemEnum)))
+            {
+              <option value="@operatingSystemEnum">@operatingSystemEnum</option>
+            }
           </InputSelect>
         </div>
         <div class="icon is-small is-left">
@@ -78,10 +79,10 @@
       <div class="control has-icons-left">
         <div class="select is-primary is-fullwidth">
           <InputSelect @bind-Value="virtualMachine.Hardware.Memory">
-            <option value="4">4 Gb</option>
-            <option value="8">8 Gb</option>
-            <option value="16">16 Gb</option>
-            <option value="32">32 Gb</option>
+            <option selected value=4>4 Gb</option>
+            <option value=8>8 Gb</option>
+            <option value=16>16 Gb</option>
+            <option value=32>32 Gb</option>
           </InputSelect>
         </div>
         <div class="icon is-small is-left">
@@ -96,11 +97,11 @@
       <div class="control has-icons-left">
         <div class="select is-primary is-fullwidth">
           <InputSelect @bind-Value="virtualMachine.Hardware.Storage">
-            <option value="64">64 Gb</option>
-            <option value="128">128 Gb</option>
-            <option value="256">256 Gb</option>
-            <option value="512">512 Gb</option>
-            <option value="1024">1024 Gb</option>
+            <option selected value=64>64 Gb</option>
+            <option value=128>128 Gb</option>
+            <option value=256>256 Gb</option>
+            <option value=512>512 Gb</option>
+            <option value=1024>1024 Gb</option>
           </InputSelect>
         </div>
         <div class="icon is-small is-left">
@@ -154,7 +155,7 @@
   </button>
 </EditForm>
 @code {
-    public Boolean isTemplate { get; set; } = false; public void
-    toggleTemplate()
-    { isTemplate = !isTemplate; }
+  public Boolean isTemplate { get; set; } = false; public void
+  toggleTemplate()
+  { isTemplate = !isTemplate; }
 } 

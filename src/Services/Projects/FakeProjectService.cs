@@ -17,6 +17,11 @@ namespace Services.Projects
 
         }
 
+        public Task<ProjectenResponse.Create> AddVMAsync(ProjectenRequest.AddVM request)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<ProjectenResponse.Create> CreateAsync(ProjectenRequest.Create request)
         {
             await Task.Delay(100);
@@ -69,6 +74,11 @@ namespace Services.Projects
 
         }
 
+        public Task<ProjectenResponse.GetIndex> GetAllIndexAsync(ProjectenRequest.GetIndex request)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<ProjectenResponse.GetDetail> GetDetailAsync(ProjectenRequest.GetDetail request)
         {
             await Task.Delay(1000);
@@ -115,7 +125,10 @@ namespace Services.Projects
             return response;
         }
 
-
+        public Task<ProjectenResponse.GetIndex> GetIndexAsync(ProjectenRequest.GetIndexForUser request)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 

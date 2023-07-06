@@ -8,13 +8,14 @@ using System;
 using Microsoft.AspNetCore.Components.Routing;
 
 
-namespace Client.VirtualMachines
+namespace Client.Projecten
 {
     public partial class Index
     {
         [Inject] public IProjectenService ProjectService { get; set; }
         [Inject] public ISidepanelService Sidepanel { get; set; }
 
+        [Parameter] public int Id { get; set; }
 
         [Inject] NavigationManager Router { get; set; }
 
@@ -25,9 +26,12 @@ namespace Client.VirtualMachines
         protected override async Task OnInitializedAsync()
         {
 
-            ProjectenRequest.GetIndex request = new();
+            ProjectenRequest.GetIndexForUser request = new()
+            {
+                UserId = Id
+            };
 
-            var response = await ProjectService.GetAllIndexAsync(request);
+            var response = await ProjectService.GetIndexAsync(request);
             _projects = response.Projecten;
 
         }

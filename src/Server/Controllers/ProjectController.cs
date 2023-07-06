@@ -18,10 +18,17 @@ namespace Server.Controllers
         }
 
         //[Authorize(Roles = "Klant")]
-        [HttpGet, AllowAnonymous]
-        public Task<ProjectenResponse.GetIndex> GetIndexAsync([FromQuery] ProjectenRequest.GetIndex request)
+        [HttpGet("User/{UserId}"), AllowAnonymous]
+        public Task<ProjectenResponse.GetIndex> GetIndexAsync([FromQuery] ProjectenRequest.GetIndexForUser request)
         {
             return projectenService.GetIndexAsync(request);
+        }
+
+        //[Authorize(Roles = "Admin")]
+        [HttpGet, AllowAnonymous]
+        public Task<ProjectenResponse.GetIndex> GetAllIndexAsync([FromQuery] ProjectenRequest.GetIndex request)
+        {
+            return projectenService.GetAllIndexAsync(request);
         }
 
         //[Authorize(Roles = "Klant")]

@@ -1,3 +1,5 @@
+using Domain.VirtualMachines.VirtualMachine;
+
 namespace Shared.Projecten
 {
     public static class ProjectenRequest
@@ -5,6 +7,12 @@ namespace Shared.Projecten
         public class GetIndex
         {
             public string? SearchTerm { get; set; }
+
+        }
+
+        public class GetIndexForUser
+        {
+            public int UserId { get; set; }
 
         }
 
@@ -27,6 +35,12 @@ namespace Shared.Projecten
         {
             public int ProjectenId { get; set; }
             public ProjectenDto.Mutate Projecten { get; set; }
+        }
+
+        public class AddVM
+        {
+            public int ProjectenId { get; set; }
+            public VirtualMachine VirtualMachine { get; set; }
         }
     }
 }

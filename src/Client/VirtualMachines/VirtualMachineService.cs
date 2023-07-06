@@ -14,6 +14,7 @@ namespace Client.VirtualMachines
 
         private readonly IHttpClientFactory _IHttpClientFactory;
         private const string endpoint = "api/virtualmachine";
+        private const string endpointProject = "api/project";
         public VirtualMachineService(IHttpClientFactory _IHttpClientFactory)
         {
             this._IHttpClientFactory = _IHttpClientFactory;
@@ -24,12 +25,23 @@ namespace Client.VirtualMachines
             var HttpClient = _IHttpClientFactory.CreateClient("AuthenticatedServerAPI");
 
 
-            //var response = await HttpClient.PostAsJsonAsync(endpoint, request);
-            //return await response.Content.ReadFromJsonAsync<VirtualMachineResponse.Create>();
+            var response = await HttpClient.PostAsJsonAsync(endpoint, request);
+            return await response.Content.ReadFromJsonAsync<VirtualMachineResponse.Create>();
 
-            var queryParameters = request.GetQueryString();
-            var response = await HttpClient.GetFromJsonAsync<VirtualMachineResponse.Create>($"{endpoint}/{queryParameters}");
-            return response;
+
+
+
+            /* var queryParameters = request.GetQueryString();
+             var response = await HttpClient.GetFromJsonAsync<VirtualMachineResponse.Create>($"{endpoint}/{queryParameters}");
+
+             request.VirtualMachine.Id = response.VirtualMachineId;
+
+             queryParameters = request.GetQueryString();
+             var response2 = await HttpClient.GetFromJsonAsync<ProjectenResponse.Create>($"{endpointProject}/{queryParameters}");
+
+             response.ProjectenId = response2.ProjectenId;
+
+             return response;*/
         }
 
         public Task DeleteAsync(VirtualMachineRequest.Delete request)

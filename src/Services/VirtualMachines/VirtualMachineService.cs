@@ -8,13 +8,17 @@ using System;
 using Domain.Common;
 using Domain.VirtualMachines.BackUp;
 using Shared.FysiekeServers;
+using Shared.Projecten;
+using Services.Projecten;
 
 namespace Services.VirtualMachines
 {
     public class VirtualMachineService : IVirtualMachineService
     {
-        public VirtualMachineService(DotNetDbContext dbContext)
+
+        public VirtualMachineService(DotNetDbContext dbContext, IProjectenService projectService)
         {
+            _projectService = projectService;
             _dbContext = dbContext;
             _virtualMachines = dbContext.VirtualMachines;
         }
@@ -22,11 +26,12 @@ namespace Services.VirtualMachines
         private readonly DotNetDbContext _dbContext;
         private readonly DbSet<VirtualMachine> _virtualMachines;
 
+        private IProjectenService _projectService;
+
 
         private IQueryable<VirtualMachine> GetVirtualMachineById(int id) => _virtualMachines
                 .AsNoTracking()
                 .Where(p => p.Id == id);
-
         private IQueryable<VirtualMachine> GetVirtualMachineByDate(FysiekeServerRequest.Date date) => _virtualMachines.AsNoTracking().Where(p => p.Contract.StartDate <= date.FromDate && p.Contract.EndDate >= date.ToDate);
 
 
@@ -39,8 +44,19 @@ namespace Services.VirtualMachines
                 new Hardware(request.VirtualMachine.Hardware.Memory, request.VirtualMachine.Hardware.Storage, request.VirtualMachine.Hardware.Amount_vCPU),
                 new Backup(request.VirtualMachine.Backup.Type, request.VirtualMachine.Backup.LastBackup)
             ));
+
             await _dbContext.SaveChangesAsync();
+
             response.VirtualMachineId = virtualMachine.Entity.Id;
+
+            ProjectenRequest.AddVM request2 = new();
+            request2.VirtualMachine = (await GetVirtualMachineById(response.VirtualMachineId).ToListAsync<VirtualMachine>()).First();
+            System.Console.WriteLine(request2.VirtualMachine.ToString());
+            request2.ProjectenId = request.VirtualMachine.ProjectId;
+
+            await _projectService.AddVMAsync(request2);
+
+
             return response;
         }
 

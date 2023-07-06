@@ -26,6 +26,10 @@ namespace Services.Projecten
                 .AsNoTracking()
                 .Where(p => p.Id == id);
 
+        private IQueryable<Project> GetProjectByUserId(int id) => _projecten
+                .AsNoTracking()
+                .Where(p => p.User.Id == id);
+
         public async Task<ProjectenResponse.Create> CreateAsync(ProjectenRequest.Create request)
         {
             ProjectenResponse.Create response = new();
@@ -41,6 +45,20 @@ namespace Services.Projecten
         {
             _projecten.RemoveIf(p => p.Id == request.ProjectenId);
             await _dbContext.SaveChangesAsync();
+        }
+
+
+        public async Task<ProjectenResponse.Create> AddVMAsync(ProjectenRequest.AddVM request)
+        {
+            ProjectenResponse.Create response = new();
+
+            var project = await GetProjectById(request.ProjectenId).SingleOrDefaultAsync();
+
+            project.VirtualMachines.Add(request.VirtualMachine);
+
+            await _dbContext.SaveChangesAsync();
+            response.ProjectenId = project.Id;
+            return response;
         }
 
         public async Task<ProjectenResponse.Edit> EditAsync(ProjectenRequest.Edit request)
@@ -83,7 +101,7 @@ namespace Services.Projecten
             return response;
         }
 
-        public async Task<ProjectenResponse.GetIndex> GetIndexAsync(ProjectenRequest.GetIndex request)
+        public async Task<ProjectenResponse.GetIndex> GetAllIndexAsync(ProjectenRequest.GetIndex request)
         {
             ProjectenResponse.GetIndex response = new();
             var query = _projecten.AsQueryable().AsNoTracking();
@@ -104,6 +122,21 @@ namespace Services.Projecten
                 Name = x.Name,
                 user = x.User,
             }).ToListAsync();
+            return response;
+        }
+
+        public async Task<ProjectenResponse.GetIndex> GetIndexAsync(ProjectenRequest.GetIndexForUser request)
+        {
+            ProjectenResponse.GetIndex response = new();
+            response.Projecten = await GetProjectByUserId(request.UserId)
+                .Select(x => new ProjectenDto.Index
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    user = x.User,
+
+                })
+                .ToListAsync();
             return response;
         }
     }

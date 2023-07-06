@@ -19,6 +19,11 @@ namespace Client.VirtualMachines
 
         }
 
+        public Task<ProjectenResponse.Create> AddVMAsync(ProjectenRequest.AddVM request)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<ProjectenResponse.Create> CreateAsync(ProjectenRequest.Create request)
         {
             throw new NotImplementedException();
@@ -34,23 +39,30 @@ namespace Client.VirtualMachines
             throw new NotImplementedException();
         }
 
+        public async Task<ProjectenResponse.GetIndex> GetAllIndexAsync(ProjectenRequest.GetIndex request)
+        {
+            var HttpClient = _IHttpClientFactory.CreateClient("AuthenticatedServerAPI");
+
+            var queryParameters = request.GetQueryString();
+            var response = await HttpClient.GetFromJsonAsync<ProjectenResponse.GetIndex>($"{endpoint}/{queryParameters}");
+            return response;
+        }
+
         public async Task<ProjectenResponse.GetDetail> GetDetailAsync(ProjectenRequest.GetDetail request)
         {
             var HttpClient = _IHttpClientFactory.CreateClient("AuthenticatedServerAPI");
             var queryParameters = request.ProjectenId;
-            var response = await HttpClient.GetFromJsonAsync<ProjectenResponse.GetDetail>($"{endpoint}/{queryParameters}");
+            var response = await HttpClient.GetFromJsonAsync<ProjectenResponse.GetDetail>($"{endpoint}/User/{queryParameters}");
             return response;
         }
 
-        public async Task<ProjectenResponse.GetIndex> GetIndexAsync(ProjectenRequest.GetIndex request)
+        public async Task<ProjectenResponse.GetIndex> GetIndexAsync(ProjectenRequest.GetIndexForUser request)
         {
             var HttpClient = _IHttpClientFactory.CreateClient("AuthenticatedServerAPI");
 
             var queryParameters = request.GetQueryString();
             var response = await HttpClient.GetFromJsonAsync<ProjectenResponse.GetIndex>($"{endpoint}?{queryParameters}");
             return response;
-
-
         }
     }
 }

@@ -36,8 +36,9 @@ namespace Shared.VirtualMachines
 
         public class Create
         {
-            public VirtualMachineDto.Mutate VirtualMachine { get; set; }
+            public VirtualMachineDto.Create VirtualMachine { get; set; }
             public int CustomerId { get; set; }
+
         }
 
         public class Edit
