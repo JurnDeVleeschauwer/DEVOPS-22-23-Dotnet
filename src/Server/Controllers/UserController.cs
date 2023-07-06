@@ -23,6 +23,12 @@ namespace Server.Controllers
             return userService.GetIndexAsync(request);
         }
 
+        [HttpGet("{UserId}"), AllowAnonymous]
+        public Task<UserResponse.Detail> GetDetailAsync([FromRoute] UserRequest.Detail request)
+        {
+            return userService.GetDetail(request);
+        }
+
         [HttpPost]
         public Task<UserResponse.Create> CreateAsync([FromBody] UserRequest.Create request)
         {

@@ -23,15 +23,20 @@ public partial class Details
     {
         Loading = true;
         var request = new UserRequest.Detail();
-        request.UserId = Id;
+        request.UserId = 1;//Id;
         var response = await UserService.GetDetail(request);
-        User = response.User;
-        if (User.Course is not null)
+        if (response.User != null)
+        {
+            User = response.User;
+            Loading = false;
+        }
+
+        /*if (User.Course is not null)
         {
             Intern = true;
-        }
-        Console.WriteLine(User.Projects.Count() == 0);
-        Loading = false;
+        }*/
+        //Console.WriteLine(User.Projects.Count() == 0);
+
     }
     public void Toggle()
     {

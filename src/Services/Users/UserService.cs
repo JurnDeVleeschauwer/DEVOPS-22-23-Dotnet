@@ -1,6 +1,7 @@
 ﻿using Auth0.ManagementApi;
 using Auth0.ManagementApi.Models;
 using Auth0.ManagementApi.Paging;
+using Shared.Projecten;
 using Shared.Users;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,11 +11,13 @@ namespace Services.Users
     public class UserService : IUserService
     {
         private readonly ManagementApiClient _managementApiClient;
-
-        public UserService(ManagementApiClient managementApiClient)
+        private IProjectenService _projectService;
+        public UserService(ManagementApiClient managementApiClient, IProjectenService projectService)
         {
+            _projectService = projectService;
             _managementApiClient = managementApiClient;
         }
+
 
         public async Task<UserResponse.GetIndex> GetIndexAsync(UserRequest.GetIndex request)
         {
@@ -65,9 +68,33 @@ namespace Services.Users
 
         }
 
-        public Task<UserResponse.Detail> GetDetail(UserRequest.Detail request)
+        public async Task<UserResponse.Detail> GetDetail(UserRequest.Detail request)
         {
-            throw new NotImplementedException();
+
+            UserResponse.Detail response = new();
+            var user = await _managementApiClient.Users.GetAsync(request.UserId.ToString());
+
+
+            if (user is not null)
+            {
+                //response.User.Bedrijf = user.Bedrijf;
+                //response.User.Course = user.Course;
+                response.User.Email = user.Email;
+                response.User.FirstName = user.FirstName;
+                response.User.Name = user.LastName;
+                response.User.PhoneNumber = user.PhoneNumber;
+                //response.User.Role = user.Role;
+
+                ProjectenRequest.GetIndexForUser request2 = new();
+                request2.UserId = request.UserId;
+
+                var response2 = await _projectService.GetIndexAsync(request2);
+
+                response.User.Projects = response2.Projecten;
+                return response;
+
+            }
+            return response;
         }
 
         public Task<UserResponse.AllAdminsIndex> GetAllAdminsIndex(UserRequest.AllAdminUsers request)

@@ -24,7 +24,7 @@ namespace Shared.Users
             public string? Bedrijf { get; set; }
             public Course? Course { get; set; }
             public List<ProjectenDto.Index> Projects { get; set; }
-            public ContactDetails? contactPersoon { get; set; }
+            //public ContactDetails? contactPersoon { get; set; }
         }
 
         public class Mutate

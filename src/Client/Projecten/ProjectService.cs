@@ -44,7 +44,7 @@ namespace Client.VirtualMachines
             var HttpClient = _IHttpClientFactory.CreateClient("AuthenticatedServerAPI");
 
             var queryParameters = request.GetQueryString();
-            var response = await HttpClient.GetFromJsonAsync<ProjectenResponse.GetIndex>($"{endpoint}/{queryParameters}");
+            var response = await HttpClient.GetFromJsonAsync<ProjectenResponse.GetIndex>($"{endpoint}?{queryParameters}");
             return response;
         }
 
@@ -52,7 +52,7 @@ namespace Client.VirtualMachines
         {
             var HttpClient = _IHttpClientFactory.CreateClient("AuthenticatedServerAPI");
             var queryParameters = request.ProjectenId;
-            var response = await HttpClient.GetFromJsonAsync<ProjectenResponse.GetDetail>($"{endpoint}/User/{queryParameters}");
+            var response = await HttpClient.GetFromJsonAsync<ProjectenResponse.GetDetail>($"{endpoint}/{queryParameters}");
             return response;
         }
 
@@ -60,8 +60,8 @@ namespace Client.VirtualMachines
         {
             var HttpClient = _IHttpClientFactory.CreateClient("AuthenticatedServerAPI");
 
-            var queryParameters = request.GetQueryString();
-            var response = await HttpClient.GetFromJsonAsync<ProjectenResponse.GetIndex>($"{endpoint}?{queryParameters}");
+            var queryParameters = request.UserId;
+            var response = await HttpClient.GetFromJsonAsync<ProjectenResponse.GetIndex>($"{endpoint}/User/{queryParameters}");
             return response;
         }
     }

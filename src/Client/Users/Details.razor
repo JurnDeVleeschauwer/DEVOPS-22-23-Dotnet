@@ -1,4 +1,4 @@
-﻿@page "/User/{Id:int}"
+﻿@page "/User"
 
 @attribute [Authorize]
 
@@ -66,83 +66,15 @@ else
                                     <label class="label">Bedrijf:</label>
                                     <input type="text" readonly class="input" value="@User.Bedrijf">
                                 }
-                            </div>
-                            <div>
-                                <p class="label">Contcatpersoon: </p>
-                                @if (User.contactPersoon is not null)
-                                {
 
-                                    <div>
-                                        <label class="label">Email Contactpersoon</label>
-                                        <input class="input" readonly type="@User.contactPersoon.Email">
-                                    </div>
-                                    <div>
-                                        <label class="label">Gsm-nummer Contactpersoon</label>
-                                        <input class="input" readonly type="@User.contactPersoon.PhoneNumber">
-                                    </div>
-                                }
-                                else
-                                {
-                                    <p class="input">Deze User heeft geen contactpersoon</p>
-                                }
+
+
                             </div>
                         </div>
                     }
-                    else
-                    {
-                        <EditForm Model="@model" OnValidSubmit="@EditUser">
-                            <DataAnnotationsValidator />
-                            <ValidationSummary />
-                            <div>
-                                <label class="label">Voornaam: </label>
-                                <InputText class="input" @bind-Value="@model.FirstName" />
-                            </div>
-                            <div>
-                                <label class="label">Naam: </label>
-                                <InputText class="input" @bind-Value="@model.Name" />
-                            </div>
-                            <div class="control">
-                                <label class="label">Email: </label>
-                                <InputText class="input" @bind-Value="@model.Email" />
-                            </div>
-                            <div class="control">
-                                <label class="label">Gms-nummer: </label>
-                                <InputText class="input" @bind-Value="@model.PhoneNumber" />
-                            </div>
-                            @if (model.Course is not null)
-                            {
-                                @* <div>
-                                    <label>Opleiding</label>
-                                    <InputText class="input" @bind-Value="@model.Opleiding"/>
-                                    </div>*@
-                            }
-                            else
-                            {
-                                <div>
-                                    <label class="label">Bedrijf:</label>
-                                    <InputText class="input" @bind-Value="@model.Bedrijf" />
-                                </div>
 
-                            }
-                            @if (model.Contactpersoon is not null)
-                            {
-                                <div>
-                                    <p class="label">Contcatpersoon: </p>
-                                    <div>
-                                        <label class="label">Email Contactpersoon</label>
-                                        <InputText class="input" readonly type="@model.Contactpersoon.Email" />
-                                    </div>
-                                    <div>
-                                        <label class="label">Gsm-nummer Contactpersoon</label>
-                                        <InputText class="input" readonly type="@model.Contactpersoon.PhoneNumber" />
-                                    </div>
-                                </div>
-                            }
-                            <button class="button mt-2" type="submit" @onclick="@EditUser">User wijzigen</button>
-                        </EditForm>
-                    }
                 </div>
-            </div>
+            </div
         </div>
     }
-}
+    }
