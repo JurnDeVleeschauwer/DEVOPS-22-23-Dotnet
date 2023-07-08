@@ -62,7 +62,7 @@ namespace Services.VirtualMachines
                 })
                 .SingleOrDefaultAsync();
 
-            request2.ProjectenId = request.VirtualMachine.ProjectId;
+            request2.ProjectenId = (int)request.VirtualMachine.ProjectId;
 
             await _projectService.AddVMAsync(request2);
 

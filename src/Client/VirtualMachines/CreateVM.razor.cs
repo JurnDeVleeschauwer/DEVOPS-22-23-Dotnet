@@ -27,10 +27,12 @@ namespace Client.VirtualMachines
             virtualMachine.Start = DateTime.Now;
             virtualMachine.End = DateTime.Now;
 
+            virtualMachine.ProjectId = null;
+
             ProjectenRequest.GetIndexForUser request = new();
 
 
-            request.UserId = 1; //Id;
+            request.UserId = Id;
 
             projectenResponse = await ProjectService.GetIndexAsync(request);
         }

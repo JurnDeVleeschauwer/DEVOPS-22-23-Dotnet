@@ -138,6 +138,7 @@ namespace Services.Projecten
 
                 })
                 .ToListAsync();
+            response.Total = response.Projecten.Count();
             return response;
         }
     }

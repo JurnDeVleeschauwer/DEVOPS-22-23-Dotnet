@@ -14,18 +14,15 @@
       <div class="control is-expanded has-icons-left">
         <div class="select is-primary is-fullwidth">
           <InputSelect @bind-Value="virtualMachine.ProjectId">
-            @if (projectenResponse.Projecten is null)
+             <option selected value=null>Select...</option>
+            @if (projectenResponse.Total != 0)
             {
-              <option value="">None</option>
-            }
-            else
-            {
-              <option value="">Select...</option>
               @foreach (ProjectenDto.Index project in projectenResponse.Projecten)
               {
                 <option value=@project.Id>@project.Name</option>
               }
             }
+
          </InputSelect>
         </div>
         <div class="icon is-small is-left">

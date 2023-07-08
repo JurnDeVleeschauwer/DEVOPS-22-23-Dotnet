@@ -81,14 +81,14 @@ namespace Shared.VirtualMachines
         public class Create : Mutate
         {
             [Required(ErrorMessage = "Je moet een project selecteren.")]
-            public int ProjectId { get; set; }
+            public int? ProjectId { get; set; }
             public int Id { get; set; }
             public class Validator : AbstractValidator<Create>
             {
                 public Validator()
                 {
-                    RuleFor(x => x.Id).NotNull();
-                    RuleFor(x => x.ProjectId).NotNull();
+                    RuleFor(x => x.Id).NotEmpty();
+                    RuleFor(x => x.ProjectId).NotEmpty();
                 }
             }
         }
