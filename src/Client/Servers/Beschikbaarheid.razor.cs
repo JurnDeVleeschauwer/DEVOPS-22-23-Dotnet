@@ -18,7 +18,7 @@ namespace Client.Servers
         private List<FysiekeServerDto.Beschikbaarheid> Servers { get; set; }
         private Dictionary<DateTime, Hardware> _data = new();
 
-
+        private FysiekeServerRequest.Date request = new();
         private DateTime DateStart { get; set; } = DateTime.Now;
         private DateTime DateEnd { get; set; } = DateTime.Now;
 
@@ -27,12 +27,14 @@ namespace Client.Servers
         {
             await base.OnInitializedAsync();
             await GetAvailableResources();
+            request.FromDate = DateTime.Now;
+            request.ToDate = DateTime.Now;
         }
 
         private async Task GetAvailableResources()
         {
             loading = true;
-            var response = await FysiekeServerService.GetAvailableHardWareOnDate(new FysiekeServerRequest.Date() { FromDate = DateStart, ToDate = DateEnd });
+            var response = await FysiekeServerService.GetAvailableHardWareOnDate(request);
             Servers = response.Servers;
             loading = false;
         }
@@ -40,7 +42,7 @@ namespace Client.Servers
         private async Task GetAvailableResourcesTotal()
         {
             loading = true;
-            var response = await FysiekeServerService.GetGraphValueForServer(new FysiekeServerRequest.GetIndex() );
+            var response = await FysiekeServerService.GetGraphValueForServer(new FysiekeServerRequest.GetIndex());
             _data = response.GraphData;
             loading = false;
         }

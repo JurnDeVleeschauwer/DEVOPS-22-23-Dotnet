@@ -16,13 +16,14 @@
           <InputSelect @bind-Value="virtualMachine.ProjectId">
             @if (projectenResponse.Projecten is null)
             {
-                      <option selected value="">None</option>
+              <option value="">None</option>
             }
             else
             {
+              <option value="">Select...</option>
               @foreach (ProjectenDto.Index project in projectenResponse.Projecten)
               {
-                                <option value="@project.Id  ">@project.Name</option>
+                <option value=@project.Id>@project.Name</option>
               }
             }
          </InputSelect>

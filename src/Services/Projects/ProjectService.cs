@@ -52,7 +52,7 @@ namespace Services.Projecten
         {
             ProjectenResponse.Create response = new();
 
-            var project = await GetProjectById(request.ProjectenId).SingleOrDefaultAsync(); //TODO not getting project
+            var project = await GetProjectById(request.ProjectenId).SingleOrDefaultAsync();
 
             project.VirtualMachines.Add(request.VirtualMachine);
 

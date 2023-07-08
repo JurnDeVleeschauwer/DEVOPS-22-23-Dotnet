@@ -61,7 +61,7 @@ namespace Services.VirtualMachines
                     BackUp = x.BackUp,
                 })
                 .SingleOrDefaultAsync();
-            System.Console.WriteLine(request2.VirtualMachine.ToString());
+
             request2.ProjectenId = request.VirtualMachine.ProjectId;
 
             await _projectService.AddVMAsync(request2);

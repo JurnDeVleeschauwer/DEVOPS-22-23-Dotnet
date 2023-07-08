@@ -24,6 +24,9 @@ namespace Client.VirtualMachines
             virtualMachine.OperatingSystem = Domain.VirtualMachines.VirtualMachine.OperatingSystemEnum.WINDOWS_10;
             virtualMachine.Hardware = new Domain.Common.Hardware(4, 64, 1);
 
+            virtualMachine.Start = DateTime.Now;
+            virtualMachine.End = DateTime.Now;
+
             ProjectenRequest.GetIndexForUser request = new();
 
 
@@ -36,6 +39,7 @@ namespace Client.VirtualMachines
         {
             VirtualMachineRequest.Create request = new()
             {
+                CustomerId = Id,
                 VirtualMachine = virtualMachine
             };
 

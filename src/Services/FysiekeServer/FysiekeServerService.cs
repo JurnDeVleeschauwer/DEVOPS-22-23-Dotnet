@@ -120,12 +120,14 @@ namespace Services.FysiekeServers
             FysiekeServerResponse.ResourcesAvailable response = new();
             var query = _fysiekeServers.AsQueryable().AsNoTracking();
 
-            query.OrderBy(x => x.Name);
+            response.Servers = new List<FysiekeServerDto.Beschikbaarheid>();
+
+            /*query.OrderBy(x => x.Name);
             response.Servers = await query.Select(x => new FysiekeServerDto.Beschikbaarheid
             {
                 Id = x.Id,
                 AvailableHardware = x.HardWareAvailable
-            }).ToListAsync();
+            }).ToListAsync();*/
 
             FysiekeServerRequest.GetIndex request = new();
 
@@ -136,10 +138,12 @@ namespace Services.FysiekeServers
                 Hardware max = server.Hardware;
 
                 var VirtualMachineRequest = await _virtualMachinesService.GetVirtualmachine(date);
-
-                foreach (var vm in VirtualMachineRequest.VirtualMachines)
+                if (VirtualMachineRequest.VirtualMachines != null)
                 {
-                    max = new Hardware(max.Memory - vm.Hardware.Memory, max.Storage - vm.Hardware.Storage, max.Amount_vCPU - vm.Hardware.Amount_vCPU);
+                    foreach (var vm in VirtualMachineRequest.VirtualMachines)
+                    {
+                        max = new Hardware(max.Memory - vm.Hardware.Memory, max.Storage - vm.Hardware.Storage, max.Amount_vCPU - vm.Hardware.Amount_vCPU);
+                    }
                 }
 
                 response.Servers.Add(new FysiekeServerDto.Beschikbaarheid() { Id = server.Id, AvailableHardware = max });
