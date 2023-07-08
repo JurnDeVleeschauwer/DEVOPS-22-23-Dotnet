@@ -157,7 +157,7 @@ namespace Services.VirtualMachines
             Backup backup = model.Backup;
             OperatingSystemEnum os = model.OperatingSystem;
             Hardware hw = model.Hardware;
-            Project p = model.Project;
+            //Project p = model.Project;
 
             int id = _virtualMachines.Max(x => x.Id) + 1;
 

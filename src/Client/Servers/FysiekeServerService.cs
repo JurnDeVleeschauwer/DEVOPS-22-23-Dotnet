@@ -1,7 +1,9 @@
-﻿using Client.Extentions;
+﻿using Azure.Core;
+using Client.Extentions;
 using Client.Infrastructure;
 using Domain.Server;
 using Shared.FysiekeServers;
+using Shared.VirtualMachines;
 using System.Globalization;
 using System.Net.Http.Json;
 using System.Text.Json;
@@ -66,12 +68,12 @@ namespace Client.Servers
         }
 
 
-        public async Task<FysiekeServerResponse.ResourcesAvailable> GetAvailableHardWareOnDate(FysiekeServerRequest.Date date)
+        public async Task<FysiekeServerResponse.ResourcesAvailable> GetAvailableHardWareOnDate(FysiekeServerRequest.Date request)
         {
             var HttpClient = _IHttpClientFactory.CreateClient("AuthenticatedServerAPI");
 
-            var response = await HttpClient.GetFromJsonAsync<FysiekeServerResponse.ResourcesAvailable>($"{endpoint}");
-            return response;
+            var queryParameters = request.GetQueryString();
+            return await HttpClient.GetFromJsonAsync<FysiekeServerResponse.ResourcesAvailable>($"{endpoint}/Resource?{queryParameters}");
 
         }
 

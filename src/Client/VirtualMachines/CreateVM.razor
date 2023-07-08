@@ -5,26 +5,26 @@
 <EditForm Model="virtualMachine" OnValidSubmit="@CreateVirtualMachineAsync">
   <DataAnnotationsValidator />
   <ValidationSummary />
+
   <h1 class="title is-3">Virtual Machine</h1>
   <h1 class="title is-4">Algemeen</h1>
   <div class="field columns">
     <div class="column">
       <label class="label">Project</label>
-      <!-- TODO add projects -->
       <div class="control is-expanded has-icons-left">
         <div class="select is-primary is-fullwidth">
           <InputSelect @bind-Value="virtualMachine.ProjectId">
-              @if (projectenResponse.Projecten is null)
+            @if (projectenResponse.Projecten is null)
+            {
+                      <option selected value="">None</option>
+            }
+            else
+            {
+              @foreach (ProjectenDto.Index project in projectenResponse.Projecten)
               {
-                    <option selected value="">None</option>
+                                <option value="@project.Id  ">@project.Name</option>
               }
-              else
-              {
-                @foreach (ProjectenDto.Index project in projectenResponse.Projecten)
-                {
-                            <option value="@project.Id">@project.Name</option>
-                }
-              }
+            }
          </InputSelect>
         </div>
         <div class="icon is-small is-left">
@@ -46,12 +46,12 @@
   <div class="field columns">
     <div class="column">
       <label class="label">Backup</label>
-      <div class="control has-icons-left">
+      <div class="control is-expanded has-icons-left">
         <InputSelect @bind-Value="virtualMachine.Backup.Type">
-            @foreach (var backUpType in Enum.GetValues(typeof(BackUpType)))
-            {
-                <option value="@backUpType">@backUpType</option>
-            }
+          @foreach (var backUpType in Enum.GetValues(typeof(BackUpType)))
+          {
+                  <option value="@backUpType">@backUpType</option>
+          }
         </InputSelect>
       </div>
     </div>
@@ -65,7 +65,7 @@
           <InputSelect @bind-Value="virtualMachine.OperatingSystem">
             @foreach (var operatingSystemEnum in Enum.GetValues(typeof(OperatingSystemEnum)))
             {
-              <option value="@operatingSystemEnum">@operatingSystemEnum</option>
+                <option value="@operatingSystemEnum">@operatingSystemEnum</option>
             }
           </InputSelect>
         </div>
@@ -131,18 +131,12 @@
           @bind-Value="virtualMachine.Start"
           Placeholder="Enter Date"
         />
-        <span class="icon is-left">
-          <i class="fas fa-calendar-days"></i>
-        </span>
       </div>
     </div>
     <div class="column">
       <label class="label">Einddatum</label>
       <div class="control is-expanded has-icons-left">
         <InputDate @bind-Value="virtualMachine.End" Placeholder="Enter Date" />
-        <span class="icon is-left">
-          <i class="fas fa-calendar-days"></i>
-        </span>
       </div>
     </div>
   </div>

@@ -19,7 +19,7 @@ namespace Server.Controllers
 
         //[Authorize(Roles = "Klant")]
         [HttpGet("User/{UserId}"), AllowAnonymous]
-        public Task<ProjectenResponse.GetIndex> GetIndexAsync([FromQuery] ProjectenRequest.GetIndexForUser request)
+        public Task<ProjectenResponse.GetIndex> GetIndexAsync([FromRoute] ProjectenRequest.GetIndexForUser request)
         {
             return projectenService.GetIndexAsync(request);
         }

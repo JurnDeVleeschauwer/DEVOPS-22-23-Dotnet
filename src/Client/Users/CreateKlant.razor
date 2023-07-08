@@ -2,7 +2,7 @@
 @using Domain.Users;
 
 <EditForm Model="model" OnValidSubmit="RegistreerKlant">
-    <DataAnnotationsValidator />
+    <FluentValidationValidator />
     <ValidationSummary />
     <h1 class="title is-3">Gebruiker</h1>
     <div class="field columns">

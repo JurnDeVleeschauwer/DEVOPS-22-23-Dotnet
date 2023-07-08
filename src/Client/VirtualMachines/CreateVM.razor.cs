@@ -22,12 +22,12 @@ namespace Client.VirtualMachines
         {
             virtualMachine.Backup = new Backup(BackUpType.MONTHLY, DateTime.Now);
             virtualMachine.OperatingSystem = Domain.VirtualMachines.VirtualMachine.OperatingSystemEnum.WINDOWS_10;
-            virtualMachine.Hardware = new Domain.Common.Hardware();
+            virtualMachine.Hardware = new Domain.Common.Hardware(4, 64, 1);
 
-            ProjectenRequest.GetIndexForUser request = new()
-            {
-                UserId = Id
-            };
+            ProjectenRequest.GetIndexForUser request = new();
+
+
+            request.UserId = 1; //Id;
 
             projectenResponse = await ProjectService.GetIndexAsync(request);
         }

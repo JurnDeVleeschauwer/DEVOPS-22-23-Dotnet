@@ -52,10 +52,11 @@ namespace Services.Projecten
         {
             ProjectenResponse.Create response = new();
 
-            var project = await GetProjectById(request.ProjectenId).SingleOrDefaultAsync();
+            var project = await GetProjectById(request.ProjectenId).SingleOrDefaultAsync(); //TODO not getting project
 
             project.VirtualMachines.Add(request.VirtualMachine);
 
+            _dbContext.Entry(project).State = EntityState.Modified;
             await _dbContext.SaveChangesAsync();
             response.ProjectenId = project.Id;
             return response;

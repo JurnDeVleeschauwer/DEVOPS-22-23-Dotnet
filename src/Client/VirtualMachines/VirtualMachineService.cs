@@ -14,7 +14,6 @@ namespace Client.VirtualMachines
 
         private readonly IHttpClientFactory _IHttpClientFactory;
         private const string endpoint = "api/virtualmachine";
-        private const string endpointProject = "api/project";
         public VirtualMachineService(IHttpClientFactory _IHttpClientFactory)
         {
             this._IHttpClientFactory = _IHttpClientFactory;

@@ -50,7 +50,17 @@ namespace Services.VirtualMachines
             response.VirtualMachineId = virtualMachine.Entity.Id;
 
             ProjectenRequest.AddVM request2 = new();
-            request2.VirtualMachine = (await GetVirtualMachineById(response.VirtualMachineId).ToListAsync<VirtualMachine>()).First();
+            request2.VirtualMachine = await GetVirtualMachineById(response.VirtualMachineId)
+                .Select(x => new VirtualMachine
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    OperatingSystem = x.OperatingSystem,
+                    Mode = x.Mode,
+                    Hardware = x.Hardware,
+                    BackUp = x.BackUp,
+                })
+                .SingleOrDefaultAsync();
             System.Console.WriteLine(request2.VirtualMachine.ToString());
             request2.ProjectenId = request.VirtualMachine.ProjectId;
 

@@ -47,5 +47,11 @@ namespace Server.Controllers
         {
             return fysiekeServerService.EditAsync(request);
         }
+
+        [HttpGet("Resource"), AllowAnonymous]
+        public Task<FysiekeServerResponse.ResourcesAvailable> GetAvailableHardWareOnDate([FromQuery] FysiekeServerRequest.Date request)
+        {
+            return fysiekeServerService.GetAvailableHardWareOnDate(request);
+        }
     }
 }

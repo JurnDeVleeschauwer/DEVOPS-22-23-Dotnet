@@ -7,6 +7,7 @@ using Domain.VirtualMachines.BackUp;
 using Domain.Server;
 using Domain.Statistics;
 using Domain.Projecten;
+using System.ComponentModel.DataAnnotations;
 
 namespace Shared.VirtualMachines
 {
@@ -48,11 +49,13 @@ namespace Shared.VirtualMachines
         }
         public class Mutate
         {
+            [Required(ErrorMessage = "Je moet een naam ingeven.")]
+            [StringLength(50, ErrorMessage = "Naam is te lang")]
             public String Name { get; set; }
             public Hardware Hardware { get; set; }
             public OperatingSystemEnum OperatingSystem { get; set; }
             public Backup Backup { get; set; }
-            public Project Project { get; set; }
+            //public Project Project { get; set; }
             public DateTime Start { get; set; }
             public DateTime End { get; set; }
 
@@ -64,7 +67,7 @@ namespace Shared.VirtualMachines
                     RuleFor(x => x.Hardware.Amount_vCPU).LessThan(50);
                     RuleFor(x => x.Hardware.Storage).NotEmpty();
                     RuleFor(x => x.Hardware.Memory).NotEmpty();
-                    RuleFor(x => x.Project).NotNull();
+                    //RuleFor(x => x.Project).NotNull();
                     RuleFor(x => x.Start).NotEmpty();
                     RuleFor(x => x.End).NotEmpty();
                     RuleFor(x => x.Backup.Type).NotNull();
@@ -77,8 +80,17 @@ namespace Shared.VirtualMachines
 
         public class Create : Mutate
         {
+            [Required(ErrorMessage = "Je moet een project selecteren.")]
             public int ProjectId { get; set; }
             public int Id { get; set; }
+            public class Validator : AbstractValidator<Create>
+            {
+                public Validator()
+                {
+                    RuleFor(x => x.Id).NotNull();
+                    RuleFor(x => x.ProjectId).NotNull();
+                }
+            }
         }
 
         /*public class Mutate
