@@ -8,9 +8,9 @@
         <div class="flex">
             <EditForm Model="request" OnValidSubmit="@GetAvailableResources">
                 <label class="px-4" for="date">Start Datum:</label>
-                <InputDate @bind-Value="request.FromDate" Placeholder="Enter Date" />
+                <InputDate @bind-Value="DateStart"/>
                 <label class="px-4" for="date">Eind Datum:</label>
-                <InputDate class="mr-4" @bind-Value="request.ToDate" Placeholder="Enter Date" />
+                <InputDate @bind-Value="DateEnd"/>
                 <button class="btn btn-primary" type="submit">Submit</button>
             </EditForm>
         </div>
@@ -42,8 +42,8 @@
                             <h3 class="card-header-title">Server: @server.Id</h3>
                         </div>
                         <div class="card-body">
-                            <p>Geheugen/Ram: @(server.AvailableHardware.Memory > 1000 ? ((double)server.AvailableHardware.Memory / 1000.00).ToString("#.##") + " GB" : server.AvailableHardware.Memory + " GB")</p>
-                            <p>Opslag: @(server.AvailableHardware.Storage > 1000000 ? ((double)server.AvailableHardware.Storage / 1000000.00).ToString("#.##") + " TB" : server.AvailableHardware.Storage > 1000 ? ((double)server.AvailableHardware.Storage / 1000.00).ToString("#.##") + " GB" : server.AvailableHardware.Storage + " GB")</p>
+                            <p>Geheugen/Ram: @(server.AvailableHardware.Memory + " GB")</p>
+                            <p>Opslag: @(server.AvailableHardware.Storage + " GB")</p>
                             <p>Aantal Cores: @server.AvailableHardware.Amount_vCPU</p>
                         </div>
                     </div>

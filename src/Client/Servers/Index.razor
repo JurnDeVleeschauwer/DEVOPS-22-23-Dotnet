@@ -27,10 +27,10 @@ else
                         <br>
                         <p>Aantal vCPU's: @server.Hardware.Amount_vCPU</p>
                         <p>Vrije vCPU's: @server.HardWareAvailable.Amount_vCPU</p>
-                        <p>Totale opslag: @(server.Hardware.Storage > 1000000 ? ((double)server.Hardware.Storage / 1000000.00).ToString("#.##") + " TB" : server.Hardware.Storage > 1000 ? ((double)server.Hardware.Storage / 1000.00).ToString("#.##") + " GB" : server.Hardware.Storage + " MB")  </p>
-                        <p>Vrije opslag: @(server.HardWareAvailable.Storage > 1000000 ? ((double)server.HardWareAvailable.Storage / 1000000.00).ToString("#.##") + " TB" : server.HardWareAvailable.Storage > 1000 ? ((double)server.HardWareAvailable.Storage / 1000.00).ToString("#.##") + " GB" : server.HardWareAvailable.Storage + " MB")</p>
-                        <p>Totale memory: @(server.Hardware.Memory > 1000? (server.Hardware.Memory /1000.00).ToString("#.##") + " GB" : server.Hardware.Memory + " GB")</p>
-                        <p>Vrije memory: @(server.HardWareAvailable.Memory > 1000? (server.HardWareAvailable.Memory / 1000.00).ToString("#.##") + " GB" : server.HardWareAvailable.Memory + " MB") </p>
+                        <p>Totale opslag: @(server.Hardware.Storage + " GB")  </p>
+                        <p>Vrije opslag: @(server.HardWareAvailable.Storage + " GB")</p>
+                        <p>Totale memory: @(server.Hardware.Memory + " GB")</p>
+                        <p>Vrije memory: @(server.HardWareAvailable.Memory + " GB") </p>
                     </div>
                 </div>
             </div>

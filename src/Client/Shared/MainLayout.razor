@@ -1,25 +1,20 @@
 ﻿@inherits LayoutComponentBase
 
 <div class="page">
-    <div class="sidebar">
-        <NavMenu />
+  <div class="sidebar">
+    <NavMenu />
+  </div>
+
+  <main>
+    <div class="top-row px-4">
+      <div>
+        <a href="https://vichogent.be/index.html" target="_blank">About</a>
+      </div>
     </div>
 
-    <main>
-        <div class="top-row px-4">
-            <div>
-                <input class="input" type="search" placeholder="Zoeken...">
-            </div>
-            <div>
-                <a href="https://vichogent.be/index.html" target="_blank">About</a>
-            </div>
-        </div>
-        
-
-        <article class="content px-4">
-            @Body
-        </article>
-        <Sidepanel/>
-    </main>
+    <article class="content px-4">@Body</article>
+    <Sidepanel />
+  </main>
 </div>
+
 

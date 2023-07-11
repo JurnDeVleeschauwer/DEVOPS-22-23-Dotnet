@@ -25,14 +25,17 @@ namespace Client.Servers
 
         protected override async Task OnInitializedAsync()
         {
+            request.FromDate = DateTime.Now;//TODO error when going ??
+            request.ToDate = DateTime.Now; //TODO error when setting to the future
             await base.OnInitializedAsync();
             await GetAvailableResources();
-            request.FromDate = DateTime.Now;
-            request.ToDate = DateTime.Now;
+
         }
 
         private async Task GetAvailableResources()
         {
+            request.FromDate = DateStart.Date;
+            request.ToDate = DateEnd.Date;
             loading = true;
             var response = await FysiekeServerService.GetAvailableHardWareOnDate(request);
             Servers = response.Servers;

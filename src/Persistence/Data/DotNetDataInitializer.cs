@@ -47,9 +47,9 @@ namespace Persistence.Data
             // var Projecten = new ProjectFaker().Generate(1);
             // var VirtualMachines = new VirtualMachineFaker().Generate(2);
             var virtualMachines1 = new List<VirtualMachine>();
-            virtualMachines1.Add(new VirtualMachine("1", OperatingSystemEnum.FEDORA_35, new Hardware(5, 5, 5), new Backup(BackUpType.DAILY, System.DateTime.Now)));
-            virtualMachines1.Add(new VirtualMachine("1", OperatingSystemEnum.FEDORA_35, new Hardware(5, 5, 5), new Backup(BackUpType.DAILY, System.DateTime.Now)));
-            virtualMachines1.Add(new VirtualMachine("1", OperatingSystemEnum.FEDORA_35, new Hardware(5, 5, 5), new Backup(BackUpType.DAILY, System.DateTime.Now)));
+            virtualMachines1.Add(new VirtualMachine("first", OperatingSystemEnum.FEDORA_35, new Hardware(5, 5, 5), new Backup(BackUpType.DAILY, System.DateTime.Now)));
+            virtualMachines1.Add(new VirtualMachine("second", OperatingSystemEnum.FEDORA_35, new Hardware(5, 5, 5), new Backup(BackUpType.DAILY, System.DateTime.Now)));
+            virtualMachines1.Add(new VirtualMachine("thirth", OperatingSystemEnum.FEDORA_35, new Hardware(5, 5, 5), new Backup(BackUpType.DAILY, System.DateTime.Now)));
             var project1 = new Project("gegherg");
             project1.VirtualMachines = virtualMachines1;
             userA.Id = 1;
