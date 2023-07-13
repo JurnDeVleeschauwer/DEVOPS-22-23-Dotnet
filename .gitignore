@@ -909,3 +909,4 @@ $RECYCLE.BIN/
 # ME
 .bin
 net6.0
+*.cache

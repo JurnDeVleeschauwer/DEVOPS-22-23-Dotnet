@@ -58,8 +58,8 @@ namespace Client
             //builder.Services.AddSingleton<AuthenticationStateProvider, FakeAuthenticationProvider>();
 
             //Disble both to do login via Auth0
-            builder.Services.AddScoped<Shared.FakeAuthenticationProvider>();
-            builder.Services.AddScoped<AuthenticationStateProvider>(provider => provider.GetRequiredService<Shared.FakeAuthenticationProvider>());
+            //builder.Services.AddScoped<Shared.FakeAuthenticationProvider>();
+            //builder.Services.AddScoped<AuthenticationStateProvider>(provider => provider.GetRequiredService<Shared.FakeAuthenticationProvider>());
 
             builder.Services.AddHttpClient("AuthenticatedServerAPI", client => client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress));
             // .AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();

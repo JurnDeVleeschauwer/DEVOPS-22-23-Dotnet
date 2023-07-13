@@ -23,7 +23,7 @@ public partial class Details
     {
         Loading = true;
         var request = new UserRequest.Detail();
-        request.UserId = 1;//Id;
+        request.UserId = Id;
         var response = await UserService.GetDetail(request);
         if (response.User != null)
         {

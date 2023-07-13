@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "3YZj697nUCUoOAmbwPmkH84Jyvkp7O4K/KKSSyij6mj/wygs86x0ignUCU45+bRHOp35fwxmGQwUsU6Vsly0Ig==",
+  "dgSpecHash": "lr2H3JjJ6PrjEQglztU+emNc6bMwaIPEDaip4yMNT3OepMYdQBjYT02lXIJ3t+Yj6bugaBZSzJBdlYlsHTf3ZQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Jurn\\Documents\\GitHub\\devops-22-23-dotnet-2de-zit\\tests\\IntegrationTests\\IntegrationTests.csproj",
   "expectedPackageFiles": [
