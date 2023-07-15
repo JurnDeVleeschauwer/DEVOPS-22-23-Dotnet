@@ -20,13 +20,11 @@ namespace Client.Servers
 
         private FysiekeServerRequest.Date request = new();
         private DateTime DateStart { get; set; } = DateTime.Now;
-        private DateTime DateEnd { get; set; } = DateTime.Now;
+        private DateTime DateEnd { get; set; } = DateTime.Now.AddDays(7);
 
 
         protected override async Task OnInitializedAsync()
         {
-            request.FromDate = DateTime.Now;//TODO error when going ??
-            request.ToDate = DateTime.Now; //TODO error when setting to the future
             await base.OnInitializedAsync();
             await GetAvailableResources();
 
@@ -34,18 +32,21 @@ namespace Client.Servers
 
         private async Task GetAvailableResources()
         {
-            request.FromDate = DateStart.Date;
-            request.ToDate = DateEnd.Date;
+            request.FromDate = DateStart.Date.ToString();
+            request.ToDate = DateEnd.Date.ToString();
             loading = true;
             var response = await FysiekeServerService.GetAvailableHardWareOnDate(request);
             Servers = response.Servers;
             loading = false;
+
         }
 
         private async Task GetAvailableResourcesTotal()
         {
+            request.FromDate = DateStart.Date.ToString();
+            request.ToDate = DateEnd.Date.ToString();
             loading = true;
-            var response = await FysiekeServerService.GetGraphValueForServer(new FysiekeServerRequest.GetIndex());
+            var response = await FysiekeServerService.GetGraphValueForServer(request);
             _data = response.GraphData;
             loading = false;
         }

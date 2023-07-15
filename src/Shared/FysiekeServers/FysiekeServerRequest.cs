@@ -45,8 +45,11 @@ namespace Shared.FysiekeServers
 
         public class Date
         {
-            public DateTime FromDate { get; set; }
-            public DateTime ToDate { get; set; }
+            //public DateTime FromDate { get; set; }
+            //public DateTime ToDate { get; set; }
+
+            public String FromDate { get; set; }
+            public String ToDate { get; set; }
         }
 
     }

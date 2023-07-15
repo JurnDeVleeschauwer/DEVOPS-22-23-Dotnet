@@ -14,10 +14,12 @@ namespace Shared.VMContracts
         Task DeleteAsync(VMContractRequest.Delete request);
         Task<VMContractResponse.Create> CreateAsync(VMContractRequest.Create request);
         Task<VMContractResponse.Edit> EditAsync(VMContractRequest.Edit request);
+        Task<VMContractResponse.GetDetail> GetDetailThroughVMIdAsync(VMContractRequest.GetDetailThroughVMId request);
+
 
         //Task<VMContractResponse.Index> GetFromDate(VMContractRequest.GetByDate request); // returns all contracts from a certain date until nullable enddate 
 
-        
+
         /*
       Als er een VM gecreërt word, krijgt deze automatisch een contract mee. Maar nog geen connectie.
     Een VMContract is een entity klasse, dus eenmaal de VM die gecreërd word opgeslaan wordt in de database, houd de database context hier rekening mee, en zal hij dus ook een vmcontract toevoegen aan de database? Zoja, dan is deze methode niet nodig. Zoniet, dan is deze wel nodig

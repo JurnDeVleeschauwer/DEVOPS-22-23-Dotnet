@@ -72,17 +72,19 @@ namespace Client.Servers
         {
             var HttpClient = _IHttpClientFactory.CreateClient("AuthenticatedServerAPI");
 
+            //request.FromDate.GetQueryString()+ "&" + request.ToDate.GetQueryString(); doesn't work get default value at the other side
             var queryParameters = request.GetQueryString();
             return await HttpClient.GetFromJsonAsync<FysiekeServerResponse.ResourcesAvailable>($"{endpoint}/Resource?{queryParameters}");
 
         }
 
-        public async Task<FysiekeServerResponse.GraphValues> GetGraphValueForServer(FysiekeServerRequest.GetIndex request)
+        public async Task<FysiekeServerResponse.GraphValues> GetGraphValueForServer(FysiekeServerRequest.Date request)
         {
             var HttpClient = _IHttpClientFactory.CreateClient("AuthenticatedServerAPI");
 
-            var response = await HttpClient.GetFromJsonAsync<FysiekeServerResponse.GraphValues>($"{endpoint}");
-            return response;
+            var queryParameters = request.GetQueryString();
+            return await HttpClient.GetFromJsonAsync<FysiekeServerResponse.GraphValues>($"{endpoint}/Graph?{queryParameters}");
+
         }
 
     }

@@ -53,5 +53,11 @@ namespace Server.Controllers
         {
             return fysiekeServerService.GetAvailableHardWareOnDate(request);
         }
+
+        [HttpGet("Graph"), AllowAnonymous]
+        public Task<FysiekeServerResponse.GraphValues> GetGraphValueForServer([FromQuery] FysiekeServerRequest.Date request)
+        {
+            return fysiekeServerService.GetGraphValueForServer(request);
+        }
     }
 }

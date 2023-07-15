@@ -1,3 +1,4 @@
+using Domain.VirtualMachines.VirtualMachine;
 using Microsoft.AspNetCore.Components;
 using Shared.FysiekeServers;
 using Shared.VirtualMachines;
@@ -14,7 +15,7 @@ public partial class Details
 
     [Inject] IFysiekeServerService Service { get; set; }
     private FysiekeServerDto.Detail server;
-    private List<VirtualMachineDto.Rapportage> virtualMachinesServer = new();
+    private List<VirtualMachine> virtualMachinesServer = new();
     public Dictionary<int, bool> Collapsed { get; set; } = new Dictionary<int, bool>();
     public List<int> Loading { get; set; } = new();
 

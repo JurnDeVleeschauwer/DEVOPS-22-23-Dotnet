@@ -65,6 +65,8 @@ namespace Services.Server
             FysiekeServerResponse.ResourcesAvailable response = new();
             response.Servers = new List<FysiekeServerDto.Beschikbaarheid>();
 
+            DateTime FromDate = DateTime.Parse(date.FromDate);
+            DateTime ToDate = DateTime.Parse(date.ToDate);
 
 
             foreach (var server in _servers)
@@ -72,7 +74,7 @@ namespace Services.Server
                 Hardware max = server.HardWare;
                 foreach (var vm in server.VirtualMachines)
                 {
-                    if (vm.Contract.EndDate < date.FromDate || vm.Contract.StartDate > date.ToDate)
+                    if (vm.Contract.EndDate < FromDate || vm.Contract.StartDate > ToDate)
                     {
                         continue;
                     }
@@ -192,7 +194,7 @@ namespace Services.Server
             throw new NotImplementedException();
         }
 
-        public Task<FysiekeServerResponse.GraphValues> GetGraphValueForServer(FysiekeServerRequest.GetIndex request)
+        public Task<FysiekeServerResponse.GraphValues> GetGraphValueForServer(FysiekeServerRequest.Date request)
         {
             throw new NotImplementedException();
         }

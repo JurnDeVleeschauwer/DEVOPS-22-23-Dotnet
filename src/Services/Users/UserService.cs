@@ -46,8 +46,10 @@ namespace Services.Users
                 FirstName = request.User.FirstName,
                 LastName = request.User.Name,
                 Password = request.User.Password,
+                //UserMetadata.HogentEmail = request.User.HogentEmail,
                 //HogentEmail = request.User.HogentEmail,
                 Connection = "Username-Password-Authentication" // Name of the Database connection
+
             };
 
             var createdUser = await _managementApiClient.Users.CreateAsync(auth0Request);

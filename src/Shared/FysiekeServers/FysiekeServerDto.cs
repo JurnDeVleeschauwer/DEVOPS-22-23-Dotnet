@@ -1,4 +1,5 @@
 ﻿using Domain.Common;
+using Domain.VirtualMachines.VirtualMachine;
 using FluentValidation;
 using Shared.VirtualMachines;
 
@@ -18,7 +19,8 @@ namespace Shared.FysiekeServers
 
         public class Detail : Index
         {
-            public List<VirtualMachineDto.Rapportage> VirtualMachines { get; set; }
+            //public List<VirtualMachineDto.Rapportage> VirtualMachines { get; set; }
+            public List<VirtualMachine> VirtualMachines { get; set; }
         }
 
         public class Beschikbaarheid

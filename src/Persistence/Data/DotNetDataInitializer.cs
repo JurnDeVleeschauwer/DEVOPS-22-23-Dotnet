@@ -42,6 +42,7 @@ namespace Persistence.Data
             _dbContext.SaveChanges();
             var fysiekeServerA = new FysiekeServer("fysiekeServerA", new Hardware(5, 5, 5), "ServerAddressA");
             fysiekeServerA.HardWareAvailable = new Hardware(4, 4, 4);
+            fysiekeServerA.VirtualMachines.Add(new VirtualMachine("first", OperatingSystemEnum.FEDORA_35, new Hardware(5, 5, 5), new Backup(BackUpType.DAILY, System.DateTime.Now)));
             _dbContext.FysiekeServers.AddRange(fysiekeServerA);
             _dbContext.SaveChanges();
             // var Projecten = new ProjectFaker().Generate(1);
@@ -56,7 +57,7 @@ namespace Persistence.Data
             project1.User = userA;
             _dbContext.Projecten.AddRange(project1);
             _dbContext.SaveChanges();
-            var VMContractA = new VMContract(1, 1, System.DateTime.Now, System.DateTime.Now);
+            var VMContractA = new VMContract(1, 1, System.DateTime.Now, System.DateTime.Now.AddDays(5));
             _dbContext.VMContracts.AddRange(VMContractA);
             //_dbContext.Database.ExecuteSqlRaw("SET IDENTITY_INSERT VMContracts ON;");
             //_dbContext.Database.ExecuteSqlRaw("SET IDENTITY_INSERT Users ON;");

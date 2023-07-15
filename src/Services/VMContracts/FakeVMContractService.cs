@@ -34,6 +34,11 @@ namespace Services.VMContracts
             throw new NotImplementedException();
         }
 
+        public Task<VMContractResponse.GetDetail> GetDetailThroughVMIdAsync(VMContractRequest.GetDetailThroughVMId request)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<VMContractResponse.Index> GetFromDate(VMContractRequest.GetByDate request)
         {
             throw new NotImplementedException();

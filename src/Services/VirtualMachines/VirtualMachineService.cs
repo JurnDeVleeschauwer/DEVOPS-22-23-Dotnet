@@ -10,6 +10,8 @@ using Domain.VirtualMachines.BackUp;
 using Shared.FysiekeServers;
 using Shared.Projecten;
 using Services.Projecten;
+using Azure.Core;
+using System.Globalization;
 
 namespace Services.VirtualMachines
 {
@@ -32,7 +34,7 @@ namespace Services.VirtualMachines
         private IQueryable<VirtualMachine> GetVirtualMachineById(int id) => _virtualMachines
                 .AsNoTracking()
                 .Where(p => p.Id == id);
-        private IQueryable<VirtualMachine> GetVirtualMachineByDate(FysiekeServerRequest.Date date) => _virtualMachines.AsNoTracking().Where(p => p.Contract.StartDate <= date.FromDate && p.Contract.EndDate >= date.ToDate);
+        private IQueryable<VirtualMachine> GetVirtualMachineByDate(DateTime FromDate) => _virtualMachines.AsNoTracking().Where(p => p.Contract.StartDate >= FromDate);
 
 
         public async Task<VirtualMachineResponse.Create> CreateAsync(VirtualMachineRequest.Create request)
@@ -161,7 +163,11 @@ namespace Services.VirtualMachines
         public async Task<VirtualMachineResponse.GetIndexWithHardware> GetVirtualmachine(FysiekeServerRequest.Date date)
         {
             VirtualMachineResponse.GetIndexWithHardware response = new();
-            response.VirtualMachines = await GetVirtualMachineByDate(date)
+
+            DateTime FromDate = DateTime.Parse(date.FromDate);
+            DateTime ToDate = DateTime.Parse(date.ToDate);
+
+            response.VirtualMachines = await GetVirtualMachineByDate(FromDate)
                 .Select(x => new VirtualMachineDto.IndexHardWare
                 {
                     Id = x.Id,

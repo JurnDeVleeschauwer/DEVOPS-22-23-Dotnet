@@ -45,6 +45,11 @@ namespace Client.VirtualMachines
             throw new NotImplementedException();
         }
 
+        public Task<VMContractResponse.GetDetail> GetDetailThroughVMIdAsync(VMContractRequest.GetDetailThroughVMId request)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<VMContractResponse.GetIndex> GetIndexAsync(VMContractRequest.GetIndex request)
         {
             throw new NotImplementedException();

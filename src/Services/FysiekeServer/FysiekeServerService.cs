@@ -7,14 +7,18 @@ using Microsoft.EntityFrameworkCore;
 using Domain.Server;
 using System;
 using Domain.Common;
+using Services.VirtualMachines;
+using Shared.VMContracts;
+using System.Globalization;
 
 namespace Services.FysiekeServers
 {
     public class FysiekeServerService : IFysiekeServerService
     {
-        public FysiekeServerService(DotNetDbContext dbContext, IVirtualMachineService virtualMachinesService)
+        public FysiekeServerService(DotNetDbContext dbContext, IVirtualMachineService virtualMachinesService, IVMContractService VMContractService)
         {
             _virtualMachinesService = virtualMachinesService;
+            _VMContractService = VMContractService;
             _dbContext = dbContext;
             _fysiekeServers = dbContext.FysiekeServers;
         }
@@ -23,6 +27,8 @@ namespace Services.FysiekeServers
         private readonly DbSet<FysiekeServer> _fysiekeServers;
 
         private IVirtualMachineService _virtualMachinesService;
+
+        private IVMContractService _VMContractService;
 
         private IQueryable<FysiekeServer> GetFysiekeServerById(int id) => _fysiekeServers
                 .AsNoTracking()
@@ -88,6 +94,7 @@ namespace Services.FysiekeServers
                     ServerAddress = x.ServerAddress,
                     Hardware = x.HardWare,
                     HardWareAvailable = x.HardWareAvailable,
+                    VirtualMachines = x.VirtualMachines
 
                 })
                 .SingleOrDefaultAsync();
@@ -152,9 +159,13 @@ namespace Services.FysiekeServers
             return response;
         }
 
-        public async Task<FysiekeServerResponse.GraphValues> GetGraphValueForServer(FysiekeServerRequest.GetIndex request)
+        public async Task<FysiekeServerResponse.GraphValues> GetGraphValueForServer(FysiekeServerRequest.Date request)
         {
 
+            DateTime FromDate = DateTime.Parse(request.FromDate);
+            DateTime ToDate = DateTime.Parse(request.ToDate);
+            
+ 
             var query = _fysiekeServers.AsQueryable().AsNoTracking();
 
             query.OrderBy(x => x.Name);
@@ -167,6 +178,7 @@ namespace Services.FysiekeServers
                 HardWareAvailable = x.HardWareAvailable
             }).ToListAsync();
 
+
             Dictionary<DateTime, Hardware> max = new();
 
             Hardware maxHardware = GetMaxCapacity(_servers);
@@ -178,24 +190,32 @@ namespace Services.FysiekeServers
             {
                 foreach (var _server in _servers)
                 {
-                    if (_server.VirtualMachines.Count > 0)
+                    FysiekeServerRequest.GetDetail request1 = new();
+                    request1.FysiekeServerId = _server.Id;
+                    var server = GetDetailAsync(request1);
+                    var virtualMachines = server.Result.FysiekeServer.VirtualMachines;
+
+                    if (virtualMachines != null && virtualMachines.Count > 0)
                     {
-                        foreach (var _vm in _server.VirtualMachines)
+                        foreach (var _vm in virtualMachines)
                         {
-                            if (_vm.Contract.EndDate > today)
+                            VMContractRequest.GetDetailThroughVMId request2 = new();
+                            request2.VMId = _vm.Id;
+                            var contract = _VMContractService.GetDetailThroughVMIdAsync(request2).Result.VMContract;
+                            if (contract.EndDate > today)
                             {
 
-                                if (_vm.Contract.StartDate <= today)
+                                if (contract.StartDate <= today)
                                 {
-                                    start = DateTime.Parse($"{today.Day}/{today.Month}/{today.Year} 00:00");
+                                    start = DateTime.Parse($"{FromDate.Day}/{FromDate.Month}/{FromDate.Year} 00:00");
                                 }
                                 else
                                 {
-                                    start = DateTime.Parse($"{_vm.Contract.StartDate.Day}/{_vm.Contract.StartDate.Month}/{_vm.Contract.StartDate.Year} 00:00");
+                                    start = DateTime.Parse($"{contract.StartDate.Day}/{contract.StartDate.Month}/{contract.StartDate.Year} 00:00");
                                 }
 
                                 DateTime value = start;
-                                for (int i = 0; i < end.Subtract(start).TotalDays; i++)
+                                for (int i = 0; i < ToDate.Subtract(start).TotalDays; i++)
                                 {
                                     if (!max.ContainsKey(value))
                                     {

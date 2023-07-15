@@ -105,9 +105,24 @@ namespace Services.VMContracts
             throw new NotImplementedException();
         }
 
-        Task IVMContractService.DeleteAsync(VMContractRequest.Delete request)
+
+        public async Task<VMContractResponse.GetDetail> GetDetailThroughVMIdAsync(VMContractRequest.GetDetailThroughVMId request)
         {
-            throw new NotImplementedException();
+            VMContractResponse.GetDetail response = new();
+            response.VMContract = await GetVMContractById(request.VMId)
+                .Select(x => new VMContractDto.Detail
+                {
+                    Id = x.Id,
+                    CustomerId = x.CustomerId,
+                    VMId = x.VMId,
+                    StartDate = x.StartDate,
+                    EndDate = x.EndDate
+
+                })
+                .SingleOrDefaultAsync();
+            return response;
         }
+
+
     }
 }
