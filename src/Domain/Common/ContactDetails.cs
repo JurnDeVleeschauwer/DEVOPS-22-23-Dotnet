@@ -13,10 +13,10 @@ namespace Domain.Common
         private string _fName;
         private string _lName;
 
-        public String PhoneNumber { get { return _phoneNumber; } set { if (PropertyValidator.IsPhoneNumberValid(value)) _phoneNumber = value; } }
-        public String Email { get { return _email; } set { if (PropertyValidator.IsValidEmail(value)) _email = value; } }
-        public String FirstName { get { return _fName; } set { _fName = Guard.Against.NullOrEmpty(value, nameof(_fName)); } }
-        public String LastName { get { return _lName; } set { _lName = Guard.Against.NullOrEmpty(value, nameof(_lName)); } }
+        public String PhoneNumber { get; set; }
+        public String Email { get; set; }
+        public String FirstName { get; set; }
+        public String LastName { get; set; }
 
 
         public ContactDetails() { }

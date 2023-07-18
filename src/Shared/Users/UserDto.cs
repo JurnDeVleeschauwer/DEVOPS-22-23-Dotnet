@@ -45,7 +45,7 @@ namespace Shared.Users
             public string? Bedrijf { get; set; }
             public ContactDetails? Contactpersoon { get; set; }
 
-            public class Validator : AbstractValidator<Mutate>
+            /*public class Validator : AbstractValidator<Mutate>
             {
                 public Validator()
                 {
@@ -53,16 +53,17 @@ namespace Shared.Users
                     RuleFor(x => x.Name).NotNull().NotEmpty().Length(1, 250);
                     RuleFor(x => PropertyValidator.IsValidEmail(x.Email));
                     RuleFor(x => PropertyValidator.IsPhoneNumberValid(x.PhoneNumber));
-                    RuleFor(x => x.Course).NotEmpty();
-                    RuleFor(x => x.Bedrijf).NotEmpty();
+                    //RuleFor(x => x.Course).NotEmpty();
+                    //RuleFor(x => x.Bedrijf).NotEmpty();
                 }
-            }
+            }*/
         }
         public class Create : Mutate
         {
+            [Required(ErrorMessage = "Je moet een wachtwoord ingeven.")]
             public string Password { get; set; }
 
-            public new class Validator : AbstractValidator<Create>
+            /*public new class Validator : AbstractValidator<Create>
             {
                 public Validator()
                 {
@@ -70,11 +71,11 @@ namespace Shared.Users
                     RuleFor(x => x.Name).NotNull().NotEmpty().Length(1, 250).Matches("^[a-z ,.'éèëàçù-]+$");
                     RuleFor(x => PropertyValidator.IsValidEmail(x.Email));
                     RuleFor(x => PropertyValidator.IsPhoneNumberValid(x.PhoneNumber));
-                    RuleFor(x => x.Course).NotEmpty();
-                    RuleFor(x => x.Bedrijf).NotEmpty();
+                    //RuleFor(x => x.Course).NotEmpty();
+                    //RuleFor(x => x.Bedrijf).NotEmpty();
                     RuleFor(x => x.Password).Matches("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$");
                 }
-            }
+            }*/
 
 
         }

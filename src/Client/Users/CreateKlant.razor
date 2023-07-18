@@ -2,7 +2,7 @@
 @using Domain.Users;
 
 <EditForm Model="model" OnValidSubmit="RegistreerKlant">
-    <FluentValidationValidator />
+    <DataAnnotationsValidator />
     <ValidationSummary />
     <h1 class="title is-3">Gebruiker</h1>
     <div class="field columns">
@@ -216,7 +216,7 @@
             </div>
         </div>*/
     }
-    <button class="button is-rechts is-success" type="submit" @onclick="RegistreerKlant">
+    <button class="button is-rechts is-success" type="submit">
         <span class="icon is-small">
             <i class="fas fa-check"></i>
         </span>

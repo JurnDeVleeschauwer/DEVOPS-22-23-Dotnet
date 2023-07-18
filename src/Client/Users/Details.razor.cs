@@ -9,7 +9,7 @@ public partial class Details
     public bool Loading = false;
     public bool Edit = false;
     public bool Intern = false;
-    private UserDto.Detail User;
+    private UserDto.Detail User = null;
     [Parameter] public int Id { get; set; }
     [Inject] public IUserService UserService { get; set; }
 
@@ -24,7 +24,9 @@ public partial class Details
         Loading = true;
         var request = new UserRequest.Detail();
         request.UserId = Id;
+        Console.Out.WriteLine(request);
         var response = await UserService.GetDetail(request);
+        Console.Out.WriteLine(response);
         if (response.User != null)
         {
             User = response.User;
