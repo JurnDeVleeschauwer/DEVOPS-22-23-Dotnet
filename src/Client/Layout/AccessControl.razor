@@ -33,6 +33,7 @@
     {
         await SignOutManager.SetSignOutState();
         Navigation.NavigateTo("authentication/logout");
+        Navigation.NavigateTo("/");
     }
     private async Task BeginSignIn(MouseEventArgs args)
     {

@@ -15,7 +15,7 @@ namespace Client.Users
 
         protected override async Task OnInitializedAsync()
         {
-            model.Contactpersoon = new Domain.Common.ContactDetails();
+            //model.Contactpersoon = new Domain.Common.ContactDetails();
         }
 
         public void toggleRelation()
@@ -32,7 +32,8 @@ namespace Client.Users
             await userService.CreateAsync(request);
 
             //TODO: User inloggen
-            NavMan.NavigateTo($"/virtualmachines");
+
+            NavMan.NavigateTo($"/");
         }
     }
 }

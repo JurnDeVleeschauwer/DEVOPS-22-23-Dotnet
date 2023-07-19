@@ -12,7 +12,7 @@ namespace Client.VirtualMachines
         private VirtualMachineDto.Create virtualMachine = new();
 
         private ProjectenResponse.GetIndex projectenResponse = new();
-        [Parameter] public int Id { get; set; }
+        [Parameter] public String UserId { get; set; }
         [Inject] public IVirtualMachineService VirtualMachineService { get; set; }
         [Inject] public IProjectenService ProjectService { get; set; }
 
@@ -32,7 +32,7 @@ namespace Client.VirtualMachines
             ProjectenRequest.GetIndexForUser request = new();
 
 
-            request.UserId = Id;
+            request.UserId = UserId;
 
             projectenResponse = await ProjectService.GetIndexAsync(request);
         }
@@ -41,7 +41,7 @@ namespace Client.VirtualMachines
         {
             VirtualMachineRequest.Create request = new()
             {
-                CustomerId = Id,
+                CustomerId = UserId,
                 VirtualMachine = virtualMachine
             };
 

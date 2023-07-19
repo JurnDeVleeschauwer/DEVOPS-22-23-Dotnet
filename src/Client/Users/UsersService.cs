@@ -39,7 +39,6 @@ namespace Client.Users
             var HttpClient = _IHttpClientFactory.CreateClient("AuthenticatedServerAPI");
 
             var response = await HttpClient.PostAsJsonAsync(endpoint, request);
-            Console.WriteLine(response);
             return await response.Content.ReadFromJsonAsync<UserResponse.Create>();
         }
 

@@ -21,7 +21,7 @@ namespace Services.VirtualMachines
         public async Task DeleteAsync(VirtualMachineRequest.Delete request)
         {
             await Task.Delay(100);
-            var p = _virtualMachines.SingleOrDefault(x => x.Id == request.VirtualMachineId);
+            var p = _virtualMachines.SingleOrDefault(x => x.Id.Equals(request.VirtualMachineId));
             _virtualMachines.Remove(p);
 
         }

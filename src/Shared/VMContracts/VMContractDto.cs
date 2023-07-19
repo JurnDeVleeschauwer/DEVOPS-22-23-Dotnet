@@ -14,7 +14,7 @@ namespace Shared.VMContracts
         {
             public int Id { get; set; }
 
-            public int CustomerId { get; set; }
+            public String CustomerId { get; set; }
             public int VMId { get; set; }
             public DateTime StartDate { get; set; }
             public DateTime EndDate { get; set; }
@@ -26,7 +26,7 @@ namespace Shared.VMContracts
 
         public class Mutate
         {
-            public int CustomerId { get; set; }
+            public String CustomerId { get; set; }
             public int VMId { get; set; }
             public DateTime StartDate { get; set; }
             public DateTime EndDate { get; set; }

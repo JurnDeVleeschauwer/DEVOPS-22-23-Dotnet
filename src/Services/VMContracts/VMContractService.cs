@@ -40,7 +40,7 @@ namespace Services.VMContracts
 
         public async Task DeleteAsync(VMContractRequest.Delete request)
         {
-            _VMContracts.RemoveIf(p => p.Id == request.VMContractId);
+            _VMContracts.RemoveIf(p => p.Id.Equals(request.VMContractId));
             await _dbContext.SaveChangesAsync();
         }
 

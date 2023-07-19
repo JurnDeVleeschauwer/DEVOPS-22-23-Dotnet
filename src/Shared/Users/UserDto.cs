@@ -11,7 +11,7 @@ namespace Shared.Users
     {
         public class Index
         {
-            public int Id { get; set; }
+            public String Id { get; set; }
             public string FirstName { get; set; }
             public string Name { get; set; }
             public string Email { get; set; }
@@ -34,16 +34,16 @@ namespace Shared.Users
             public string FirstName { get; set; }
             [Required(ErrorMessage = "Je moet een naam ingeven.")]
             public string Name { get; set; }
-            [Required(ErrorMessage = "Je moet een gsm-nummer ingeven.")]
-            [BelgianPhoneNumber]
-            public string PhoneNumber { get; set; }
+            /*[Required(ErrorMessage = "Je moet een gsm-nummer ingeven.")]
+            [BelgianPhoneNumber] // TODO “The phone number was not valid. Please make sure the number is correct, including country code, and “+” prefix”
+            public string PhoneNumber { get; set; }*/
             [Required(ErrorMessage = "Je moet een email ingeven.")]
-            [EmailAddress]
+            [Email]
             [DataType(DataType.EmailAddress)]
             public string Email { get; set; }
             public Course? Course { get; set; }
             public string? Bedrijf { get; set; }
-            public ContactDetails? Contactpersoon { get; set; }
+            //public ContactDetails? Contactpersoon { get; set; }
 
             /*public class Validator : AbstractValidator<Mutate>
             {
@@ -61,6 +61,7 @@ namespace Shared.Users
         public class Create : Mutate
         {
             [Required(ErrorMessage = "Je moet een wachtwoord ingeven.")]
+            [Wachtwoord]
             public string Password { get; set; }
 
             /*public new class Validator : AbstractValidator<Create>

@@ -60,8 +60,8 @@ namespace Client.VirtualMachines
         {
             var HttpClient = _IHttpClientFactory.CreateClient("AuthenticatedServerAPI");
 
-            var queryParameters = request.UserId;
-            var response = await HttpClient.GetFromJsonAsync<ProjectenResponse.GetIndex>($"{endpoint}/User/{queryParameters}");
+            var queryParameters = request.GetQueryString();
+            var response = await HttpClient.GetFromJsonAsync<ProjectenResponse.GetIndex>($"{endpoint}/User?{queryParameters}");
             return response;
         }
     }

@@ -22,7 +22,7 @@ namespace Shared.Users
 
         public class Edit
         {
-            public int Id { get; set; }
+            public String Id { get; set; }
         }
 
         public class AllAdminsIndex

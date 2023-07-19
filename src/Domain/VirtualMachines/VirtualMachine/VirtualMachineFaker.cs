@@ -60,7 +60,7 @@ namespace Domain.VirtualMachines.VirtualMachine
 
                 });
 
-            RuleFor(x => x.Id, _ => id++);
+            //RuleFor(x => x.Id, _ => id++);
             RuleFor(x => x.Connection, _ => new Random().Next(0, 2) % 1 == 0 ? new VMConnection("MOCK-FQDN", GetRandomIpAddress(), "MOCK-USER", PasswordGenerator.Generate(20, 3, 3, 3, 3)) : null);
             RuleFor(x => x.Mode, x => x.PickRandom<VirtualMachineMode>());
             //RuleFor(x => x.Contract, _ => contract);

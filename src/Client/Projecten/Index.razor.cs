@@ -15,7 +15,7 @@ namespace Client.Projecten
         [Inject] public IProjectenService ProjectService { get; set; }
         [Inject] public ISidepanelService Sidepanel { get; set; }
 
-        [Parameter] public int Id { get; set; }
+        [Parameter] public String UserId { get; set; }
 
         [Inject] NavigationManager Router { get; set; }
 
@@ -28,7 +28,7 @@ namespace Client.Projecten
 
             ProjectenRequest.GetIndexForUser request = new()
             {
-                UserId = Id
+                UserId = UserId
             };
 
             var response = await ProjectService.GetIndexAsync(request);

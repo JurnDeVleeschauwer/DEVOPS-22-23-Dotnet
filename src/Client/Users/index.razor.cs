@@ -17,7 +17,7 @@ public partial class Index
         var response = await UserService.GetIndexAsync(request);
         Users = response.Users;
     }
-    private void NavToDetail(int id)
+    private void NavToDetail(String id)
     {
         NavigationManager.NavigateTo($"User/{id}");
     }

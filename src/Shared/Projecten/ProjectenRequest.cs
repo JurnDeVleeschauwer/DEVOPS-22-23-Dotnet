@@ -12,7 +12,7 @@ namespace Shared.Projecten
 
         public class GetIndexForUser
         {
-            public int UserId { get; set; }
+            public String UserId { get; set; }
 
         }
 

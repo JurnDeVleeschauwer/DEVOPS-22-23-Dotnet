@@ -21,13 +21,13 @@ namespace Shared.Users
         }
         public class Detail
         {
-            public int UserId { get; set; }
+            public String UserId { get; set; }
         }
 
 
         public class Edit
         {
-            public int UserId { get; set; }
+            public String UserId { get; set; }
             public UserDto.Mutate User { get; set; }
         }
     }

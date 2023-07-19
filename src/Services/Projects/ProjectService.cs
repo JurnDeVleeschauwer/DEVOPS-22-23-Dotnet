@@ -26,9 +26,9 @@ namespace Services.Projecten
                 .AsNoTracking()
                 .Where(p => p.Id == id);
 
-        private IQueryable<Project> GetProjectByUserId(int id) => _projecten
+        private IQueryable<Project> GetProjectByUserId(String id) => _projecten
                 .AsNoTracking()
-                .Where(p => p.User.Id == id);
+                .Where(p => p.User.UserId.Equals(id));
 
         public async Task<ProjectenResponse.Create> CreateAsync(ProjectenRequest.Create request)
         {

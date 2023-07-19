@@ -17,6 +17,8 @@ namespace Domain
         private string _password;
 
         public int Id { get; set; }
+
+        public String UserId { get; set; }
         public String Name { get { return _name; } set { _name = Guard.Against.NullOrEmpty(value, nameof(_name)); } }
         public String FirstName { get { return _first_name; } set { _first_name = Guard.Against.NullOrEmpty(value, nameof(_first_name)); } }
         public String PhoneNumber { get { return _phoneNr; } set { if (PropertyValidator.IsPhoneNumberValid(value)) _phoneNr = value; } }

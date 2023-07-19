@@ -11,7 +11,7 @@ namespace Shared.VMContracts
 
         public class GetIndex
         {
-            public int CustomerId { get; set; }
+            public String CustomerId { get; set; }
             public int VMId { get; set; }
             public DateTime StartDate { get; set; }
             public DateTime EndDate { get; set; }

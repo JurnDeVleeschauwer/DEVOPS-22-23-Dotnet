@@ -29,7 +29,7 @@ namespace Domain.VirtualMachines.Contract
 
         public VMContractFaker()
         {
-            CustomInstantiator(e => new VMContract(id, id, DateTime.Now.Subtract(TimeSpan.FromDays(RandomNumberGenerator.GetInt32(300))), DateTime.Now.AddDays(RandomNumberGenerator.GetInt32(200))));
+            CustomInstantiator(e => new VMContract(id.ToString(), id, DateTime.Now.Subtract(TimeSpan.FromDays(RandomNumberGenerator.GetInt32(300))), DateTime.Now.AddDays(RandomNumberGenerator.GetInt32(200))));
             RuleFor(e => e.Id, _ => id++);
 
         }

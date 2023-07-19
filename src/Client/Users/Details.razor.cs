@@ -10,7 +10,7 @@ public partial class Details
     public bool Edit = false;
     public bool Intern = false;
     private UserDto.Detail User = null;
-    [Parameter] public int Id { get; set; }
+    [Parameter] public String UserId { get; set; }
     [Inject] public IUserService UserService { get; set; }
 
     protected override async Task OnInitializedAsync()
@@ -23,7 +23,7 @@ public partial class Details
     {
         Loading = true;
         var request = new UserRequest.Detail();
-        request.UserId = Id;
+        request.UserId = UserId;
         Console.Out.WriteLine(request);
         var response = await UserService.GetDetail(request);
         Console.Out.WriteLine(response);
@@ -76,7 +76,7 @@ public partial class Details
         model.FirstName = User.FirstName;
         model.Name = User.Name;
         model.Email = User.Email;
-        model.PhoneNumber = User.PhoneNumber;
+        //model.PhoneNumber = User.PhoneNumber;
         if (User.Course is not null)
         {
             model.Course = User.Course;

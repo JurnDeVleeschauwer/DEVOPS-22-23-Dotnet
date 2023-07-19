@@ -37,7 +37,7 @@ namespace Shared.VirtualMachines
         public class Create
         {
             public VirtualMachineDto.Create VirtualMachine { get; set; }
-            public int CustomerId { get; set; }
+            public String CustomerId { get; set; }
 
         }
 

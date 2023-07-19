@@ -30,6 +30,7 @@ namespace Services.Users
                 FirstName = x.FirstName,
                 Name = x.LastName,
                 //HogentEmail = x.HogentEmail
+                Id = x.UserId
             }).ToList();
 
             return response;
@@ -42,7 +43,7 @@ namespace Services.Users
             var auth0Request = new UserCreateRequest
             {
                 Email = request.User.Email,
-                PhoneNumber = request.User.PhoneNumber,
+                //PhoneNumber = request.User.PhoneNumber,
                 FirstName = request.User.FirstName,
                 LastName = request.User.Name,
                 Password = request.User.Password,
@@ -56,7 +57,7 @@ namespace Services.Users
 
             // Caching might be nice here
             var allRoles = await _managementApiClient.Roles.GetAllAsync(new GetRolesRequest());
-            var adminRole = allRoles.First(x => x.Name == "Administrator");
+            var adminRole = allRoles.First(x => x.Name == "Admin");
 
             var assignRoleRequest = new AssignRolesRequest
             {
