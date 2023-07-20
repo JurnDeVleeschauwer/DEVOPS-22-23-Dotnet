@@ -910,3 +910,5 @@ $RECYCLE.BIN/
 .bin
 net6.0
 *.cache
+tests/IntegrationTests/obj/Debug/net6.0/IntegrationTests.GeneratedMSBuildEditorConfig.editorconfig
+tests/IntegrationTests/obj/Debug/net6.0/IntegrationTests.assets.cache

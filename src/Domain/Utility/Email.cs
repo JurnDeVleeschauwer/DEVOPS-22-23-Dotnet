@@ -17,7 +17,7 @@ namespace Domain.Utility
 
             if (trimmedEmail.EndsWith(".")) return new ValidationResult("Email is niet correct."); // suggested by @TK-421
 
-            if (!char.IsLetter(email.Last())) return new ValidationResult("Gsmnummer is niet correct.");
+            if (!char.IsLetter(email.Last())) return new ValidationResult("Email is niet correct.");
             try
             {
                 var addr = new System.Net.Mail.MailAddress(email);

@@ -9,6 +9,22 @@
 <Client.Layout.AccessControl></Client.Layout.AccessControl>
 
 
+
+
+
+
+<AuthorizeView>
+    <Authorized>
+        @foreach (var claim in context.User.Claims)
+        {
+            <p>@claim.Type - @claim.Value</p>
+        }
+    </Authorized>
+</AuthorizeView>
+
+
+
+
 @code {
     [Inject] public ISidepanelService Sidepanel { get; set; }
 

@@ -9,7 +9,7 @@ public partial class Details
     public bool Loading = false;
     public bool Edit = false;
     public bool Intern = false;
-    private UserDto.Detail User = null;
+    private UserDto.Detail User;
     [Parameter] public String UserId { get; set; }
     [Inject] public IUserService UserService { get; set; }
 
@@ -24,9 +24,7 @@ public partial class Details
         Loading = true;
         var request = new UserRequest.Detail();
         request.UserId = UserId;
-        Console.Out.WriteLine(request);
         var response = await UserService.GetDetail(request);
-        Console.Out.WriteLine(response);
         if (response.User != null)
         {
             User = response.User;
@@ -59,7 +57,7 @@ public partial class Details
 
     private async void EditUser()
     {
-
+        //var claims = context.User.Claims;
         UserRequest.Edit request = new()
         {
             UserId = User.Id,
