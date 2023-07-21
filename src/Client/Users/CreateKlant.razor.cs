@@ -29,7 +29,7 @@ namespace Client.Users
             request.User.user_metadata.Intern = isIntern;
             await userService.CreateAsync(request);
 
-            //TODO: User inloggen
+            // User inloggen can't niet volgens auth0
 
             NavMan.NavigateTo($"/");
         }

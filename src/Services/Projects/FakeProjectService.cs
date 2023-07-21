@@ -24,7 +24,8 @@ namespace Services.Projects
 
         public async Task<ProjectenResponse.Create> CreateAsync(ProjectenRequest.Create request)
         {
-            await Task.Delay(100);
+            throw new NotImplementedException();
+            /*await Task.Delay(100);
 
             ProjectenResponse.Create response = new();
 
@@ -40,7 +41,7 @@ namespace Services.Projects
 
             response.ProjectenId = id;
 
-            return response;
+            return response;*/
         }
 
         public async Task DeleteAsync(ProjectenRequest.Delete request)

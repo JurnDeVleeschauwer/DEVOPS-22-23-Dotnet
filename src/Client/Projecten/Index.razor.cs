@@ -62,5 +62,10 @@ namespace Client.Projecten
             Router.NavigateTo("virtualmachine/" + id);
         }
 
+        public void NavigateToCreateProject()
+        {
+            Router.NavigateTo("projecten/add");
+        }
+
     }
 }

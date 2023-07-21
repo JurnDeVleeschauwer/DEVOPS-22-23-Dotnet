@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Domain.Projecten;
 using System;
 using Domain.Common;
-
+using Domain.Users;
 
 namespace Services.Projecten
 {
@@ -33,8 +33,15 @@ namespace Services.Projecten
         public async Task<ProjectenResponse.Create> CreateAsync(ProjectenRequest.Create request)
         {
             ProjectenResponse.Create response = new();
+            //TODO get and create domien User to give to project
+            UserRequest.Detail request2 = new();
+            request2.UserId = UserId;
+            var response = await userService.GetDetail(request2);
+            request.Project.user = response.User;
+
             var project = _projecten.Add(new Project(
-                request.Projecten.Name
+                request.Project.Name,
+                new User() { UserId = request.Project.UserId }
             ));
             await _dbContext.SaveChangesAsync();
             response.ProjectenId = project.Entity.Id;

@@ -45,8 +45,8 @@ namespace Server.Controllers
             return projectenService.DeleteAsync(request);
         }
 
-        [Authorize(Roles = "BeheerderBeheren")]
-        [HttpPost]
+        //[Authorize(Roles = "BeheerderBeheren")]
+        [HttpPost, AllowAnonymous]
         public Task<ProjectenResponse.Create> CreateAsync([FromBody] ProjectenRequest.Create request)
         {
             return projectenService.CreateAsync(request);

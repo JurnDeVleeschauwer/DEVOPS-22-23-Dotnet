@@ -24,9 +24,15 @@ namespace Client.VirtualMachines
             throw new NotImplementedException();
         }
 
-        public Task<ProjectenResponse.Create> CreateAsync(ProjectenRequest.Create request)
+        public async Task<ProjectenResponse.Create> CreateAsync(ProjectenRequest.Create request)
         {
-            throw new NotImplementedException();
+            var HttpClient = _IHttpClientFactory.CreateClient("AuthenticatedServerAPI");
+
+
+            var response = await HttpClient.PostAsJsonAsync(endpoint, request);
+            return await response.Content.ReadFromJsonAsync<ProjectenResponse.Create>();
+
+
         }
 
         public Task DeleteAsync(ProjectenRequest.Delete request)

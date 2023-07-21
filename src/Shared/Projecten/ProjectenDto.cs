@@ -1,6 +1,7 @@
 using FluentValidation;
 using Domain.Users;
 using Domain.VirtualMachines.VirtualMachine;
+using System.ComponentModel.DataAnnotations;
 
 namespace Shared.Projecten
 {
@@ -27,6 +28,13 @@ namespace Shared.Projecten
             public User user { get; set; }
             public List<VirtualMachine> VirtualMachines { get; set; }
 
+        }
+
+        public class Create
+        {
+            [Required(ErrorMessage = "Je moet een naam ingeven.")]
+            public String Name { get; set; }
+            public String UserId { get; set; }
         }
     }
 }

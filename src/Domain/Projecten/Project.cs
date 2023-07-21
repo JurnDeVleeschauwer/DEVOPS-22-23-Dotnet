@@ -27,6 +27,12 @@ namespace Domain.Projecten
         {
             this.Name = name;
         }
+
+        public Project(string name, User user)
+        {
+            this.Name = name;
+            this.User = user;
+        }
         public VirtualMachine GetVirtualMachineById(int id)
         {
             return _vms.First(e => e.Id == id);

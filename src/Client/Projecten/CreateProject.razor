@@ -1,0 +1,26 @@
+@page "/projecten/add"
+@using Domain.Users;
+
+<EditForm Model="model" OnValidSubmit="CreateProjectAsync">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <h1 class="title is-3">Project</h1>
+    <div class="field columns">
+        <div class="column">
+            <label for="Name" class="label">Naam</label>
+            <p class="control has-icons-left">
+                <InputText class="input" placeholder="Project1" @bind-Value="model.Name" />
+                <span class="icon is-small is-left">
+                    <i class="fas fa-user"></i>
+                </span>
+            </p>
+        </div>
+    </div>
+    <button class="button is-rechts is-success" type="submit">
+        <span class="icon is-small">
+            <i class="fas fa-check"></i>
+        </span>
+        <span>Project aanmaken</span>
+    </button>
+</EditForm>
+

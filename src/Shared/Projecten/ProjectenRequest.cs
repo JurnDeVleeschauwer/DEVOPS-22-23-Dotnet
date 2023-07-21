@@ -28,7 +28,7 @@ namespace Shared.Projecten
 
         public class Create
         {
-            public ProjectenDto.Mutate Projecten { get; set; }
+            public ProjectenDto.Create Project { get; set; }
         }
 
         public class Edit

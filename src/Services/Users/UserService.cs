@@ -116,7 +116,14 @@ namespace Services.Users
         }
 
         public Task<UserResponse.Edit> EditAsync(UserRequest.Edit request)
-        {
+        {   //TODO
+            /*UserUpdateRequest
+            UserResponse.Edit response = new();
+            response.User = new();
+            response.User.user_metadata = new();
+            var user = await _managementApiClient.Users.UpdateAsync(request.UserId, );
+
+            return response;*/
             throw new NotImplementedException();
         }
 
