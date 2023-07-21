@@ -15,6 +15,7 @@ namespace Domain.Utility
             var email = value.ToString();
             var trimmedEmail = email.Trim();
 
+            if (!email.Contains(".")) return new ValidationResult("Email is niet correct.");
             if (trimmedEmail.EndsWith(".")) return new ValidationResult("Email is niet correct."); // suggested by @TK-421
 
             if (!char.IsLetter(email.Last())) return new ValidationResult("Email is niet correct.");

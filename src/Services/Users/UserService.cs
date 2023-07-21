@@ -26,7 +26,7 @@ namespace Services.Users
             response.Users = users.Select(x => new UserDto.Index
             {
                 Email = x.Email,
-                PhoneNumber = x.PhoneNumber,
+                //PhoneNumber = x.PhoneNumber,
                 FirstName = x.FirstName,
                 Name = x.LastName,
                 //HogentEmail = x.HogentEmail
@@ -49,6 +49,7 @@ namespace Services.Users
                 Password = request.User.Password,
                 //UserMetadata.HogentEmail = request.User.HogentEmail,
                 //HogentEmail = request.User.HogentEmail,
+                UserMetadata = request.User.user_metadata,
                 Connection = "Username-Password-Authentication" // Name of the Database connection
 
             };
@@ -81,12 +82,19 @@ namespace Services.Users
 
             if (user is not null)
             {
-                //response.User.Bedrijf = user.Bedrijf;
-                //response.User.Course = user.Course;
+                response.User.user_metadata.Intern = user.UserMetadata.Intern;
+                if (!response.User.user_metadata.Intern)
+                {
+                    response.User.user_metadata.Bedrijf = user.UserMetadata.Bedrijf;
+                }
+                else
+                {
+                    response.User.user_metadata.Course = user.UserMetadata.Course;
+                }
                 response.User.Email = user.Email;
                 response.User.FirstName = user.FirstName;
                 response.User.Name = user.LastName;
-                response.User.PhoneNumber = user.PhoneNumber;
+                //response.User.PhoneNumber = user.PhoneNumber;
                 //response.User.Role = user.Role;
 
                 ProjectenRequest.GetIndexForUser request2 = new();

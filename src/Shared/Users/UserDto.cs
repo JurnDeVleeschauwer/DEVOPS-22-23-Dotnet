@@ -15,14 +15,13 @@ namespace Shared.Users
             public string FirstName { get; set; }
             public string Name { get; set; }
             public string Email { get; set; }
-            public string PhoneNumber { get; set; }
+            //public string PhoneNumber { get; set; }
             public Role Role { get; set; }
         }
 
         public class Detail : Index
         {
-            public string? Bedrijf { get; set; }
-            public Course? Course { get; set; }
+            public User_metadata user_metadata { get; set; }
             public List<ProjectenDto.Index> Projects { get; set; }
             //public ContactDetails? contactPersoon { get; set; }
         }
@@ -41,8 +40,9 @@ namespace Shared.Users
             [Email]
             [DataType(DataType.EmailAddress)]
             public string Email { get; set; }
-            public Course? Course { get; set; }
-            public string? Bedrijf { get; set; }
+
+            public User_metadata user_metadata { get; set; }
+
             //public ContactDetails? Contactpersoon { get; set; }
 
             /*public class Validator : AbstractValidator<Mutate>
@@ -79,6 +79,12 @@ namespace Shared.Users
             }*/
 
 
+        }
+        public class User_metadata
+        {
+            public string? Bedrijf { get; set; }
+            public Course? Course { get; set; }
+            public Boolean Intern { get; set; }
         }
 
     }

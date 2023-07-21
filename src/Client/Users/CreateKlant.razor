@@ -77,14 +77,12 @@
             <label class="label">Opleiding</label>
             <div class="control has-icons-left">
                 <div class="select is-primary">
-                    <InputSelect @bind-Value="model.Course">
-                        <option value="@Course.TOEGEPASTE_INFORMATICA">IT & Digitale Inovatie</option>
-                        <option value="@Course.AGRO_EN_BIOTECHNOLOGIE">Agro- & Biotechnologie</option>
-                        <option value="@Course.BIOMEDISCHE_LABORATORIUMTECHNOLOGIE">Biomedische Laboratoriumtechnologie
-                        </option>
-                        <option value="@Course.CHEMIE">Chemie</option>
-                        <option value="@Course.DIGITAL_DESIGN_AND_DEVELOPMENT">Digital Design & Development</option>
-                        <option value="@Course.ELEKTROMECHANICA">Electromechanica</option>
+                    <InputSelect @bind-Value="model.user_metadata.Course">
+                        <option selected value=null>Select...</option>
+                        @foreach (var CourseEnum in Enum.GetValues(typeof(Course)))
+                        {
+                            <option value="@CourseEnum">@CourseEnum</option>
+                        }
                     </InputSelect>
                 </div>
                 <div class="icon is-small is-left">
@@ -100,7 +98,7 @@
                 <div class="column">
                     <label class="label">Bedrijf</label>
                     <p class="control has-icons-left has-icons-right">
-                        <InputText class="input" placeholder="Bedrijfsnaam" @bind-Value="model.Bedrijf" />
+                        <InputText class="input" placeholder="Bedrijfsnaam" @bind-Value="model.user_metadata.Bedrijf" />
                         <span class="icon is-small is-left">
                             <i class="fas fa-briefcase"></i>
                         </span>
@@ -177,3 +175,10 @@
         <span>Account aanmaken</span>
     </button>
 </EditForm>
+
+@code{
+        public void toggleRelation()
+        {
+            isIntern = !isIntern;
+        }
+}

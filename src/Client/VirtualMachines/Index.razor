@@ -6,36 +6,37 @@
 
 @if (_projects is null)
 {
-    <p>Even geduld ...</p>
+        <p>Even geduld ...</p>
 }
 else if (_projects.Count() == 0)
 {
-    <p>Je hebt geen projecten.</p>
+        <p>Je hebt geen projecten.</p>
 }
 else
 {
-    <h1 class="title is-3">Virtual Machines</h1>//TODO filter
+        <h1 class="title is-3">Virtual Machines</h1>
+    //TODO filter
 
-    <div class="accordion" data-test-id="virtualmachine-overview">
+        <div class="accordion" data-test-id="virtualmachine-overview"><!--TODO add addUser to project button-->
         @foreach (var project in _projects)
         {
-            <div class="card w-100 mb-3 @(Collapsed.ContainsKey(project.Id) && Collapsed[project.Id]? "active": "")">
-                <header class="card-header" @onclick="@(() => Toggle(project.Id))">
-                    <p class="card-header-title">@project.Id. @project.Name</p>
-                    <button class="card-header-icon" aria-label="more options" data-test-id="virtualmachine-button">
-                        <span class="icon">
-                            <i class="oi @(Collapsed.ContainsKey(project.Id) && Collapsed[project.Id] ? "fa-solid fa-chevron-down" : "fa-solid fa-chevron-right")"
-                        aria-hidden="true"></i>
-                        </span>
-                    </button>
-                </header>
+                    <div class="card w-100 mb-3 @(Collapsed.ContainsKey(project.Id) && Collapsed[project.Id]? "active": "")">
+                        <header class="card-header" @onclick="@(() => Toggle(project.Id))">
+                            <p class="card-header-title">@project.Id. @project.Name</p>
+                            <button class="card-header-icon" aria-label="more options" data-test-id="virtualmachine-button">
+                                <span class="icon">
+                                    <i class="oi @(Collapsed.ContainsKey(project.Id) && Collapsed[project.Id] ? "fa-solid fa-chevron-down" : "fa-solid fa-chevron-right")"
+                                aria-hidden="true"></i>
+                                </span>
+                            </button>
+                        </header>
                 @if (Loading.Contains(project.Id))
                 {
-                    <div class="card-body center">
-                        <span class="icon is-large">
-                            <i class="fas fa-lg fa-solid fa-spinner fa-spin"></i>
-                        </span>
-                    </div>
+                                <div class="card-body center">
+                                    <span class="icon is-large">
+                                        <i class="fas fa-lg fa-solid fa-spinner fa-spin"></i>
+                                    </span>
+                                </div>
                 }
 
                 else if (Collapsed.ContainsKey(project.Id) && Collapsed[project.Id])
@@ -44,46 +45,46 @@ else
                     {
                         if (_details[project.Id].VirtualMachines.Count() > 0)
                         {
-                            <div class="card-body table is-striped is-hoverable">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Status</th>
-                                            <th>Virtual Machine</th>
-                                            <th>User</th>
-                                            <th>Acties</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
+                                                <div class="card-body table is-striped is-hoverable">
+                                                    <table>
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Status</th>
+                                                                <th>Virtual Machine</th>
+                                                                <th>User</th>
+                                                                <th>Acties</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
                                         @foreach (var vm in _details[project.Id].VirtualMachines)
                                         {
 
-                                            <tr data-test-id="virtualmachine-item">
-                                                <td><span class="@vm.Mode.GetDotIcon()"></span>@vm.Mode.GetString()</td>
-                                                <td>@vm.Name</td>
-                                                <td>@(project.user.FirstName + " " + project.user.Name)</td>
-                                                <td>
-                                                    <button @onclick="() => NavigateToVMDetails(vm.Id)">Details</button>
-                                                    <!-- <button>Meer</button> -->
-                                                </td>
-                                            </tr>
+                                                                    <tr data-test-id="virtualmachine-item">
+                                                                        <td><span class="@vm.Mode.GetDotIcon()"></span>@vm.Mode.GetString()</td>
+                                                                        <td>@vm.Name</td>
+                                                                        <td>@(project.user.FirstName + " " + project.user.Name)</td>
+                                                                        <td>
+                                                                            <button @onclick="() => NavigateToVMDetails(vm.Id)">Details</button>
+                                                                            <!-- <button>Meer</button> -->
+                                                                        </td>
+                                                                    </tr>
 
                                         }
-                                    </tbody>
-                                </table>
-                            </div>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                         }
                         else
                         {
-                            <div class="card-body">
-                                <p>/</p>
-                            </div>
+                                                <div class="card-body">
+                                                    <p>/</p>
+                                                </div>
                         }
                     }
                 }
-            </div>
+                    </div>
         }
-    </div>
+        </div>
 }
 
 

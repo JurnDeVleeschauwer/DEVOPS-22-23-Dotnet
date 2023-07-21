@@ -16,11 +16,8 @@ namespace Client.Users
         protected override async Task OnInitializedAsync()
         {
             //model.Contactpersoon = new Domain.Common.ContactDetails();
-        }
-
-        public void toggleRelation()
-        {
-            isIntern = !isIntern;
+            model.user_metadata = new();
+            model.user_metadata.Course = null;
         }
 
         private async void RegistreerKlant()
@@ -29,6 +26,7 @@ namespace Client.Users
             {
                 User = model
             };
+            request.User.user_metadata.Intern = isIntern;
             await userService.CreateAsync(request);
 
             //TODO: User inloggen

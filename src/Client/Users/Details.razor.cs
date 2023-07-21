@@ -75,13 +75,13 @@ public partial class Details
         model.Name = User.Name;
         model.Email = User.Email;
         //model.PhoneNumber = User.PhoneNumber;
-        if (User.Course is not null)
+        if (User.user_metadata.Course is not null)
         {
-            model.Course = User.Course;
+            model.user_metadata.Course = User.user_metadata.Course;
         }
         else
         {
-            model.Bedrijf = User.Bedrijf;
+            model.user_metadata.Bedrijf = User.user_metadata.Bedrijf;
         }
 
     }
