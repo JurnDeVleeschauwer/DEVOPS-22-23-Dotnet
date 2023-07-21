@@ -77,6 +77,7 @@ namespace Services.Users
 
             UserResponse.Detail response = new();
             response.User = new();
+            response.User.user_metadata = new();
             var user = await _managementApiClient.Users.GetAsync(request.UserId.ToString());
 
 

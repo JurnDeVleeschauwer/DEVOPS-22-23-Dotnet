@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Domain.Users;
+using Microsoft.AspNetCore.Components;
 using Shared.Users;
 
 namespace Client.Users;
@@ -74,10 +75,11 @@ public partial class Details
         model.FirstName = User.FirstName;
         model.Name = User.Name;
         model.Email = User.Email;
+        model.user_metadata = new();
         //model.PhoneNumber = User.PhoneNumber;
         if (User.user_metadata.Course is not null)
         {
-            model.user_metadata.Course = User.user_metadata.Course;
+            model.user_metadata.Course = (Course)User.user_metadata.Course;
         }
         else
         {

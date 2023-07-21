@@ -4,77 +4,80 @@
 
 @if (Loading)
 {
-                            <div class="card-body center">
-                                <span class="icon is-large">
-                                    <i class="fas fa-lg fa-solid fa-spinner fa-spin"></i>
-                                </span>
-                            </div>
+                                    <div class="card-body center">
+                                        <span class="icon is-large">
+                                            <i class="fas fa-lg fa-solid fa-spinner fa-spin"></i>
+                                        </span>
+                                    </div>
 }
 else
 {
     @if (User == null)//TODO fix
     {
-                                                        <p>User bestaat niet...</p>
+                                                                        <p>User bestaat niet...</p>
     }
     else
     {
-                                                            <h1>Details @User.FirstName @User.Name</h1>
+                                                                            <h1>Details @User.FirstName @User.Name</h1>
 
-                                                            <div>
-                                                                <div class="ml-4">
-                                                                    <h2 class="mb-2">Algemene info</h2>
-                                                                    <div class="ml-4">
-                                                                        <div class="form-check form-switch">
-                                                                            <input @onclick="@Toggle" class="form-check-input" type="checkbox" id="switch" @bind="@Edit" />
-                                                                            <label class="form-check-labelv" for="switch">User wijzigen?</label>
-                                                                        </div>
+                                                                            <div>
+                                                                                <div class="ml-4">
+                                                                                    <h2 class="mb-2">Algemene info</h2>
+                                                                                    <div class="ml-4">
+                                                                                        <div class="form-check form-switch">
+                                                                                            <input @onclick="@Toggle" class="form-check-input" type="checkbox" id="switch" @bind="@Edit" />
+                                                                                            <label class="form-check-labelv" for="switch">User wijzigen?</label>
+                                                                                        </div>
                     @if (Intern)
                     {
-                                                                                                                                                <h3 class="mb-2 mt-0">Interne User</h3>
+                                                                                                                                                                        <h3 class="mb-2 mt-0">Interne User</h3>
                     }
                     else
                     {
-                                                                                                                                                <h3 class="mb-2 mt-0">Externe User</h3>
+                                                                                                                                                                        <h3 class="mb-2 mt-0">Externe User</h3>
                     }
                     @if (!Edit)
                     {
-                                                                                    <div class="ml-8">
-                                                                                        <div>
-                                                                                            <label class="label">Voornaam: </label>
-                                                                                            <input type="text" readonly class="input" value="@User.FirstName">
-                                                                                        </div>
-                                                                                        <div>
-                                                                                            <label class="label">Naam: </label>
-                                                                                            <input type="text" readonly class="input" value="@User.Name">
-                                                                                        </div>
-                                                                                        <div>
-                                                                                            <label class="label">Email: </label>
-                                                                                            <input type="text" readonly class="input" value="@User.Email">
-                                                                                        </div>
-                                                                                        <!--<div>
-                                                                                            <label class="label">Gms-nummer: </label>
-                                                                                            <input type="text" readonly class="input" value="@User.PhoneNumber">
-                                                                                        </div>-->
-                                                                                        <div>
+                                                                                                            <div class="ml-8">
+                                                                                                                <div>
+                                                                                                                    <label class="label">Voornaam: </label>
+                                                                                                                    <input type="text" readonly class="input" value="@User.FirstName">
+                                                                                                                </div>
+                                                                                                                <br>
+                                                                                                                <div>
+                                                                                                                    <label class="label">Naam: </label>
+                                                                                                                    <input type="text" readonly class="input" value="@User.Name">
+                                                                                                                </div>
+                                                                                                                <br>
+                                                                                                                <div>
+                                                                                                                    <label class="label">Email: </label>
+                                                                                                                    <input type="text" readonly class="input" value="@User.Email">
+                                                                                                                </div>
+                                                                                                                <!--<div>
+                                                                                                                    <label class="label">Gms-nummer: </label>
+                                                                                                                    <input type="text" readonly class="input" value="@User.PhoneNumber">
+                                                                                                                </div>-->
+                                                                                                                <div>
+                                                                                                                <br>
                                 @if (@User.user_metadata.Intern)
                                 {
-                                                                                                                    <label class="label">Opleiding : </label>
-                                                                                                                    <input type="text" readonly class="input" value="@User.user_metadata.Course">
+                                                                                                                                                    <label class="label">Opleiding : </label>
+                                                                                                                                                    <input type="text" readonly class="input" value="@User.user_metadata.Course">
                                 }
                                 else
                                 {
-                                                                                                                    <label class="label">Bedrijf:</label>
-                                                                                                                    <input type="text" readonly class="input" value="@User.user_metadata.Bedrijf">
+                                                                                                                                                    <label class="label">Bedrijf:</label>
+                                                                                                                                                    <input type="text" readonly class="input" value="@User.user_metadata.Bedrijf">
                                 }
 
 
 
-                                                                                            </div>
-                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
                     }
 
-                                                        </div>
-                                                    </div
-                                                </div>
+                                                                        </div>
+                                                                    </div
+                                                                </div>
     }
 }
