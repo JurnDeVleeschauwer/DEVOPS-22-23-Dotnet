@@ -1,5 +1,6 @@
 ﻿using Domain.Users;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Authorization;
 using Shared.Users;
 
 namespace Client.Users;
@@ -13,11 +14,13 @@ public partial class Details
     private UserDto.Detail User;
     [Parameter] public String UserId { get; set; }
     [Inject] public IUserService UserService { get; set; }
+    [Inject] public AuthenticationStateProvider GetAuthenticationStateAsync { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
         await GetUserAsync();
         ObjectToMutate();
+
     }
 
     private async Task GetUserAsync()
