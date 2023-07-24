@@ -40,8 +40,8 @@ namespace Services.Projecten
             request.Project.user = response.User;*/
 
             var project = _projecten.Add(new Project(
-                request.Project.Name
-            /*new User() { UserId = request.Project.UserId }*/
+                request.Project.Name,
+                new User() { UserId = request.Project.UserId }
             ));
             await _dbContext.SaveChangesAsync();
             response.ProjectenId = project.Entity.Id;

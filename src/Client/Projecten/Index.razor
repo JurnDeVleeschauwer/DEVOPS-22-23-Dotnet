@@ -61,7 +61,7 @@ else
                                             <tr data-test-id="virtualmachine-item">
                                                 <td><span class="@vm.Mode.GetDotIcon()"></span>@vm.Mode.GetString()</td>
                                                 <td>@vm.Name</td>
-                                                <td>@(project.user.FirstName + " " + project.user.Name)</td>
+                                                <!--<td>@(project.user.FirstName + " " + project.user.Name)</td>-->
                                                 <td>
                                                     <button @onclick="() => NavigateToVMDetails(vm.Id)">Details</button>
                                                     <!-- <button>Meer</button> -->

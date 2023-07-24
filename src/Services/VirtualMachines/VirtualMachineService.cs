@@ -114,6 +114,7 @@ namespace Services.VirtualMachines
                     Hardware = x.Hardware,
                     VMConnection = x.Connection,
                     BackUp = x.BackUp,
+                    Contract = x.Contract
                 })
                 .SingleOrDefaultAsync();
             return response;

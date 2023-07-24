@@ -107,7 +107,7 @@ namespace Services.Projects
 
             if (!string.IsNullOrWhiteSpace(request.SearchTerm))
             {
-                projects = _projects.FindAll(e => e.Name.Contains(request.SearchTerm, StringComparison.OrdinalIgnoreCase) || e.User.Name.Contains(request.SearchTerm, StringComparison.OrdinalIgnoreCase));
+                projects = _projects.FindAll(e => e.Name.Contains(request.SearchTerm, StringComparison.OrdinalIgnoreCase) /*|| e.User.Name.Contains(request.SearchTerm, StringComparison.OrdinalIgnoreCase)*/);
             }
             else
             {

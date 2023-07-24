@@ -8,7 +8,7 @@ namespace Persistence.Data.Configuration
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            builder.Property(p => p.Name).IsRequired();
+            /*builder.Property(p => p.Name).IsRequired();
             builder.Property(p => p.PhoneNumber).IsRequired();
             builder.Property(p => p.Email).IsRequired();
             builder.Property(p => p.Password).IsRequired();
@@ -18,7 +18,8 @@ namespace Persistence.Data.Configuration
             builder.Property(p => p.Type).IsRequired();
             builder.Property(p => p.BedrijfsNaam);
             builder.Property(p => p.TypeExtern);
-            builder.Property(p => p.Course);
+            builder.Property(p => p.Course);*/
+            builder.Property(p => p.UserId).IsRequired();
 
 
         }
