@@ -12,13 +12,13 @@ namespace Client.Shared
 {
     public partial class Index
     {
-        [Parameter] public int UserId { get; set; }
 
         [Inject] NavigationManager Router { get; set; }
 
         public void NavigateToKlantDetails()
         {
-            Router.NavigateTo("klant/" + UserId);
+            var id = UserId.GetUserIdAsync();
+            Router.NavigateTo($"klant/{id}");
         }
 
     }

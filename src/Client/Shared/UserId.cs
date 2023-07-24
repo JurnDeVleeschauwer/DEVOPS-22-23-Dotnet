@@ -10,7 +10,7 @@ namespace Client.Shared
         public static async Task<string> GetUserIdAsync()
         {
             //Get user ID from claim
-            AuthenticationState authstate = await GetAuthenticationStateAsync.GetAuthenticationStateAsync();
+            var authstate = await GetAuthenticationStateAsync.GetAuthenticationStateAsync();
             var user = authstate.User;
             var identity = user.Identities.First();
             if (identity != null)

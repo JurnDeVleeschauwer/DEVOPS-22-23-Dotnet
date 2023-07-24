@@ -4,6 +4,7 @@ using Shared.Users;
 using Shared.VirtualMachines;
 using Domain.Users;
 using Shared.Projecten;
+using Microsoft.AspNetCore.Components.Authorization;
 
 namespace Client.Projecten
 {
@@ -14,6 +15,7 @@ namespace Client.Projecten
         [Inject] public IProjectenService ProjectService { get; set; }
         [Inject] public IUserService userService { get; set; }
         [Inject] NavigationManager NavMan { get; set; }
+        [Inject] public AuthenticationStateProvider GetAuthenticationStateAsync { get; set; }
 
 
         private async void CreateProjectAsync()
@@ -22,7 +24,14 @@ namespace Client.Projecten
             {
                 Project = model
             };
-            request.Project.UserId = "auth0|6390964a894d42544f733938";
+            var authstate = await GetAuthenticationStateAsync.GetAuthenticationStateAsync();
+            var user = authstate.User;
+            var identity = user.Identities.First();
+            if (identity != null)
+            {
+                request.Project.UserId = identity.Claims.Where(claim => "sub".Equals(claim.Type)).First().Value;
+            }
+
 
 
 

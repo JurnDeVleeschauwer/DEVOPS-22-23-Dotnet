@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Components.Web;
 using JetBrains.Annotations;
 using System;
 using Microsoft.AspNetCore.Components.Routing;
-
+using Microsoft.AspNetCore.Components.Authorization;
 
 namespace Client.Projecten
 {
@@ -22,14 +22,21 @@ namespace Client.Projecten
         private List<ProjectenDto.Index> _projects;
 
         private Dictionary<int, ProjectenDto.Detail> _details = new Dictionary<int, ProjectenDto.Detail>();
+        [Inject] public AuthenticationStateProvider GetAuthenticationStateAsync { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
 
-            ProjectenRequest.GetIndexForUser request = new()
+            ProjectenRequest.GetIndexForUser request = new();
+
+            var authstate = await GetAuthenticationStateAsync.GetAuthenticationStateAsync();
+            var user = authstate.User;
+            var identity = user.Identities.First();
+            if (identity != null)
             {
-                UserId = UserId
-            };
+                request.UserId = identity.Claims.Where(claim => "sub".Equals(claim.Type)).First().Value;
+            }
+
 
             var response = await ProjectService.GetIndexAsync(request);
             _projects = response.Projecten;

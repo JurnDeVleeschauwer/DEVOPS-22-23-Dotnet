@@ -16,8 +16,21 @@ public partial class Details
     [Inject] public IUserService UserService { get; set; }
     [Inject] public AuthenticationStateProvider GetAuthenticationStateAsync { get; set; }
 
+
     protected override async Task OnInitializedAsync()
     {
+        if(UserId == "-1")
+        {
+            var authstate = await GetAuthenticationStateAsync.GetAuthenticationStateAsync();
+            var user = authstate.User;
+            var identity = user.Identities.First();
+            if (identity != null)
+            {
+                UserId =  identity.Claims.Where(claim => "sub".Equals(claim.Type)).First().Value;
+            }
+
+        }
+        
         await GetUserAsync();
         ObjectToMutate();
 
