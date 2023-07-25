@@ -35,7 +35,7 @@ namespace Domain.Projecten
         {
             this.Name = name;
             this.User = user;
-            this.Users.Add(user);
+            this._users.Add(this.User);
         }
         public VirtualMachine GetVirtualMachineById(int id)
         {

@@ -63,7 +63,7 @@ namespace Client.VirtualMachines
             return response;
         }
 
-        public async Task<ProjectenResponse.GetIndex> GetIndexAsync(ProjectenResponse.GetIndex request)
+        /*public async Task<ProjectenResponse.GetIndex> GetIndexAsync(ProjectenResponse.GetIndex request)
         {
             var HttpClient = _IHttpClientFactory.CreateClient("AuthenticatedServerAPI");
 
@@ -71,14 +71,14 @@ namespace Client.VirtualMachines
             var queryParameters = request.GetQueryString();
             var response = await HttpClient.GetFromJsonAsync<ProjectenResponse.GetIndex>($"{endpoint}/{queryParameters}");
             return response;
-        }
+        }*/
         public async Task<VirtualMachineResponse.Rapport> RapporteringAsync(VirtualMachineRequest.GetDetail request)
         {
             var HttpClient = _IHttpClientFactory.CreateClient("AuthenticatedServerAPI");
 
 
             var queryParameters = request.GetQueryString();
-            var response = await HttpClient.GetFromJsonAsync<VirtualMachineResponse.Rapport>($"{endpoint}/{queryParameters}");
+            var response = await HttpClient.GetFromJsonAsync<VirtualMachineResponse.Rapport>($"{endpoint}/Rapport?{queryParameters}");
             return response;
         }
 

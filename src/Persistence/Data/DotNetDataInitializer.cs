@@ -41,8 +41,8 @@ namespace Persistence.Data
             userA.UserId = "auth0|6390964a894d42544f733938";
             _dbContext.Users.AddRange(userA);
             _dbContext.SaveChanges();
-            var fysiekeServerA = new FysiekeServer("fysiekeServerA", new Hardware(5, 5, 5), "ServerAddressA");
-            fysiekeServerA.HardWareAvailable = new Hardware(4, 4, 4);
+            var fysiekeServerA = new FysiekeServer("fysiekeServerA", new Hardware(50, 50, 50), "ServerAddressA");
+            fysiekeServerA.HardWareAvailable = new Hardware(50, 50, 50);
             fysiekeServerA.VirtualMachines.Add(new VirtualMachine("first", OperatingSystemEnum.FEDORA_35, new Hardware(5, 5, 5), new Backup(BackUpType.DAILY, System.DateTime.Now)));
             _dbContext.FysiekeServers.AddRange(fysiekeServerA);
             _dbContext.SaveChanges();

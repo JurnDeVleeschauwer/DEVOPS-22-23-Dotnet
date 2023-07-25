@@ -22,13 +22,14 @@ namespace Client.Servers
         [Parameter] public int Id { get; set; }
 
         private Dictionary<DateTime, Hardware> _data = new();
-        private VirtualMachineDto.Rapportage vm;
+        private VirtualMachineDto.Rapportage vm = new();
 
         private bool Loading = false;
         protected override async Task OnInitializedAsync()
         {
             Loading = true;
             await getVirtualmachine();
+            //TODO find Statistics
             vm.Statistics.GetFakeStatistics(StatisticsPeriod.DAILY).ForEach(e => _data.Add(e.Key, new Hardware(e.Value.HardWareInUse.Memory, e.Value.HardWareInUse.Storage, e.Value.HardWareInUse.Amount_vCPU)));
             Loading = false;
         }

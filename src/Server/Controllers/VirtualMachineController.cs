@@ -51,5 +51,12 @@ namespace Server.Controllers
         {
             return virtualMachineService.EditAsync(request);
         }
+
+        //[Authorize(Roles = "BeheerderBeheren")]
+        [HttpGet("Rapport"), AllowAnonymous]
+        public Task<VirtualMachineResponse.Rapport> RapporteringAsync([FromQuery] VirtualMachineRequest.GetDetail request)
+        {
+            return virtualMachineService.RapporteringAsync(request);
+        }
     }
 }

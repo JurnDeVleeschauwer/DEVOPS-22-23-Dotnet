@@ -15,6 +15,7 @@ namespace Persistence.Data.Configuration
             //builder.HasOne<User>(p => p.User).WithMany().HasForeignKey(u => u.Id).IsRequired();
             builder.HasOne<User>(p => p.User);
             builder.HasMany<VirtualMachine>(p => p.VirtualMachines).WithOne();
+            builder.HasMany<User>(p => p.Users);
         }
     }
 }
