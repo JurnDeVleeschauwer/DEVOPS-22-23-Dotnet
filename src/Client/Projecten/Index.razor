@@ -3,7 +3,7 @@
 
 @attribute [Authorize]
 
-<button @onclick="NavigateToCreateProject">Create project</button>
+<button class="button is-rechts is-success" @onclick="NavigateToCreateProject">Create project</button>
 @if (_projects is null)
 {
     <p>Even geduld ...</p>
@@ -28,6 +28,7 @@ else
                         aria-hidden="true"></i>
                         </span>
                     </button>
+                    <button @onclick="() => NavigateToProjectUser(project.Id)">Manage Users</button>
                 </header>
                 @if (Loading.Contains(project.Id))
                 {
@@ -64,7 +65,6 @@ else
                                                 <!--<td>@(project.user.FirstName + " " + project.user.Name)</td>-->
                                                 <td>
                                                     <button @onclick="() => NavigateToVMDetails(vm.Id)">Details</button>
-                                                    <!-- <button>Meer</button> -->
                                                 </td>
                                             </tr>
 

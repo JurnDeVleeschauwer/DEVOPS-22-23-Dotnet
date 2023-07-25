@@ -5,9 +5,9 @@ using System.Collections.Generic;
 
 namespace Domain.Users
 {
-    public class User : Gebruiker
+    public class User
     {
-
+        public String UserId { get; set; }
         /*private string _bedrijfsNaam;
         private User _contactpersoon;
         private List<Project> _projecten;
@@ -15,7 +15,7 @@ namespace Domain.Users
         private Type _type;
         private Course _course;
         private string _typeExtern;
-
+        
         public String BedrijfsNaam { get { return _bedrijfsNaam; } set { _bedrijfsNaam = Guard.Against.NullOrEmpty(value, nameof(_bedrijfsNaam)); } }
         public User Contactpersoon { get; set; }
         public List<Project> Projecten { get; set; }

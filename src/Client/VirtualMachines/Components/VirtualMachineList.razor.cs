@@ -38,7 +38,7 @@ public partial class VirtualMachineList
         //virtualMachines = response.VirtualMachines;
         ProjectenRequest.GetDetail request = new() { ProjectenId = ProjectId };
         var response = await ProjectService.GetDetailAsync(request);
-        virtualmachinesOfProject = response.Projecten.VirtualMachines;
+        virtualmachinesOfProject = response.Project.VirtualMachines;
         virtualmachinesQuery = virtualmachinesOfProject.AsQueryable();
     }
 

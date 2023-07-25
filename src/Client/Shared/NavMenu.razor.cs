@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Components.Web;
 using JetBrains.Annotations;
 using System;
 using Microsoft.AspNetCore.Components.Routing;
-
+using Microsoft.AspNetCore.Components.Authorization;
 
 namespace Client.Shared
 {
@@ -15,9 +15,12 @@ namespace Client.Shared
 
         [Inject] NavigationManager Router { get; set; }
 
+        [Inject] public AuthenticationStateProvider GetAuthenticationStateAsync { get; set; }
+
+
         public void NavigateToKlantDetails()
         {
-            var id = UserId.GetUserIdAsync();
+            var id = GetUserId.GetUserIdAsync(GetAuthenticationStateAsync);
             Router.NavigateTo($"klant/{id}");
         }
 

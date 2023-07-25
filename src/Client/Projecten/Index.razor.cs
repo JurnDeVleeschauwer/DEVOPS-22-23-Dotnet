@@ -7,6 +7,7 @@ using JetBrains.Annotations;
 using System;
 using Microsoft.AspNetCore.Components.Routing;
 using Microsoft.AspNetCore.Components.Authorization;
+using Client.Shared;
 
 namespace Client.Projecten
 {
@@ -14,8 +15,6 @@ namespace Client.Projecten
     {
         [Inject] public IProjectenService ProjectService { get; set; }
         [Inject] public ISidepanelService Sidepanel { get; set; }
-
-        [Parameter] public String UserId { get; set; }
 
         [Inject] NavigationManager Router { get; set; }
 
@@ -29,13 +28,9 @@ namespace Client.Projecten
 
             ProjectenRequest.GetIndexForUser request = new();
 
-            var authstate = await GetAuthenticationStateAsync.GetAuthenticationStateAsync();
-            var user = authstate.User;
-            var identity = user.Identities.First();
-            if (identity != null)
-            {
-                request.UserId = identity.Claims.Where(claim => "sub".Equals(claim.Type)).First().Value;
-            }
+
+            request.UserId = await GetUserId.GetUserIdAsync(GetAuthenticationStateAsync);
+
 
 
             var response = await ProjectService.GetIndexAsync(request);
@@ -53,10 +48,10 @@ namespace Client.Projecten
             var response = await ProjectService.GetDetailAsync(request);
             ProjectenDto.Detail resp = new ProjectenDto.Detail()
             {
-                Id = response.Projecten.Id,
-                user = response.Projecten.user,
-                Name = response.Projecten.Name,
-                VirtualMachines = response.Projecten.VirtualMachines
+                Id = response.Project.Id,
+                user = response.Project.user,
+                Name = response.Project.Name,
+                VirtualMachines = response.Project.VirtualMachines
             };
 
 
@@ -72,6 +67,12 @@ namespace Client.Projecten
         public void NavigateToCreateProject()
         {
             Router.NavigateTo("projecten/add");
+        }
+
+
+        public void NavigateToProjectUser(int id)
+        {
+            Router.NavigateTo("projectenUsers/" + id);
         }
 
     }

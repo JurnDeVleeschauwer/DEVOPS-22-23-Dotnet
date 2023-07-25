@@ -1,0 +1,42 @@
+@page "/projectenUsers/{ProjectId:int}"
+@using Domain.VirtualMachines.VirtualMachine
+
+@attribute [Authorize]
+
+@if (_project is null)
+{
+    <p>Even geduld ...</p>
+}
+else
+{
+<h1 class="title is-3">@_project.Name</h1>
+<div class="card-body table is-striped is-hoverable">
+    <table>
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Name</th>
+                <th>Acties</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var User in _users)
+        {
+            
+
+
+        <tr data-test-id="virtualmachine-item">
+            <td>@User.Email</td>
+            <td>@(User.FirstName + " " + User.Name)</td>
+            <td>
+                <button>Meer</button>
+            </td>
+        </tr>
+
+        }
+        </tbody>
+    </table>
+</div>
+
+
+}

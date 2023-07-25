@@ -5,6 +5,7 @@ using Shared.VirtualMachines;
 using Domain.VirtualMachines.BackUp;
 using Shared.Projecten;
 using Microsoft.AspNetCore.Components.Authorization;
+using Client.Shared;
 
 namespace Client.VirtualMachines
 {
@@ -22,13 +23,9 @@ namespace Client.VirtualMachines
 
         protected override async Task OnInitializedAsync()
         {
-            var authstate = await GetAuthenticationStateAsync.GetAuthenticationStateAsync();
-            var user = authstate.User;
-            var identity = user.Identities.First();
-            if (identity != null)
-            {
-                UserId = identity.Claims.Where(claim => "sub".Equals(claim.Type)).First().Value;
-            }
+
+            UserId = await GetUserId.GetUserIdAsync(GetAuthenticationStateAsync);
+
 
             virtualMachine.Backup = new Backup(BackUpType.MONTHLY, DateTime.Now);
             virtualMachine.OperatingSystem = Domain.VirtualMachines.VirtualMachine.OperatingSystemEnum.WINDOWS_10;

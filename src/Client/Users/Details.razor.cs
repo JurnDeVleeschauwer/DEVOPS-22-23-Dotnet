@@ -1,4 +1,5 @@
-﻿using Domain.Users;
+﻿using Client.Shared;
+using Domain.Users;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
 using Shared.Users;
@@ -19,18 +20,13 @@ public partial class Details
 
     protected override async Task OnInitializedAsync()
     {
-        if(UserId == "-1")
+        if (UserId == "-1")
         {
-            var authstate = await GetAuthenticationStateAsync.GetAuthenticationStateAsync();
-            var user = authstate.User;
-            var identity = user.Identities.First();
-            if (identity != null)
-            {
-                UserId =  identity.Claims.Where(claim => "sub".Equals(claim.Type)).First().Value;
-            }
+
+            UserId = await GetUserId.GetUserIdAsync(GetAuthenticationStateAsync);
 
         }
-        
+
         await GetUserAsync();
         ObjectToMutate();
 

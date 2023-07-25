@@ -96,13 +96,14 @@ namespace Services.Projecten
         public async Task<ProjectenResponse.GetDetail> GetDetailAsync(ProjectenRequest.GetDetail request)
         {
             ProjectenResponse.GetDetail response = new();
-            response.Projecten = await GetProjectById(request.ProjectenId)
+            response.Project = await GetProjectById(request.ProjectenId)
                 .Select(x => new ProjectenDto.Detail
                 {
                     Id = x.Id,
                     Name = x.Name,
                     user = x.User,
-                    VirtualMachines = x.VirtualMachines
+                    VirtualMachines = x.VirtualMachines,
+                    Users = x.Users
 
                 })
                 .SingleOrDefaultAsync();

@@ -52,9 +52,8 @@ namespace Persistence.Data
             virtualMachines1.Add(new VirtualMachine("first", OperatingSystemEnum.FEDORA_35, new Hardware(5, 5, 5), new Backup(BackUpType.DAILY, System.DateTime.Now)));
             virtualMachines1.Add(new VirtualMachine("second", OperatingSystemEnum.FEDORA_35, new Hardware(5, 5, 5), new Backup(BackUpType.DAILY, System.DateTime.Now)));
             virtualMachines1.Add(new VirtualMachine("thirth", OperatingSystemEnum.FEDORA_35, new Hardware(5, 5, 5), new Backup(BackUpType.DAILY, System.DateTime.Now)));
-            var project1 = new Project("gegherg");
+            var project1 = new Project("gegherg", userA);
             project1.VirtualMachines = virtualMachines1;
-            project1.User = userA;
             _dbContext.Projecten.AddRange(project1);
             _dbContext.SaveChanges();
             var VMContractA = new VMContract("auth0|6390964a894d42544f733938", 2, System.DateTime.Now, System.DateTime.Now.AddDays(5));

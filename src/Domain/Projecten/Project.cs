@@ -16,12 +16,15 @@ namespace Domain.Projecten
 
         private string _name;
         private User _user;
+        private List<User> _users = new();
 
 
 
         public String Name { get { return _name; } set { _name = Guard.Against.NullOrEmpty(value, nameof(_name)); } }
         public User User { get { return _user; } set { _user = Guard.Against.Null(value, nameof(_user)); } }
         public List<VirtualMachine> VirtualMachines { get { return _vms; } set { _vms = Guard.Against.Null(value, nameof(_vms)); } }
+        public List<User> Users { get { return _users; } set { _users = Guard.Against.Null(value, nameof(_users)); } }
+
 
         public Project(string name)
         {
@@ -32,6 +35,7 @@ namespace Domain.Projecten
         {
             this.Name = name;
             this.User = user;
+            this.Users.Add(user);
         }
         public VirtualMachine GetVirtualMachineById(int id)
         {

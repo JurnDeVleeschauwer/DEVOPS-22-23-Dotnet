@@ -89,7 +89,7 @@ namespace Services.Projects
             List<VirtualMachine> vms = new();
             project.VirtualMachines.ForEach(e => vms.Add(new VirtualMachine { Id = e.Id, Mode = e.Mode, Name = e.Name }));
 
-            response.Projecten = new ProjectenDto.Detail() { Id = project.Id, user = project.User, VirtualMachines = vms };
+            response.Project = new ProjectenDto.Detail() { Id = project.Id, user = project.User, VirtualMachines = vms };
 
 
 

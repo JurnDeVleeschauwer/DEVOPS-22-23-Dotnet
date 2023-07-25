@@ -42,10 +42,10 @@ namespace Client.VirtualMachines
             var response = await ProjectService.GetDetailAsync(request);
             ProjectenDto.Detail resp = new ProjectenDto.Detail()
             {
-                Id = response.Projecten.Id,
-                user = response.Projecten.user,
-                Name = response.Projecten.Name,
-                VirtualMachines = response.Projecten.VirtualMachines
+                Id = response.Project.Id,
+                user = response.Project.user,
+                Name = response.Project.Name,
+                VirtualMachines = response.Project.VirtualMachines
             };
 
 

@@ -19,6 +19,7 @@ namespace Shared.Projecten
         public class Detail : Index
         {
             public List<VirtualMachine> VirtualMachines { get; set; }
+            public List<User> Users { get; set; }
         }
 
         public class Mutate

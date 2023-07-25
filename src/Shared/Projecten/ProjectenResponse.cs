@@ -13,7 +13,7 @@ namespace Shared.Projecten
 
         public class GetDetail
         {
-            public ProjectenDto.Detail Projecten { get; set; }
+            public ProjectenDto.Detail Project { get; set; }
         }
 
         public class Delete
