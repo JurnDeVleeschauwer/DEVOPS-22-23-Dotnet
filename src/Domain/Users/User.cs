@@ -18,14 +18,14 @@ namespace Domain.Users
 
         public String BedrijfsNaam { get { return _bedrijfsNaam; } set { _bedrijfsNaam = Guard.Against.NullOrEmpty(value, nameof(_bedrijfsNaam)); } }
         public User Contactpersoon { get; set; }
-        public List<Project> Projecten { get; set; }
+        
         public Role Role { get { return _role; } set { _role = Guard.Against.Null(value, nameof(_role)); } }
         public Type Type { get { return _type; } set { _type = Guard.Against.Null(value, nameof(_type)); } }
         public Course Course { get { return _course; } set { _course = Guard.Against.Null(value, nameof(_course)); } }
         public String TypeExtern { get; set; }*/
 
 
-
+        public List<Project> Projecten { get; set; }
 
 
         /*public User(string name, string firstname, string phoneNumber, string email, string password, Role role, string bedrijfsnaam, Type type, Course course) : base(name, firstname, phoneNumber, email, password)

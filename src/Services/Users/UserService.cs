@@ -22,7 +22,7 @@ namespace Services.Users
             _users = dbContext.Users;
         }
 
-        private IQueryable<Domain.Users.User> GetUseryId(String UserId) => _users
+        private IQueryable<Domain.Users.User> GetUserById(String UserId) => _users
         .AsNoTracking()
         .Where(p => p.UserId == UserId);
 
@@ -151,7 +151,7 @@ namespace Services.Users
         {
 
             UserResponse.DetailInternalDatabase response = new();
-            response.User = await GetUseryId(request.UserId).Select(x => new UserDto.DetailInternalDatabase
+            response.User = await GetUserById(request.UserId).Select(x => new UserDto.DetailInternalDatabase
             {
                 Id = x.Id,
                 UserId = x.UserId

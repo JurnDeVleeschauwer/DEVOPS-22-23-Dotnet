@@ -56,6 +56,9 @@ namespace Persistence.Data
             project1.VirtualMachines = virtualMachines1;
             _dbContext.Projecten.AddRange(project1);
             _dbContext.SaveChanges();
+            var project2 = new Project("ffff", userA);
+            _dbContext.Projecten.AddRange(project2);
+            _dbContext.SaveChanges();
             var VMContractA = new VMContract("auth0|6390964a894d42544f733938", 2, System.DateTime.Now, System.DateTime.Now.AddDays(5));
             var VMContractB = new VMContract("auth0|6390964a894d42544f733938", 3, System.DateTime.Now, System.DateTime.Now.AddDays(5));
             var VMContractC = new VMContract("auth0|6390964a894d42544f733938", 4, System.DateTime.Now, System.DateTime.Now.AddDays(5));

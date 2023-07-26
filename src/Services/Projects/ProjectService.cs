@@ -9,6 +9,7 @@ using Domain.Common;
 using Domain.Users;
 using Shared.Users;
 using Domain.VirtualMachines.VirtualMachine;
+using Auth0.ManagementApi.Models;
 
 namespace Services.Projecten
 {
@@ -38,13 +39,16 @@ namespace Services.Projecten
         {
             ProjectenResponse.Create response = new();
             UserRequest.DetailInternalDatabase request1 = new();
-            request1.UserId = request.Project.UserId;
+/*          request1.UserId = request.Project.UserId;
             var response1 = await _userService.GetDetailFromIntenalDatabase(request1);
+*/
+            var user = _dbContext.Users.AsNoTracking().Where(p => p.UserId == request.Project.UserId).Single();
 
             var project = _projecten.Add(new Project(
                 request.Project.Name,
-                new User() { Id = response1.User.Id, UserId = response1.User.UserId }
+                user
             ));
+            _dbContext.Database.ExecuteSqlRaw("SET IDENTITY_INSERT Users ON;");
             await _dbContext.SaveChangesAsync();
             response.ProjectenId = project.Entity.Id;
             return response;
