@@ -68,12 +68,5 @@ namespace Client.Projecten
         {
             Router.NavigateTo("projecten/add");
         }
-
-
-        public void NavigateToProjectUser(int id)
-        {
-            Router.NavigateTo("projectenUsers/" + id);
-        }
-
     }
 }

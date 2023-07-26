@@ -44,17 +44,23 @@ namespace Client.VirtualMachines
 
 
             var response = await ProjectService.GetDetailAsync(request);
-            ProjectenDto.Detail resp = new ProjectenDto.Detail()
+            if (response.Project != null)
             {
-                Id = response.Project.Id,
-                user = response.Project.user,
-                Name = response.Project.Name,
-                VirtualMachines = response.Project.VirtualMachines
-            };
+                ProjectenDto.Detail resp = new ProjectenDto.Detail()
+                {
+                    Id = response.Project.Id,
+                    user = response.Project.user,
+                    Name = response.Project.Name,
+                    VirtualMachines = response.Project.VirtualMachines
+                };
 
-
-            _details.Add(id, resp);
-
+                _details.Add(id, resp);
+            }
+            else
+            {
+                _projects = _projects.Where(x => x.Id != id).ToList();
+            }
+            StateHasChanged();
 
         }
         private async void FilterProjectsAsync()
@@ -82,6 +88,11 @@ namespace Client.VirtualMachines
         public void Dispose()
         {
             filter.OnVirtualMachineFilterChanged -= FilterProjectsAsync;
+        }
+
+        public void NavigateToProjectUser(int id)
+        {
+            Router.NavigateTo("projectenUsers/" + id);
         }
 
     }

@@ -102,8 +102,8 @@ namespace Services.Projecten
 
             query = query.Where(x => x.Id == request.ProjectenId);
 
-            if (!string.IsNullOrWhiteSpace(request.SearchTerm))
-                query = query.Where(x => x.Name.Contains(request.SearchTerm));
+            /*if (!string.IsNullOrWhiteSpace(request.SearchTerm))
+                query = query.Where(x => x.Name.Contains(request.SearchTerm));*/
 
             if (!string.IsNullOrWhiteSpace(request.SearchTerm))
                 query = query.Where(e => e.VirtualMachines.Any(x => x.Name == request.SearchTerm));
