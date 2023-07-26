@@ -1,6 +1,8 @@
 ﻿using Auth0.ManagementApi;
 using Auth0.ManagementApi.Models;
 using Auth0.ManagementApi.Paging;
+using Microsoft.EntityFrameworkCore;
+using Persistence.Data;
 using Shared.Projecten;
 using Shared.Users;
 using System.Linq;
@@ -11,12 +13,18 @@ namespace Services.Users
     public class UserService : IUserService
     {
         private readonly ManagementApiClient _managementApiClient;
-        private IProjectenService _projectService;
-        public UserService(ManagementApiClient managementApiClient, IProjectenService projectService)
+        private readonly DotNetDbContext _dbContext;
+        private readonly DbSet<Domain.Users.User> _users;
+        public UserService(DotNetDbContext dbContext, ManagementApiClient managementApiClient)
         {
-            _projectService = projectService;
             _managementApiClient = managementApiClient;
+            _dbContext = dbContext;
+            _users = dbContext.Users;
         }
+
+        private IQueryable<Domain.Users.User> GetUseryId(String UserId) => _users
+        .AsNoTracking()
+        .Where(p => p.UserId == UserId);
 
 
         public async Task<UserResponse.GetIndex> GetIndexAsync(UserRequest.GetIndex request)
@@ -67,6 +75,8 @@ namespace Services.Users
             await _managementApiClient.Users.AssignRolesAsync(createdUser?.UserId, assignRoleRequest);
 
             response.Auth0UserId = createdUser.UserId;
+            _users.Add(new Domain.Users.User() { UserId = response.Auth0UserId });
+            await _dbContext.SaveChangesAsync();
 
             return response;
 
@@ -98,12 +108,6 @@ namespace Services.Users
                 //response.User.PhoneNumber = user.PhoneNumber;
                 //response.User.Role = user.Role;
 
-                ProjectenRequest.GetIndexForUser request2 = new();
-                request2.UserId = request.UserId;
-
-                var response2 = await _projectService.GetIndexAsync(request2);
-
-                response.User.Projects = response2.Projecten;
                 return response;
 
             }
@@ -142,5 +146,18 @@ namespace Services.Users
 
             return response;
         }*/ //TODO make work later
+
+        public async Task<UserResponse.DetailInternalDatabase> GetDetailFromIntenalDatabase(UserRequest.DetailInternalDatabase request)
+        {
+
+            UserResponse.DetailInternalDatabase response = new();
+            response.User = await GetUseryId(request.UserId).Select(x => new UserDto.DetailInternalDatabase
+            {
+                Id = x.Id,
+                UserId = x.UserId
+            }).SingleOrDefaultAsync();
+
+            return response;
+        }
     }
 }

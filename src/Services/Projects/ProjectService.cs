@@ -7,20 +7,24 @@ using Domain.Projecten;
 using System;
 using Domain.Common;
 using Domain.Users;
+using Shared.Users;
+using Domain.VirtualMachines.VirtualMachine;
 
 namespace Services.Projecten
 {
     public class ProjectService : IProjectenService
     {
-        public ProjectService(DotNetDbContext dbContext)
+        public ProjectService(DotNetDbContext dbContext, IUserService userService)
         {
             _dbContext = dbContext;
             _projecten = dbContext.Projecten;
+            _userService = userService;
         }
 
         private readonly DotNetDbContext _dbContext;
         private readonly DbSet<Project> _projecten;
 
+        private IUserService _userService;
 
         private IQueryable<Project> GetProjectById(int id) => _projecten
                 .AsNoTracking()
@@ -33,15 +37,13 @@ namespace Services.Projecten
         public async Task<ProjectenResponse.Create> CreateAsync(ProjectenRequest.Create request)
         {
             ProjectenResponse.Create response = new();
-            //TODO get and create domien User to give to project
-            /*UserRequest.Detail request2 = new();
-            request2.UserId = UserId;
-            var response = await userService.GetDetail(request2);
-            request.Project.user = response.User;*/
+            UserRequest.DetailInternalDatabase request1 = new();
+            request1.UserId = request.Project.UserId;
+            var response1 = await _userService.GetDetailFromIntenalDatabase(request1);
 
             var project = _projecten.Add(new Project(
                 request.Project.Name,
-                new User() { UserId = request.Project.UserId }
+                new User() { Id = response1.User.Id, UserId = response1.User.UserId }
             ));
             await _dbContext.SaveChangesAsync();
             response.ProjectenId = project.Entity.Id;
@@ -96,16 +98,30 @@ namespace Services.Projecten
         public async Task<ProjectenResponse.GetDetail> GetDetailAsync(ProjectenRequest.GetDetail request)
         {
             ProjectenResponse.GetDetail response = new();
-            response.Project = await GetProjectById(request.ProjectenId)
-                .Select(x => new ProjectenDto.Detail
-                {
-                    Id = x.Id,
-                    Name = x.Name,
-                    user = x.User,
-                    VirtualMachines = x.VirtualMachines,
-                    Users = x.Users
+            var query = _projecten.AsQueryable().AsNoTracking();
 
-                })
+            query = query.Where(x => x.Id == request.ProjectenId);
+
+            if (!string.IsNullOrWhiteSpace(request.SearchTerm))
+                query = query.Where(x => x.Name.Contains(request.SearchTerm));
+
+            if (!string.IsNullOrWhiteSpace(request.SearchTerm))
+                query = query.Where(e => e.VirtualMachines.Any(x => x.Name == request.SearchTerm));
+
+
+            if (request.Mode is not null)
+                query = query.Where(e => e.VirtualMachines.Any(x => x.Mode == request.Mode));
+
+
+            response.Project = await query.Select(x => new ProjectenDto.Detail
+            {
+                Id = x.Id,
+                Name = x.Name,
+                user = x.User,
+                VirtualMachines = x.VirtualMachines,
+                Users = x.Users
+
+            })
                 .SingleOrDefaultAsync();
             return response;
         }
@@ -115,14 +131,10 @@ namespace Services.Projecten
             ProjectenResponse.GetIndex response = new();
             var query = _projecten.AsQueryable().AsNoTracking();
 
-            if (!string.IsNullOrWhiteSpace(request.SearchTerm))
+            /*if (!string.IsNullOrWhiteSpace(request.SearchTerm))
                 query = query.Where(x => x.Name.Contains(request.SearchTerm));
 
-
-            /*if (request.OnlyActiveProjects)
-                query = query.Where(x => x.IsEnabled);*/
-
-            response.Total = query.Count();
+            response.Total = query.Count();*/
 
             query.OrderBy(x => x.Name);
             response.Projecten = await query.Select(x => new ProjectenDto.Index

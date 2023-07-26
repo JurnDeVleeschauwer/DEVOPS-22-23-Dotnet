@@ -22,8 +22,14 @@ namespace Shared.Users
         public class Detail : Index
         {
             public User_metadata user_metadata { get; set; }
-            public List<ProjectenDto.Index> Projects { get; set; }
+            //public List<ProjectenDto.Index> Projects { get; set; }
             //public ContactDetails? contactPersoon { get; set; }
+        }
+
+        public class DetailInternalDatabase
+        {
+            public int Id { get; set; }
+            public String UserId { get; set; }
         }
 
         public class Mutate

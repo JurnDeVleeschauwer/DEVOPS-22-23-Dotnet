@@ -30,6 +30,12 @@ namespace Shared.Users
             public List<AdminUserDto.Index> Admins { get; set; } = new();
             public int Total { get; set; }
         }
+
+
+        public class DetailInternalDatabase
+        {
+            public UserDto.DetailInternalDatabase User { get; set; }
+        }
     }
 }
 

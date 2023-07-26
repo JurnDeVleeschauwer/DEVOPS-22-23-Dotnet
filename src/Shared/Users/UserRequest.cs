@@ -30,6 +30,12 @@ namespace Shared.Users
             public String UserId { get; set; }
             public UserDto.Mutate User { get; set; }
         }
+
+
+        public class DetailInternalDatabase
+        {
+            public String UserId { get; set; }
+        }
     }
 }
 

@@ -9,6 +9,7 @@ namespace Shared.Users
         Task<UserResponse.Detail> GetDetail(UserRequest.Detail request);
         Task<UserResponse.AllAdminsIndex> GetAllAdminsIndex(UserRequest.AllAdminUsers request);
         Task<UserResponse.Edit> EditAsync(UserRequest.Edit request);
+        Task<UserResponse.DetailInternalDatabase> GetDetailFromIntenalDatabase(UserRequest.DetailInternalDatabase request);
 
 
     }

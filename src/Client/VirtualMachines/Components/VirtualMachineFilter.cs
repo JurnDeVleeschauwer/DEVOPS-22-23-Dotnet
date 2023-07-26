@@ -1,6 +1,7 @@
 using System;
+using Domain.VirtualMachines.VirtualMachine;
 
-namespace Client.Shared
+namespace Client.VirtualMachines.Components
 {
     public class VirtualMachineFilter
     {
@@ -11,6 +12,7 @@ namespace Client.Shared
         /*private string category;
         private decimal? minimumPrice;
         private decimal? maximumPrice;*/
+        private VirtualMachineMode? mode;
 
         private void NotifyStateChanged() => OnVirtualMachineFilterChanged.Invoke();
 
@@ -20,6 +22,16 @@ namespace Client.Shared
             set
             {
                 searchTerm = value;
+                NotifyStateChanged();
+            }
+        }
+
+        public VirtualMachineMode? Mode
+        {
+            get => mode;
+            set
+            {
+                mode = value;
                 NotifyStateChanged();
             }
         }

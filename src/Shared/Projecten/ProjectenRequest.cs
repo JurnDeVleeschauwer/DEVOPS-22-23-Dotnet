@@ -7,6 +7,7 @@ namespace Shared.Projecten
         public class GetIndex
         {
             public string? SearchTerm { get; set; }
+            public VirtualMachineMode? Mode { get; set; }
 
         }
 
@@ -16,7 +17,7 @@ namespace Shared.Projecten
 
         }
 
-        public class GetDetail
+        public class GetDetail : GetIndex
         {
             public int ProjectenId { get; set; }
         }

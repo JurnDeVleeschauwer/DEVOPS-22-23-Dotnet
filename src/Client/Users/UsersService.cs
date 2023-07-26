@@ -1,5 +1,4 @@
 ﻿using Client.Extentions;
-using Shared.Projecten;
 using Shared.Users;
 using System.Net.Http.Json;
 
@@ -58,6 +57,11 @@ namespace Client.Users
             var queryParam = request.GetQueryString();
             var response = await HttpClient.GetFromJsonAsync<UserResponse.Edit>($"{endpoint}?{queryParam}");
             return response;
+        }
+
+        public Task<UserResponse.DetailInternalDatabase> GetDetailFromIntenalDatabase(UserRequest.DetailInternalDatabase request)
+        {
+            throw new NotImplementedException();
         }
     }
 }

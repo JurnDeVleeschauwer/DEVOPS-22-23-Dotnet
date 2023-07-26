@@ -1,5 +1,6 @@
 using Client.Shared;
 using Microsoft.AspNetCore.Components;
+using Domain.VirtualMachines.VirtualMachine;
 
 namespace Client.VirtualMachines.Components
 {
