@@ -57,8 +57,8 @@ namespace Client.VirtualMachines
         public async Task<ProjectenResponse.GetDetail> GetDetailAsync(ProjectenRequest.GetDetail request)
         {
             var HttpClient = _IHttpClientFactory.CreateClient("AuthenticatedServerAPI");
-            var queryParameters = request.ProjectenId;
-            var response = await HttpClient.GetFromJsonAsync<ProjectenResponse.GetDetail>($"{endpoint}/{queryParameters}");
+            var queryParameters = request.GetQueryString();
+            var response = await HttpClient.GetFromJsonAsync<ProjectenResponse.GetDetail>($"{endpoint}/Detail?{queryParameters}");
             return response;
         }
 

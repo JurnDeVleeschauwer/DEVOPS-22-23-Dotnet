@@ -8,11 +8,11 @@ namespace Client.VirtualMachines.Components
         public event Action OnVirtualMachineFilterChanged;
         /*private int page;
         private int amount = 25;*/
-        private string searchTerm;
+        private string searchTerm = "";
         /*private string category;
         private decimal? minimumPrice;
         private decimal? maximumPrice;*/
-        private VirtualMachineMode? mode;
+        private VirtualMachineMode? mode = null;
 
         private void NotifyStateChanged() => OnVirtualMachineFilterChanged.Invoke();
 

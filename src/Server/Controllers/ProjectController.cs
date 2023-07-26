@@ -32,8 +32,8 @@ namespace Server.Controllers
         }
 
         //[Authorize(Roles = "Klant")]
-        [HttpGet("{ProjectenId}"), AllowAnonymous]
-        public Task<ProjectenResponse.GetDetail> GetDetailAsync([FromRoute] ProjectenRequest.GetDetail request)
+        [HttpGet("Detail"), AllowAnonymous]
+        public Task<ProjectenResponse.GetDetail> GetDetailAsync([FromQuery] ProjectenRequest.GetDetail request)
         {
             return projectenService.GetDetailAsync(request);
         }

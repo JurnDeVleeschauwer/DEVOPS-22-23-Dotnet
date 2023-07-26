@@ -59,6 +59,7 @@ namespace Client.VirtualMachines
         }
         private async void FilterProjectsAsync()
         {
+            _details.Clear();
             ProjectenRequest.GetIndex request = new()
             {
                 SearchTerm = filter.SearchTerm,
@@ -67,6 +68,10 @@ namespace Client.VirtualMachines
             var response = await ProjectService.GetAllIndexAsync(request);
             _projects = response.Projecten;
             totalFilteredAmount = response.Total;
+            foreach (var item in _projects)
+            {
+                GetVirtualMachines(item.Id);
+            }
             StateHasChanged();
         }
         public void NavigateToVMDetails(int id)

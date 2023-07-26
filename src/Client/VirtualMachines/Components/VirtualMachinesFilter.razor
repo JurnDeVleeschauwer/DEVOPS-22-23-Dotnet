@@ -9,15 +9,21 @@
     </div>
 </div>
 <div class="field">
-    <label class="label has-text-grey">Categorie</label>
+    <label class="label has-text-grey">VirtualMachine Mode</label>
     <div class="control is-expanded">
         <div class="select is-fullwidth">
-            <InputSelect @bind-Value="Filter.Mode">
-                @foreach (var virtualMachineMode in Enum.GetValues(typeof(VirtualMachineMode)))
+            <select @bind="Filter.Mode">
+                <option selected value=null>Select...</option>
+                <option value="WAITING_APPROVEMENT">Waiting Approvement</option>
+                <option value="READY">Ready</option>
+                <option value="RUNNING">Runnning</option>
+                <option value="PAUSED">Paused</option>
+                <option value="STOPPED">Stopped</option>
+                <!--@foreach (var virtualMachineMode in Enum.GetValues(typeof(VirtualMachineMode)))
                 {
                     <option value="@virtualMachineMode">@virtualMachineMode</option>
-                }
-            </InputSelect>
+                }-->
+            </select>
         </div>
     </div>
 </div>
