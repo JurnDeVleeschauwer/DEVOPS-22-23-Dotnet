@@ -31,7 +31,12 @@ namespace Services.Users
         {
             UserResponse.GetIndex response = new();
             var users = await _managementApiClient.Users.GetAllAsync(new GetUsersRequest(), new PaginationInfo());
-            response.Users = users.Select(x => new UserDto.Index
+            IEnumerable<Auth0.ManagementApi.Models.User> query = users;
+
+            if (!string.IsNullOrWhiteSpace(request.SearchTerm))
+                query = users.Where(x => x.Email.Contains(request.SearchTerm));
+
+            response.Users = query.Select(x => new UserDto.Index
             {
                 Email = x.Email,
                 //PhoneNumber = x.PhoneNumber,
