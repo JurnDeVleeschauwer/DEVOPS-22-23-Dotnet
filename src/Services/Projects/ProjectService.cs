@@ -173,8 +173,9 @@ namespace Services.Projecten
 
         public async Task RemoveUserFromProject(ProjectenRequest.RemoveUserFromProject request)
         {
-            var project = _projecten.Where(p => p.Id == request.ProjectenId).Single();
-            var user = _dbContext.Users.AsNoTracking().Where(p => p.UserId == request.UserId).Single();
+            //TODO project has not is almost empty so can't remove user fromUsers list
+            var project = _projecten.Include(x => x.Users).Single(p => p.Id == request.ProjectenId);
+            var user = _dbContext.Users.Where(p => p.UserId == request.UserId).Single();
             project.Users.Remove(user);
             _dbContext.Entry(project).State = EntityState.Modified;
             await _dbContext.SaveChangesAsync();
@@ -182,8 +183,8 @@ namespace Services.Projecten
 
         public async Task AddUserFromProject(ProjectenRequest.AddUserFromProject request)
         {
-            var project = await GetProjectById(request.ProjectenId).SingleOrDefaultAsync();
-            var user = _dbContext.Users.AsNoTracking().Where(p => p.UserId == request.UserId).Single();
+            var project = _projecten.Include(x => x.Users).Single(p => p.Id == request.ProjectenId);
+            var user = _dbContext.Users.Where(p => p.UserId == request.UserId).Single();
             project.Users.Add(user);
             _dbContext.Entry(project).State = EntityState.Modified;
             await _dbContext.SaveChangesAsync();
