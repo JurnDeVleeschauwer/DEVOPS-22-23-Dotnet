@@ -22,7 +22,7 @@ else
 
 
 
-        <div class="accordion" data-test-id="virtualmachine-overview"><!--TODO add addUser to project button-->
+        <div class="accordion" data-test-id="virtualmachine-overview">
         @foreach (var project in _projects)
         {
                     <div class="card w-100 mb-3 @(Collapsed.ContainsKey(project.Id) && Collapsed[project.Id]? "active": "")">

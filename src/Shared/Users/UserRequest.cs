@@ -4,7 +4,7 @@ namespace Shared.Users
     {
         public class GetIndex
         {
-
+            public string? SearchTerm { get; set; }
         }
 
         public class Create

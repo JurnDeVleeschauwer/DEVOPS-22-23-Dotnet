@@ -1,5 +1,5 @@
 @page "/projectenUsers/{ProjectId:int}"
-@using Domain.VirtualMachines.VirtualMachine
+
 
 @attribute [Authorize]
 
@@ -35,8 +35,11 @@ else
         </tbody>
     </table>
 </div>
+<ProjectsFilter Filter="filter"/>
 <SidepanelComponent Title="User to Choose to add to project" @ref="sidepanel">
-       <div class="card-body table is-striped is-hoverable">
+        <h3 class="title is-size-6 has-text-grey">Zoek</h3>
+        <ProjectsFilter Filter="filter"/>
+        <div class="card-body table is-striped is-hoverable">
         <table>
             <thead>
                 <tr>
