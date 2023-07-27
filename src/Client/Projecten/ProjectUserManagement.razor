@@ -10,7 +10,7 @@
 else
 {
 <h1 class="title is-3">@_project.Name</h1>
-<button>Add User</button>
+<button @onclick="Open">Add User</button>
 <div class="card-body table is-striped is-hoverable">
     <table>
         <thead>
@@ -35,6 +35,42 @@ else
         </tbody>
     </table>
 </div>
+<SidepanelComponent Title="User to Choose to add to project" @ref="sidepanel">
+       <div class="card-body table is-striped is-hoverable">
+        <table>
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Acties</th>
+                </tr>
+            </thead>
+            @foreach (var kl in Users)
+            {
+                <tbody>
+                    <tr>
+                        <td>@kl.Email</td>
+                        <td>
+                            <button @onclick="() => AddUserToProject(kl.Id)">
+                                Add
+                            </button>
+                        </td>
+                    </tr>
 
+                </tbody>
+            }
+        </table>
+    </div>
+</SidepanelComponent>
+}
+@code {
 
+    private void Open()
+    {
+        sidepanel.Open();
+    }
+
+    private void Close()
+    {
+        sidepanel.Close();
+    }
 }

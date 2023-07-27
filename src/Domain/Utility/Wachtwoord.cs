@@ -15,11 +15,11 @@ namespace Domain.Utility
             var wachtwoord = value.ToString();
 
 
-            if (!(wachtwoord.Length >= 8)) return new ValidationResult("To Short needs to be 8 long");
-            if (!wachtwoord.Any(x => char.IsUpper(x))) return new ValidationResult("Must contain Upper Case");
-            if (!wachtwoord.Any(x => char.IsLower(x))) return new ValidationResult("Must contain Lower Case");
-            if (!wachtwoord.Any(x => char.IsDigit(x))) return new ValidationResult("Must contain Number");
-            if (!wachtwoord.Any(x => !char.IsLetterOrDigit(x))) return new ValidationResult("Must contain Special characters like !@#$%^&*");
+            if (!(wachtwoord.Length >= 8)) return new ValidationResult("Password is to Short needs to be 8 long");
+            if (!wachtwoord.Any(x => char.IsUpper(x))) return new ValidationResult("Password must contain Upper Case");
+            if (!wachtwoord.Any(x => char.IsLower(x))) return new ValidationResult("Password must contain Lower Case");
+            if (!wachtwoord.Any(x => char.IsDigit(x))) return new ValidationResult("Password must contain Number");
+            if (!wachtwoord.Any(x => !char.IsLetterOrDigit(x))) return new ValidationResult("Password must contain Special characters like !@#$%^&*");
 
             return ValidationResult.Success;
 
