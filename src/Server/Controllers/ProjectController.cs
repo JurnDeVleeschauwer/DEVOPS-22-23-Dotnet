@@ -58,5 +58,17 @@ namespace Server.Controllers
         {
             return projectenService.EditAsync(request);
         }
-    }
+
+        [HttpDelete("Remove"), AllowAnonymous]
+        public Task RemoveUserFromProject([FromQuery] ProjectenRequest.RemoveUserFromProject request)
+        {
+            return projectenService.RemoveUserFromProject(request);
+        }
+
+        [HttpPut("Add"), AllowAnonymous]
+        public Task AddUserFromProject([FromBody] ProjectenRequest.AddUserFromProject request)
+        {
+            return projectenService.AddUserFromProject(request);
+        }
+}
 }

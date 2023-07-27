@@ -39,17 +39,22 @@ namespace Services.Projecten
         {
             ProjectenResponse.Create response = new();
             UserRequest.DetailInternalDatabase request1 = new();
-/*          request1.UserId = request.Project.UserId;
-            var response1 = await _userService.GetDetailFromIntenalDatabase(request1);
-*/
-            var user = _dbContext.Users.AsNoTracking().Where(p => p.UserId == request.Project.UserId).Single();
+            /*          request1.UserId = request.Project.UserId;
+                        var response1 = await _userService.GetDetailFromIntenalDatabase(request1);
+            */
+            //TODO error Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert explicit value for identity column in table 'Users' when IDENTITY_INSERT is set to OFF.
+            /*_dbContext.Database.ExecuteSqlRaw("SET IDENTITY_INSERT Users ON;");
+            await _dbContext.SaveChangesAsync();*/
+            var user = _dbContext.Users.Where(p => p.UserId == request.Project.UserId).Single();
 
             var project = _projecten.Add(new Project(
                 request.Project.Name,
                 user
             ));
-            _dbContext.Database.ExecuteSqlRaw("SET IDENTITY_INSERT Users ON;");
+
             await _dbContext.SaveChangesAsync();
+            /*_dbContext.Database.ExecuteSqlRaw("SET IDENTITY_INSERT Users OFF;");
+            await _dbContext.SaveChangesAsync();*/
             response.ProjectenId = project.Entity.Id;
             return response;
         }
@@ -164,6 +169,24 @@ namespace Services.Projecten
                 .ToListAsync();
             response.Total = response.Projecten.Count();
             return response;
+        }
+
+        public async Task RemoveUserFromProject(ProjectenRequest.RemoveUserFromProject request)
+        {
+            var project = _projecten.Where(p => p.Id == request.ProjectenId).Single();
+            var user = _dbContext.Users.AsNoTracking().Where(p => p.UserId == request.UserId).Single();
+            project.Users.Remove(user);
+            _dbContext.Entry(project).State = EntityState.Modified;
+            await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task AddUserFromProject(ProjectenRequest.AddUserFromProject request)
+        {
+            var project = await GetProjectById(request.ProjectenId).SingleOrDefaultAsync();
+            var user = _dbContext.Users.AsNoTracking().Where(p => p.UserId == request.UserId).Single();
+            project.Users.Add(user);
+            _dbContext.Entry(project).State = EntityState.Modified;
+            await _dbContext.SaveChangesAsync();
         }
     }
 }

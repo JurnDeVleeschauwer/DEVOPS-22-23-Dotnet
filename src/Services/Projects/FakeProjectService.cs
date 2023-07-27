@@ -6,7 +6,7 @@ using Domain.VirtualMachines.VirtualMachine;
 
 namespace Services.Projects
 {
-    public class FakeProjectService : IProjectenService
+    public class FakeProjectService //: IProjectenService
     {
         private List<Project> _projects = new();
 
@@ -15,6 +15,11 @@ namespace Services.Projects
             _projects = ProjectFaker.Instance.Generate(15);
 
 
+        }
+
+        public Task AddUserFromProject(ProjectenRequest.AddUserFromProject request)
+        {
+            throw new NotImplementedException();
         }
 
         public Task<ProjectenResponse.Create> AddVMAsync(ProjectenRequest.AddVM request)
@@ -127,6 +132,11 @@ namespace Services.Projects
         }
 
         public Task<ProjectenResponse.GetIndex> GetIndexAsync(ProjectenRequest.GetIndexForUser request)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task RemoveUserFromProject(ProjectenRequest.RemoveUserFromProject request)
         {
             throw new NotImplementedException();
         }

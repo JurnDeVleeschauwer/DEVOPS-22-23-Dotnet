@@ -42,14 +42,23 @@ namespace Client.Projecten
 
         }
 
-        public void AddUserToProject(int id)
+        public async Task AddUserToProject(String UserId)
         {
-
+            ProjectenRequest.AddUserFromProject request = new();
+            request.ProjectenId = ProjectId;
+            request.UserId = UserId;
+            await ProjectService.AddUserFromProject(request);
+            StateHasChanged();
         }
 
-        public void RemoveUserToProject(int id)
+        public async Task RemoveUserToProject(String UserId)
         {
+            ProjectenRequest.RemoveUserFromProject request = new();
+            request.ProjectenId = ProjectId;
+            request.UserId = UserId;
+            await ProjectService.RemoveUserFromProject(request);
 
+            StateHasChanged();
         }
 
     }

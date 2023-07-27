@@ -70,5 +70,24 @@ namespace Client.VirtualMachines
             var response = await HttpClient.GetFromJsonAsync<ProjectenResponse.GetIndex>($"{endpoint}/User?{queryParameters}");
             return response;
         }
+
+        public async Task RemoveUserFromProject(ProjectenRequest.RemoveUserFromProject request)
+        {
+            var HttpClient = _IHttpClientFactory.CreateClient("AuthenticatedServerAPI");
+
+            var queryParameters = request.GetQueryString();
+            await HttpClient.DeleteAsync($"{endpoint}/Remove?{queryParameters}");
+
+        }
+        public async Task AddUserFromProject(ProjectenRequest.AddUserFromProject request)
+        {
+            var HttpClient = _IHttpClientFactory.CreateClient("AuthenticatedServerAPI");
+
+            var queryParameters = request.GetQueryString();
+            await HttpClient.DeleteAsync($"{endpoint}/Add?{queryParameters}");
+            await HttpClient.PutAsJsonAsync($"{endpoint}/Add", request);
+
+
+        }
     }
 }

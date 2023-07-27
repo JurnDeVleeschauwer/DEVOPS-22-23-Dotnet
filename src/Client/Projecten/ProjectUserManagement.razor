@@ -10,6 +10,7 @@
 else
 {
 <h1 class="title is-3">@_project.Name</h1>
+<button>Add User</button>
 <div class="card-body table is-striped is-hoverable">
     <table>
         <thead>
@@ -22,14 +23,11 @@ else
         <tbody>
         @foreach (var User in _users)
         {
-            
-
-
         <tr data-test-id="virtualmachine-item">
             <td>@User.Email</td>
             <td>@(User.FirstName + " " + User.Name)</td>
             <td>
-                <button>Meer</button>
+                <button @onclick="() => RemoveUserToProject(User.Id)">Remove User</button>
             </td>
         </tr>
 

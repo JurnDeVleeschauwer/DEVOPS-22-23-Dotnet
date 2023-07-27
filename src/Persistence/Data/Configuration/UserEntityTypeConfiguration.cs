@@ -1,3 +1,4 @@
+using Domain.Projecten;
 using Domain.Users;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -20,6 +21,7 @@ namespace Persistence.Data.Configuration
             builder.Property(p => p.TypeExtern);
             builder.Property(p => p.Course);*/
             builder.Property(p => p.UserId).IsRequired();
+            builder.HasMany<Project>(p => p.Projecten).WithMany(u => u.Users);
 
 
         }

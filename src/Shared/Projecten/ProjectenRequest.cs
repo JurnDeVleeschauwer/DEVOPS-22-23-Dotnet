@@ -43,5 +43,16 @@ namespace Shared.Projecten
             public int ProjectenId { get; set; }
             public VirtualMachine VirtualMachine { get; set; }
         }
+
+        public class RemoveUserFromProject
+        {
+            public int ProjectenId { get; set; }
+            public String UserId { get; set; }
+        }
+
+        public class AddUserFromProject : RemoveUserFromProject
+        {
+
+        }
     }
 }

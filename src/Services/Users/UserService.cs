@@ -105,6 +105,7 @@ namespace Services.Users
                 response.User.Email = user.Email;
                 response.User.FirstName = user.FirstName;
                 response.User.Name = user.LastName;
+                response.User.Id = user.UserId;
                 //response.User.PhoneNumber = user.PhoneNumber;
                 //response.User.Role = user.Role;
 

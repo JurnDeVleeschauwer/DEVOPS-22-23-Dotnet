@@ -12,6 +12,8 @@ namespace Shared.Projecten
         Task<ProjectenResponse.Edit> EditAsync(ProjectenRequest.Edit request);
         Task<ProjectenResponse.GetIndex> GetAllIndexAsync(ProjectenRequest.GetIndex request);
         Task<ProjectenResponse.Create> AddVMAsync(ProjectenRequest.AddVM request);
+        Task RemoveUserFromProject(ProjectenRequest.RemoveUserFromProject request);
+        Task AddUserFromProject(ProjectenRequest.AddUserFromProject request);
 
     }
 }
