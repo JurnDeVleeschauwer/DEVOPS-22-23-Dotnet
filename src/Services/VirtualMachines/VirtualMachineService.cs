@@ -61,6 +61,7 @@ namespace Services.VirtualMachines
                     Mode = x.Mode,
                     Hardware = x.Hardware,
                     BackUp = x.BackUp,
+                    Why = x.Why
                 })
                 .SingleOrDefaultAsync();
 
@@ -114,7 +115,8 @@ namespace Services.VirtualMachines
                     Hardware = x.Hardware,
                     VMConnection = x.Connection,
                     BackUp = x.BackUp,
-                    Contract = x.Contract
+                    Contract = x.Contract,
+                    Why = x.Why
                 })
                 .SingleOrDefaultAsync();
             return response;

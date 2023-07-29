@@ -29,7 +29,7 @@ namespace Client.Servers
         {
             Loading = true;
             await getVirtualmachine();
-            //TODO find Statistics
+
             if (vm.Statistics == null)
             {
                 vm.Statistics = new();

@@ -161,7 +161,7 @@ namespace Services.FysiekeServers
 
         public async Task<FysiekeServerResponse.GraphValues> GetGraphValueForServer(FysiekeServerRequest.Date request)
         {
-            //TODO check got strange results only cpu aantal gave number maar  de andere 2 niet
+
             DateTime FromDate = DateTime.Parse(request.FromDate);
             DateTime ToDate = DateTime.Parse(request.ToDate);
 

@@ -28,6 +28,7 @@ namespace Shared.VirtualMachines
             public Backup BackUp { get; set; }
             public FysiekeServer? FysiekeServer { get; set; }
             public VMConnection? VMConnection { get; set; }
+            public string Why { get; set; }
         }
 
         public class IndexHardWare : Index
