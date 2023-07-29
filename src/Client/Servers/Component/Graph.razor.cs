@@ -117,12 +117,12 @@ namespace Client.Servers.Component
                     {
                         case "RAM (GB)":
                             {
-                                dataSet.AddRange(Data.Select(e => (e.Value.Memory / 1000)));
+                                dataSet.AddRange(Data.Select(e => (e.Value.Memory)));
                                 break;
                             }
                         case "Opslag (GB)":
                             {
-                                dataSet.AddRange(Data.Select(e => e.Value.Storage / 1000));
+                                dataSet.AddRange(Data.Select(e => e.Value.Storage));
                                 break;
                             }
                         case "#Cores":
