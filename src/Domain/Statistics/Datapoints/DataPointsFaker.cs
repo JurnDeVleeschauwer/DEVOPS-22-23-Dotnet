@@ -1,6 +1,7 @@
 using Bogus;
 using Domain.Common;
 using System;
+using System.Collections.Generic;
 using System.Security.Cryptography;
 
 namespace Domain.Statistics.Datapoints
@@ -32,24 +33,36 @@ namespace Domain.Statistics.Datapoints
 
         public DataPointsFaker()
         {
-            CustomInstantiator(e => new DataPoint(Tick++, GenerateRandomHardWareUsage()));
+        }
+
+        public static Dictionary<DateTime, Hardware> GetFakeStatistics(DateTime StartTime, DateTime EndTime)
+        {
+            Dictionary<DateTime, Hardware> _data = new();
+
+            var delta = EndTime - StartTime;
+            for (int i = 0; i <= delta.Days; i++)
+            {
+                _data.Add(StartTime.AddDays(i), GenerateRandomHardWareUsage());
+            }
+            
+            return _data;
+
         }
 
 
 
-
-        public Hardware GenerateRandomHardWareUsage()
+        public static Hardware GenerateRandomHardWareUsage()
         {
-            int m = (int)Math.Ceiling(Hardware.Memory * GetDouble(0.7, 1.0));
-            int s = (int)Math.Ceiling(Hardware.Storage * GetDouble(0.1, 0.3));
-            int c = (int)Math.Ceiling(Hardware.Amount_vCPU * GetDouble(0.5, 0.9));
+            int m = (int)Math.Ceiling(GetInt(0, 50));
+            int s = (int)Math.Ceiling(GetInt(0, 50));
+            int c = (int)Math.Ceiling(GetInt(0, 50));
 
-            return new Hardware(m < 1000 ? m < 100 ? m * 10 : m * 2 : m, s < 1000 ? s * 3 : s, c == 0 ? RandomNumberGenerator.GetInt32(4) == 1 ? 1 : 0 : c);
+            return new Hardware(m, s,  c);
         }
 
-        private double GetDouble(double min, double max)
+        private static double GetInt(int min, int max)
         {
-            return new Random().NextDouble() * (max - min) + min;
+            return new Random().NextInt64(min, max);
 
         }
 

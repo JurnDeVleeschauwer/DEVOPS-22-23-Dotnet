@@ -30,7 +30,11 @@ namespace Client.Servers
             Loading = true;
             await getVirtualmachine();
             //TODO find Statistics
-            vm.Statistics.GetFakeStatistics(StatisticsPeriod.DAILY).ForEach(e => _data.Add(e.Key, new Hardware(e.Value.HardWareInUse.Memory, e.Value.HardWareInUse.Storage, e.Value.HardWareInUse.Amount_vCPU)));
+            if (vm.Statistics == null)
+            {
+                vm.Statistics = new();
+                _data = vm.Statistics.GetFakeStatistics();
+            }
             Loading = false;
         }
 

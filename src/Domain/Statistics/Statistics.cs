@@ -2,6 +2,7 @@ using Domain.Common;
 using Domain.Statistics.Datapoints;
 using Domain.VirtualMachines.Statistics;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace Domain.Statistics;
@@ -26,13 +27,15 @@ public class Statistic : Entity
 
     public Statistic()
     {
-
+        StartTime = DateTime.Now;
+        EndTime = DateTime.Now.AddDays(7);
     }
 
-    public Dictionary<DateTime, DataPoint> GetFakeStatistics(StatisticsPeriod period)
+    public Dictionary<DateTime, Hardware> GetFakeStatistics()
     {
         DataPointsFaker.Instance.Hardware = Hardware;
-        List<DataPoint> _dataPoints = DataPointsFaker.Instance.Generate(GetAmountOfTicks(period));
+        return DataPointsFaker.GetFakeStatistics(StartTime, EndTime);
+        /*List<DataPoint> _dataPoints = DataPointsFaker.Instance.Generate(GetAmountOfTicks(period));
 
         List<DateTime> _datePoints = GetFakeDataPoints(period);
 
@@ -42,7 +45,7 @@ public class Statistic : Entity
         {
             output.Add(_datePoints[i], _dataPoints[i]);
         }
-        return output;
+        return output;*/
 
     }
 

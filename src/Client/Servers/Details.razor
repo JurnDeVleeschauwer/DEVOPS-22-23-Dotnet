@@ -26,9 +26,7 @@
             else if (Collapsed.ContainsKey(vm.Id) && Collapsed[vm.Id])
             {
                 <div class="card-body">
-                    @if(vm.Statistics != null){
                         <Grafiek Id="vm.Id"></Grafiek>
-                    }
                 </div>
             }
         </div>
