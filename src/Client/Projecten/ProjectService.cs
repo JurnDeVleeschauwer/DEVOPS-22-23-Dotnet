@@ -83,9 +83,7 @@ namespace Client.VirtualMachines
         {
             var HttpClient = _IHttpClientFactory.CreateClient("AuthenticatedServerAPI");
 
-            var queryParameters = request.GetQueryString();
-            await HttpClient.DeleteAsync($"{endpoint}/Add?{queryParameters}");
-            //await HttpClient.PutAsJsonAsync($"{endpoint}/Add", request);
+            await HttpClient.PutAsJsonAsync($"{endpoint}/Add", request);
 
 
         }

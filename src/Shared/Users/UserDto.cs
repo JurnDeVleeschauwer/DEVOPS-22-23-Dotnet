@@ -39,9 +39,6 @@ namespace Shared.Users
             public string FirstName { get; set; }
             [Required(ErrorMessage = "Je moet een naam ingeven.")]
             public string Name { get; set; }
-            /*[Required(ErrorMessage = "Je moet een gsm-nummer ingeven.")]
-            [BelgianPhoneNumber] // TODO “The phone number was not valid. Please make sure the number is correct, including country code, and “+” prefix”
-            public string PhoneNumber { get; set; }*/
             [Required(ErrorMessage = "Je moet een email ingeven.")]
             [Email]
             [DataType(DataType.EmailAddress)]

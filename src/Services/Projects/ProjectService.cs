@@ -42,9 +42,6 @@ namespace Services.Projecten
             /*          request1.UserId = request.Project.UserId;
                         var response1 = await _userService.GetDetailFromIntenalDatabase(request1);
             */
-            //TODO error Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert explicit value for identity column in table 'Users' when IDENTITY_INSERT is set to OFF.
-            /*_dbContext.Database.ExecuteSqlRaw("SET IDENTITY_INSERT Users ON;");
-            await _dbContext.SaveChangesAsync();*/
             var user = _dbContext.Users.Where(p => p.UserId == request.Project.UserId).Single();
 
             var project = _projecten.Add(new Project(
@@ -53,8 +50,6 @@ namespace Services.Projecten
             ));
 
             await _dbContext.SaveChangesAsync();
-            /*_dbContext.Database.ExecuteSqlRaw("SET IDENTITY_INSERT Users OFF;");
-            await _dbContext.SaveChangesAsync();*/
             response.ProjectenId = project.Entity.Id;
             return response;
         }
@@ -173,7 +168,6 @@ namespace Services.Projecten
 
         public async Task RemoveUserFromProject(ProjectenRequest.RemoveUserFromProject request)
         {
-            //TODO project has not is almost empty so can't remove user fromUsers list
             var project = _projecten.Include(x => x.Users).Single(p => p.Id == request.ProjectenId);
             var user = _dbContext.Users.Where(p => p.UserId == request.UserId).Single();
             project.Users.Remove(user);

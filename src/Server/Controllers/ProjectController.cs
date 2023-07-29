@@ -65,10 +65,10 @@ namespace Server.Controllers
             return projectenService.RemoveUserFromProject(request);
         }
 
-        [HttpDelete("Add"), AllowAnonymous]
-        public Task AddUserFromProject([FromQuery] ProjectenRequest.AddUserFromProject request)
+        [HttpPut("Add"), AllowAnonymous]
+        public Task AddUserFromProject([FromBody] ProjectenRequest.AddUserFromProject request)
         {
             return projectenService.AddUserFromProject(request);
         }
-}
+    }
 }

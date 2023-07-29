@@ -47,7 +47,7 @@ public async Task CreateAsync(UserRequest.Create request)
             request.Klant.ReserveContactpersoon);
         //_klanten.Add(klant);
     }
-    //TODO: response die id van nieuwe klant terugstuurt
+    
 }
 
 public async Task EditAsync(UserRequest.Edit request)
