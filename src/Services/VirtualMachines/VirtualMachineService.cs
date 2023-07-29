@@ -44,7 +44,7 @@ namespace Services.VirtualMachines
                 request.VirtualMachine.Name,
                 request.VirtualMachine.OperatingSystem,
                 new Hardware(request.VirtualMachine.Hardware.Memory, request.VirtualMachine.Hardware.Storage, request.VirtualMachine.Hardware.Amount_vCPU),
-                new Backup(request.VirtualMachine.Backup.Type, request.VirtualMachine.Backup.LastBackup)
+                new Backup(request.VirtualMachine.Backup.Type, request.VirtualMachine.Backup.LastBackup), request.VirtualMachine.Why
             ));
 
             await _dbContext.SaveChangesAsync();

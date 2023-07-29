@@ -8,7 +8,7 @@ namespace Domain.Server
 {
     public class FysiekeServerFaker : Faker<FysiekeServer>
     {
-        public FysiekeServerFaker()
+        /*public FysiekeServerFaker()
         {
             int id = 1;
 
@@ -35,6 +35,6 @@ namespace Domain.Server
 
 
             return new Hardware(_memoryOptions[new Random().Next(0, _memoryOptions.Count())], _storageOptions[new Random().Next(0, _storageOptions.Count())], _cpus[new Random().Next(0, _cpus.Count())]);
-        }
+        }*/
     }
 }

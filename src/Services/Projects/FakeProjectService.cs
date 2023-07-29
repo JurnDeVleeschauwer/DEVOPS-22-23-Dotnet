@@ -8,7 +8,7 @@ namespace Services.Projects
 {
     public class FakeProjectService //: IProjectenService
     {
-        private List<Project> _projects = new();
+        /*private List<Project> _projects = new();
 
         public FakeProjectService()
         {
@@ -46,7 +46,7 @@ namespace Services.Projects
 
             response.ProjectenId = id;
 
-            return response;*/
+            return response;
         }
 
         public async Task DeleteAsync(ProjectenRequest.Delete request)
@@ -112,7 +112,7 @@ namespace Services.Projects
 
             if (!string.IsNullOrWhiteSpace(request.SearchTerm))
             {
-                projects = _projects.FindAll(e => e.Name.Contains(request.SearchTerm, StringComparison.OrdinalIgnoreCase) /*|| e.User.Name.Contains(request.SearchTerm, StringComparison.OrdinalIgnoreCase)*/);
+                projects = _projects.FindAll(e => e.Name.Contains(request.SearchTerm, StringComparison.OrdinalIgnoreCase) /*|| e.User.Name.Contains(request.SearchTerm, StringComparison.OrdinalIgnoreCase));
             }
             else
             {
@@ -139,7 +139,7 @@ namespace Services.Projects
         public Task RemoveUserFromProject(ProjectenRequest.RemoveUserFromProject request)
         {
             throw new NotImplementedException();
-        }
+        }*/
     }
 }
 

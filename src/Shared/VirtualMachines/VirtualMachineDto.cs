@@ -83,13 +83,16 @@ namespace Shared.VirtualMachines
             [Required(ErrorMessage = "Je moet een project selecteren.")]
             public int? ProjectId { get; set; }
             public int Id { get; set; }
+
+            [Required(ErrorMessage = "Zeg waarom")]
+            public string Why { get; set; }
             public class Validator : AbstractValidator<Create>
             {
-                public Validator()
+                /*public Validator()
                 {
                     RuleFor(x => x.Id).NotEmpty();
                     RuleFor(x => x.ProjectId).NotEmpty();
-                }
+                }*/
             }
         }
 

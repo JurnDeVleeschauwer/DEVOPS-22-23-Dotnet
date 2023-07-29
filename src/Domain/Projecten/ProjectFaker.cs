@@ -9,7 +9,7 @@ namespace Domain.Projecten
     public class ProjectFaker : Faker<Project>
     {
 
-        private List<Project> _projects = new();
+       /* private List<Project> _projects = new();
 
 
         private static ProjectFaker? _instance;
@@ -58,7 +58,7 @@ namespace Domain.Projecten
             }
 
             return output;
-        }
+        }*/
 
     }
 }

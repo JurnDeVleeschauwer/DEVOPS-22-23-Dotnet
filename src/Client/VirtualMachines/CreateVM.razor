@@ -137,6 +137,17 @@
         <InputDate @bind-Value="virtualMachine.End" Placeholder="Enter Date" />
       </div>
     </div>
+
+    <div class="column">
+      <label class="label">Reason</label>
+      <p class="control has-icons-left">
+        <InputText
+          class="input"
+          @bind-Value="virtualMachine.Why"
+          placeholder="Reason why VM"
+        />
+      </p>
+    </div>
   </div>
   <button class="button is-rechts is-success" type="submit">
     <span class="icon is-small">

@@ -20,6 +20,7 @@ namespace Domain.VirtualMachines.VirtualMachine
         private VirtualMachineMode _mode;
         private FysiekeServer? _server;
         private Statistic _statistics;
+        private string _why;
 
 
         public string Name { get { return _name; } set { _name = Guard.Against.NullOrEmpty(value, nameof(_name)); } }
@@ -30,16 +31,19 @@ namespace Domain.VirtualMachines.VirtualMachine
         public VMConnection? Connection { get; set; }
         public VMContract Contract { get; set; }
         public FysiekeServer? FysiekeServer { get; set; }
-
         public Statistic Statistics { get; set; }
 
-        public VirtualMachine(string n, OperatingSystemEnum os, Hardware h, Backup b)
+        public string Why { get { return _why; } set { _why = Guard.Against.NullOrEmpty(value, nameof(_why)); } }
+
+
+        public VirtualMachine(string n, OperatingSystemEnum os, Hardware h, Backup b, string w)
         {
             Name = n;
             OperatingSystem = os;
             Hardware = h;
             BackUp = b;
             Mode = VirtualMachineMode.WAITING_APPROVEMENT;
+            Why = w;
         }
 
         public VirtualMachine()

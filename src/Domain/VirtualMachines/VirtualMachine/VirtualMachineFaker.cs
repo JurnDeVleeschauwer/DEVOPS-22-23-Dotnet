@@ -22,7 +22,7 @@ namespace Domain.VirtualMachines.VirtualMachine
     public class VirtualMachineFaker : Faker<VirtualMachine>
     {
 
-        private List<VirtualMachine> _virtualMachines = new();
+       /* private List<VirtualMachine> _virtualMachines = new();
 
 
         private static VirtualMachineFaker instance = null;
@@ -148,7 +148,7 @@ namespace Domain.VirtualMachines.VirtualMachine
 
             return new IPAddress(data);
         }
-
+       */
 
 
     }

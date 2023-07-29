@@ -8,10 +8,10 @@ using Shared.VirtualMachines;
 
 namespace Services.VirtualMachines
 {
-    public class FakeVirtualMachineService : IVirtualMachineService
+    public class FakeVirtualMachineService //: IVirtualMachineService
     {
 
-        private List<VirtualMachine> _virtualMachines = new();
+        /*private List<VirtualMachine> _virtualMachines = new();
 
         public FakeVirtualMachineService()
         {
@@ -193,6 +193,6 @@ namespace Services.VirtualMachines
         public Task<VirtualMachineResponse.GetIndexWithHardware> GetVirtualmachine(FysiekeServerRequest.Date date)
         {
             throw new NotImplementedException();
-        }
+        }*/
     }
 }
